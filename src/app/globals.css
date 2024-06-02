@@ -2,32 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #111111;
+  -webkit-text-fill-color: #a7a7a7;
+  -webkit-box-shadow: 0 0 0px 1000px #111111 inset;
+  box-shadow: 0 0 0px 1000px #111111 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  color: #a7a7a7;
+  caret-color: #a7a7a7;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+
+/* HAMBURGER MENU */
+.bars {
+  width: 36px;
+  cursor: pointer;
+}
+.bars .line {
+  fill: none;
+  stroke: #cac9c9;
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
+}
+.bars.active .line {
+  stroke: #2d2d2d;
+}
+.bars .line.top {
+  stroke-dasharray: 40 172;
+}
+.bars .line.middle {
+  stroke-dasharray: 40 111;
+}
+.bars .line.bottom {
+  stroke-dasharray: 40 172;
+}
+.bars.active .top {
+  stroke-dashoffset: -132px;
+}
+.bars.active .middle {
+  stroke-dashoffset: -71px;
+}
+.bars.active .bottom {
+  stroke-dashoffset: -132px;
+}
+
+/* HIDE NUMBER INPUT ARROW */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
