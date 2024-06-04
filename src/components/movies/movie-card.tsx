@@ -30,7 +30,7 @@ const MovieCard = (props: MovieCardProp) => {
                     //     "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_1280%2Fnextconf-photos%2FSexton_Vercel_1185.jpg&w=1920&q=75"
                     // }
                     rel="preload"
-                    priority={true}
+                    // priority={true}
                     // unoptimized={true}
                     fill
                     alt={"thumbnail " + movie.name}
@@ -39,7 +39,7 @@ const MovieCard = (props: MovieCardProp) => {
                     // blurDataURL={
                     //     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAM0lEQVR4nAEoANf/AP/j1vbWx+DKwADlxK3/+N6Kg34AgnlyjYR+BAUGABwZFyIbGRIQDPA+Ekeb9FAwAAAAAElFTkSuQmCC"
                     // }
-                    // loading="eager"
+                    loading="eager"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,300px"
                 />
             </div>
