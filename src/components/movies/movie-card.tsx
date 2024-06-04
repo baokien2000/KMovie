@@ -35,12 +35,11 @@ const MovieCard = (props: MovieCardProp) => {
                     fill
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
-                    placeholder="blur"
-                    blurDataURL={
-                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAM0lEQVR4nAEoANf/AP/j1vbWx+DKwADlxK3/+N6Kg34AgnlyjYR+BAUGABwZFyIbGRIQDPA+Ekeb9FAwAAAAAElFTkSuQmCC"
-                    }
-                    loading="eager"
-                    // loading={id < 4 ? "eager" : "lazy"}
+                    // placeholder="blur"
+                    // blurDataURL={
+                    //     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAM0lEQVR4nAEoANf/AP/j1vbWx+DKwADlxK3/+N6Kg34AgnlyjYR+BAUGABwZFyIbGRIQDPA+Ekeb9FAwAAAAAElFTkSuQmCC"
+                    // }
+                    // loading="eager"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,300px"
                 />
             </div>
