@@ -28,18 +28,21 @@ const Header = () => {
                         <CategoryBtn />
                         <Link
                             href={"/"}
+                            aria-label="watch-history"
                             className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des opacity-80"
                         >
                             <ClockIcon />
                         </Link>
                         <Link
                             href={"/"}
+                            aria-label="bookmark"
                             className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des opacity-80"
                         >
                             <BookmarkIcon />
                         </Link>
                         <Link
                             href={"/phim"}
+                            aria-label="logout"
                             className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
                         >
                             <LogoutIcon />

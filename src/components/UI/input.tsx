@@ -9,8 +9,9 @@ interface InputProps {
     onIconClick?: () => void;
     onChange?: ChangeEventHandler<HTMLInputElement>;
     icon?: ReactNode;
+    ariaLabel?: string;
 }
-export default function Input({ className, placeholder, onClick, onIconClick, onChange, icon }: InputProps) {
+export default function Input({ className, placeholder, onClick, onIconClick, onChange, icon, ariaLabel }: InputProps) {
     return (
         <Field
             className={cn(
@@ -20,6 +21,7 @@ export default function Input({ className, placeholder, onClick, onIconClick, on
             )}
             htmlFor="search"
             as="label"
+            aria-label={ariaLabel}
         >
             <HeadLessInput
                 placeholder={placeholder}

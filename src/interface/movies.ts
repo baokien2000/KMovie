@@ -1,4 +1,5 @@
 export interface ImovieList {
+    blurImagesUrls?: string[];
     status: boolean;
     items: IMovie[];
     pathImage: string,

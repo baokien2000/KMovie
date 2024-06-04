@@ -5,25 +5,26 @@ import { getKMovie } from "@/services/movies";
 import MoviesList from "../movies/movies-list";
 import MoviePagination from "../movies/movie-pagination";
 import { useQuery } from "@tanstack/react-query";
+import NewMovieSkeleton from "./new-movie-skeleton";
 
 const NewMovies = ({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) => {
-    // const movies = await getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, 24, "")
     const { data: movies, isFetching } = useQuery({
         queryKey: ["getMoviesPerPage", searchParams?.page],
-        queryFn: async () => getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, 24, ""),
+        queryFn: async () => getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, 1, ""),
         refetchOnWindowFocus: false,
     });
-    console.log("NewMovies movies", movies);
+    console.log("isFetching", isFetching);
+    console.log("movies", movies);
     return (
         <div className="space-y-3 ">
             <MovieListTitle id={"MovieListTitle"} title="Phim mới cập nhật" />
             {!isFetching ? (
                 <>
                     <MoviesList movies={movies} />
-                    <MoviePagination totalPage={Math.ceil(movies?.pagination?.totalPages ?? 0)} />
+                    {/* <MoviePagination totalPage={Math.ceil(movies?.pagination?.totalPages ?? 0)} /> */}
                 </>
             ) : (
-                <div className="h-screen flex item-center">Loading...</div>
+                <NewMovieSkeleton />
             )}
         </div>
     );

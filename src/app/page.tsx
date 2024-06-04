@@ -10,7 +10,7 @@ export default async function Home({ params, searchParams }: { params: { slug: s
     console.count("movies");
     return (
         <main className="p-6  ">
-            <RecommendedMovies />
+            {/* <RecommendedMovies /> */}
             <NewMovies searchParams={searchParams} />
         </main>
     );

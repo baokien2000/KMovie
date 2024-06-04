@@ -19,6 +19,7 @@ const CategoryBtn = () => {
                                 open ? "border-mainColor bg-mainColor" : "border-des bg-black",
                                 "h-[36px] w-[42px] outline-none rounded flex items-center  py-[5px]  border-[1px] cursor-pointer  hover:opacity-80"
                             )}
+                            aria-label="category-button"
                         >
                             <HamburgerIcon className={open ? "active" : ""} />
                         </PopoverButton>

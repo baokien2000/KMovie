@@ -1,4 +1,4 @@
-import { Categories, years } from "@/enum/movies";
+import { years } from "@/enum/movies";
 import { TabPanel } from "@headlessui/react";
 import React from "react";
 

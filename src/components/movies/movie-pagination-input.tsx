@@ -25,13 +25,14 @@ const MoviePaginationInput = ({ totalPage }: MoviePaginationInputProp) => {
             <Input
                 type="number"
                 max={9999}
+                aria-label="pagination-search"
                 value={page}
                 onChange={(e) => setPage(e.target.value)}
                 onKeyDown={(e) => ["e", ".", ",", "-", "+"].includes(e.key) && e.preventDefault()}
-                className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-gray-400   "
+                className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-white/80   "
                 placeholder="Nhập"
             />
-            <SearchIcon className="text-gray-400 hover:text-mainColor mx-3 cursor-pointer" onClick={handleRedirect} fill="currentColor" />
+            <SearchIcon className="text-white/80 hover:text-mainColor mx-3 cursor-pointer" onClick={handleRedirect} fill="currentColor" />
         </>
     );
 };

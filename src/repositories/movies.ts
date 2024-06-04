@@ -1,10 +1,11 @@
-import { ImovieList } from "@/interface/movies";
+import { IMovie, ImovieList } from "@/interface/movies";
 import { cache } from "react";
 import axios from "axios";
+import { dynamicBlurDataUrl } from "@/utils/image";
 
 
-// const baseURL = "https://kmovie-api.vercel.app/m ovies"
-const baseURL = "http://localhost:5000/movies";
+const baseURL = "https://kmovie-api.vercel.app/movies"
+// const baseURL = "http://localhost:5000/movies";
 class MoviesRepository {
 
     static searchKMovie = cache(async (value: string,limit:number) => {
@@ -20,6 +21,7 @@ class MoviesRepository {
                 params: payload,
             });
             return response.data
+            
         } catch (error) {
             console.log(error)
         }

@@ -8,10 +8,10 @@ import "swiper/css/scrollbar";
 import "./style.css";
 import { ImovieList } from "@/interface/movies";
 import MovieCard from "./movie-card";
+import { memo } from "react";
 
 const MovieSlider = (props: { movies: ImovieList }) => {
     const { movies } = props;
-    console.log("movies", movies);
     return (
         <Swiper
             // @ts-ignore
@@ -35,13 +35,19 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                 1223: { slidesPerView: 6, spaceBetween: 20 }, // when window width is >: 768px
             }}
         >
-            {movies.items.map((item) => (
+            {movies.items.map((item, index) => (
                 <SwiperSlide key={item._id}>
-                    <MovieCard key={item._id} movie={item} ImagePath={movies.pathImage} className="w-full h-64" />
+                    <MovieCard
+                        blurUrl={movies?.blurImagesUrls?.[index]}
+                        key={item._id}
+                        movie={item}
+                        ImagePath={movies.pathImage}
+                        className="w-full h-64"
+                    />
                 </SwiperSlide>
             ))}
         </Swiper>
     );
 };
 
-export default MovieSlider;
+export default memo(MovieSlider);
