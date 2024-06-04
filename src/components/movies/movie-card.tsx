@@ -32,9 +32,7 @@ const MovieCard = (props: MovieCardProp) => {
                     rel="preload"
                     priority={true}
                     // unoptimized={true}
-                    // fill
-                    width={158}
-                    height={285}
+                    fill
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
                     placeholder="blur"
