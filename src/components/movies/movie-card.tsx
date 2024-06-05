@@ -26,8 +26,8 @@ const MovieCard = (props: MovieCardProp) => {
                     fill
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
-                    placeholder={movie?.blurImage ? "blur" : undefined}
-                    blurDataURL={movie?.blurImage}
+                    // placeholder={movie?.blurImage ? "blur" : undefined}
+                    // blurDataURL={movie?.blurImage}
                     loading="eager"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,300px"
                 />
