@@ -29,10 +29,10 @@ const MoviePaginationInput = ({ totalPage }: MoviePaginationInputProp) => {
                 value={page}
                 onChange={(e) => setPage(e.target.value)}
                 onKeyDown={(e) => ["e", ".", ",", "-", "+"].includes(e.key) && e.preventDefault()}
-                className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-white/80   "
+                className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-title   "
                 placeholder="Nhập"
             />
-            <SearchIcon className="text-white/80 hover:text-mainColor mx-3 cursor-pointer" onClick={handleRedirect} fill="currentColor" />
+            <SearchIcon className="w-4 h-4 text-title hover:text-mainColor mx-3 cursor-pointer" onClick={handleRedirect} fill="currentColor" />
         </>
     );
 };

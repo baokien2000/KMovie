@@ -17,6 +17,7 @@ export interface IMovie {
     _id: string;
     name: string;
     slug: string;
+    blurImage?: string;
     origin_name?: string;
     thumb_url: string;
     poster_url: string;

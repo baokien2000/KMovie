@@ -12,33 +12,22 @@ interface MovieCardProp {
     blurUrl?: string;
 }
 const MovieCard = (props: MovieCardProp) => {
-    const { movie, className, ImagePath, blurUrl } = props;
+    const { movie, className, ImagePath } = props;
     return (
         <Link
             href={"/phim/" + movie.slug}
-            className={cn(
-                // !loading ? "opacity-100 " : "opacity-50 ",
-                " bg-black block p-[5px] mx-[2px] my-[5px] relative cursor-pointer hover:opacity-[80%] ",
-                className
-            )}
+            className={cn(" bg-black block p-[5px] mx-[2px] my-[5px] relative cursor-pointer hover:opacity-[80%] ", className)}
         >
             <div className="relative h-[calc(100%-25px)] w-full">
                 <Image
                     quality={5}
                     src={ImagePath + movie.thumb_url}
-                    // src={
-                    //     "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_1280%2Fnextconf-photos%2FSexton_Vercel_1185.jpg&w=1920&q=75"
-                    // }
                     rel="preload"
-                    // priority={true}
-                    // unoptimized={true}
                     fill
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
-                    // placeholder="blur"
-                    // blurDataURL={
-                    //     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAM0lEQVR4nAEoANf/AP/j1vbWx+DKwADlxK3/+N6Kg34AgnlyjYR+BAUGABwZFyIbGRIQDPA+Ekeb9FAwAAAAAElFTkSuQmCC"
-                    // }
+                    placeholder={movie?.blurImage ? "blur" : undefined}
+                    blurDataURL={movie?.blurImage}
                     loading="eager"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,300px"
                 />

@@ -16,7 +16,7 @@ const MoviePagination = ({ totalPage }: MoviePaginationProp) => {
     const page = parseInt(pageParam ?? 1);
 
     return (
-        <div className="flex bg-[#585858] mx-auto my-[10px] overflow-hidden w-fit items-center rounded shadow-sm justify-center">
+        <div className="flex text-sm  bg-[#585858] mx-auto my-[10px] overflow-hidden w-fit items-center rounded shadow-sm justify-center">
             <nav className="isolate flex-1  inline-flex justify-between  " aria-label="Pagination">
                 <Link
                     href={`?page=${page - 1}`}
@@ -24,7 +24,7 @@ const MoviePagination = ({ totalPage }: MoviePaginationProp) => {
                     onClick={() => scrollToTitleId("MovieListTitle")}
                     scroll={false}
                     className={cn(
-                        "relative z-10 inline-flex items-center   px-4 py-2  font-semibold text-white/80 hover:text-mainColor",
+                        "relative z-10 inline-flex items-center   px-2 min-w-[36px] py-2  text-title hover:text-mainColor",
                         page === 1 ? "pointer-events-none" : ""
                     )}
                 >
@@ -50,7 +50,7 @@ const MoviePagination = ({ totalPage }: MoviePaginationProp) => {
 
                 <PaginationButton page={totalPage} isCurrent={page === totalPage} />
 
-                {/* <a href="#" className="relative inline-flex items-center  px-2 py-2 text-white/80 hover:text-mainColor ">
+                {/* <a href="#" className="relative inline-flex items-center  px-2 py-2 text-title hover:text-mainColor ">
                     <span className="sr-only">Next</span>
                     <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
                 </a> */}
@@ -60,7 +60,7 @@ const MoviePagination = ({ totalPage }: MoviePaginationProp) => {
                     onClick={() => scrollToTitleId("MovieListTitle")}
                     scroll={false}
                     className={cn(
-                        "relative z-10 inline-flex items-center   px-4 py-2  font-semibold text-white/80 hover:text-mainColor",
+                        "relative z-10 inline-flex items-center   px-2 min-w-[36px] py-2  text-title hover:text-mainColor",
                         page === totalPage ? "pointer-events-none" : ""
                     )}
                 >

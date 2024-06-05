@@ -1,8 +1,8 @@
-import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions, Transition } from "@headlessui/react";
-import { useEffect, useState } from "react";
+import { Transition } from "@headlessui/react";
+import { useState } from "react";
 import SearchItem from "./search-item";
 import { useDebounce } from "@uidotdev/usehooks";
-import { getKMovie, searchKMovie } from "@/services/movies";
+import { searchKMovie } from "@/services/movies";
 import { useQuery } from "@tanstack/react-query";
 import { LoadingIcon, SearchIcon, XIcon } from "../../../../public/static/svg";
 import Link from "next/link";

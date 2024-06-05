@@ -21,8 +21,8 @@ export const PaginationButton = ({ page, isCurrent, className }: { page: string 
                 query: { page: page },
             }}
             className={cn(
-                "relative z-10 inline-flex items-center   px-4 py-2  font-semibold ",
-                isCurrent ? "bg-mainColor text-black" : "text-white/80 hover:text-mainColor",
+                "relative z-10 inline-flex items-center   px-2 min-w-[36px] justify-center py-2 ",
+                isCurrent ? "bg-mainColor text-black" : "text-title hover:text-mainColor",
                 className
             )}
         >

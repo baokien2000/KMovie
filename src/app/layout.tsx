@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 import ReactQueryProvider from "@/components/providers/react-query-provider";
 import Header from "@/components/header";
 import { Toaster } from "react-hot-toast";
+import Lincese from "@/components/footer/lincese";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -81,12 +82,13 @@ export default function RootLayout({
                 <link rel="android-touch-icon" href="/favicon.ico" />
                 <link rel="windows-touch-icon" href="/favicon.ico" />
             </head>
-            <body className={cn(inter.className, " max-w-screen-laptop mx-auto bg-mainBackground min-h-screen h-full w-full overflow-x-hidden")}>
+            <body className={cn(inter.className, " bg-mainBackground min-h-screen h-full w-full overflow-x-hidden")}>
                 <ReactQueryProvider>
                     <Header />
-                    {children}
+                    <div className=" max-w-screen-laptop mt-20 mx-auto w-full h-full">{children}</div>
                 </ReactQueryProvider>
                 <Toaster containerClassName="text-xs sm:text-sm " />
+                <Lincese />
             </body>
         </html>
     );

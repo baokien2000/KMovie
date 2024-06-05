@@ -14,8 +14,8 @@ import CategoryBtn from "./category/category-btn";
 
 const Header = () => {
     return (
-        <nav className="w-full block relative z-10 bg-mainBackground ">
-            <div className="App-header mx-auto px-6 flex flex-col h-[117px] sm:h-[70px] w-full ">
+        <nav className="w-full h-[72px] fixed top-0 block  z-10 bg-mainBackground shadow-lg">
+            <div className=" App-header mx-auto max-w-screen-laptop px-6 flex flex-col h-[117px] sm:h-[70px] w-full ">
                 <div className="h-[70px] w-full gap-5 flex items-center justify-between">
                     <Link href={"/"} className="object-cover cursor-pointer h-fit ">
                         <Image height={70} width={150} className="tablet:block hidden" alt="Logo" src={Logo} />

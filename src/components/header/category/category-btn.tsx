@@ -10,7 +10,7 @@ import CategoryTabList from "./category-tab-list";
 
 const CategoryBtn = () => {
     return (
-        <div className="flex gap-8">
+        <div className="flex gap-8 ">
             <Popover>
                 {({ open }) => (
                     <>
@@ -33,9 +33,9 @@ const CategoryBtn = () => {
                         >
                             <PopoverPanel
                                 anchor="bottom"
-                                className=" mt-3 !left-1/2 !-translate-x-1/2 transform  !max-w-[calc(100svw-48px)] w-screen rounded bg-white/5 text-sm/6 "
+                                className=" mt-6 !max-w-screen-laptop px-6 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full rounded overflow-hidden text-sm/6 "
                             >
-                                <TabGroup>
+                                <TabGroup className={"bg-mainBackground/90 border border-des"}>
                                     <CategoryTabList />
                                     <TabPanels>
                                         <CategoryContent />
