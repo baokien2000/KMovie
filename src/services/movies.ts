@@ -8,3 +8,6 @@ export async function searchKMovie(value: string,limit:number) {
     if(value.length === 0) return null;
     return await MoviesRepository.searchKMovie(value,limit);
 }
+export async function getMovieBySlug(slug: string) {
+    return await MoviesRepository.getMovieBySlug(slug);
+}

@@ -82,10 +82,10 @@ export default function RootLayout({
                 <link rel="android-touch-icon" href="/favicon.ico" />
                 <link rel="windows-touch-icon" href="/favicon.ico" />
             </head>
-            <body className={cn(inter.className, " bg-mainBackground min-h-screen h-full w-full overflow-x-hidden")}>
+            <body className={cn(inter.className, " bg-mainBackground min-h-screen h-full w-full ")}>
                 <ReactQueryProvider>
                     <Header />
-                    <div className=" max-w-screen-laptop mt-20 mx-auto w-full h-full">{children}</div>
+                    <div className=" max-w-screen-laptop mx-auto w-full h-full">{children}</div>
                 </ReactQueryProvider>
                 <Toaster containerClassName="text-xs sm:text-sm " />
                 <Lincese />

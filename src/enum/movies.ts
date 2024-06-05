@@ -1,3 +1,9 @@
+export const MovieStatus = new Map([
+    ["comingsoon", "Sắp chiếu"],
+    ["ongoing", "Đang tiến hành"],
+        ["completed", "Hoàn thành"]
+]) 
+
 export const MovieTabs = [{
     id: "category",
     name: "Thể loại",

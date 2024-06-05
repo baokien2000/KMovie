@@ -1,4 +1,4 @@
-import { IMovie, ImovieList } from "@/interface/movies";
+import { IMovie, IOphimMovie, ImovieList } from "@/interface/movies";
 import { cache } from "react";
 import axios from "axios";
 import { dynamicBlurDataUrl } from "@/utils/image";
@@ -6,6 +6,7 @@ import { dynamicBlurDataUrl } from "@/utils/image";
 
 const baseURL = "https://kmovie-api.vercel.app/movies"
 // const baseURL = "http://localhost:5000/movies";
+const resourceURL = "https://ophim1.com/phim/"
 class MoviesRepository {
 
     static searchKMovie = cache(async (value: string,limit:number) => {
@@ -51,6 +52,19 @@ class MoviesRepository {
         } 
     })
 
+    static getMovieBySlug = async (slug: string): Promise<IOphimMovie | undefined> => { 
+            const url = resourceURL + slug
+            try {
+                const response = await axios({
+                    method: 'get',
+                    url: url,
+                });
+                return response.data as IOphimMovie
+            } catch (error) {
+                console.log(error)
+            } 
+        }
+    
 }
 
 export default MoviesRepository;

@@ -80,23 +80,45 @@ input[type=number] {
 /* Custom Scroll bar */
 
 /* width */
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 20px;
 }
 /* Track */
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: transparent;
 }
 /* Handle */
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background: #888;
   border: 6px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
   border-radius: 20px;
 }
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover {
   background: #555;
   border: 6px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
+
+
+/* Movie Detail scroll bar */
+    /* custom Scroll bar */
+
+    .customScrollBar::-webkit-scrollbar-track {
+      /* background-color: #aaaaaa; */
+  }
+
+  .customScrollBar::-webkit-scrollbar {
+      width: 4px !important;
+      /* background-color: #aaaaaa; */
+  }
+
+  .customScrollBar::-webkit-scrollbar-thumb {
+      background-color: #888;
+      /* background-color: #373a43; */
+      border-radius: 0px;
+  }
+  .customScrollBar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
