@@ -1,4 +1,4 @@
-import LoginPage from "@/container/login/login";
+import LoginPage from "@/containers/login/login";
 import React from "react";
 
 export default async function Page() {

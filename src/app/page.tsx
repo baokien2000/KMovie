@@ -1,6 +1,6 @@
 import Header from "@/components/header";
-import NewMovies from "@/container/home/new-movies";
-import RecommendedMovies from "@/container/home/recommended-movies";
+import NewMovies from "@/containers/home/new-movies";
+import RecommendedMovies from "@/containers/home/recommended-movies";
 import Text from "@/components/text";
 import { getKMovie } from "@/services/movies";
 import Image from "next/image";
