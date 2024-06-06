@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { scrollToTitleId } from "@/utils/scroll";
 import Link from "next/link";
-import { useQueryClient } from "@tanstack/react-query";
 import { PaginationButton } from "./pagination-button";
 interface MoviePaginationProp {
     totalPage: number;
@@ -50,10 +49,6 @@ const MoviePagination = ({ totalPage }: MoviePaginationProp) => {
 
                 <PaginationButton page={totalPage} isCurrent={page === totalPage} />
 
-                {/* <a href="#" className="relative inline-flex items-center  px-2 py-2 text-title hover:text-mainColor ">
-                    <span className="sr-only">Next</span>
-                    <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-                </a> */}
                 <Link
                     href={`?page=${page + 1}`}
                     aria-current="page"

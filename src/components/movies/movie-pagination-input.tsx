@@ -1,8 +1,8 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Input } from "@headlessui/react";
+import { Input } from "@headlessui/react";
 import React from "react";
 import { SearchIcon } from "../../../public/static/svg";
 import toast from "react-hot-toast";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 interface MoviePaginationInputProp {
     totalPage: number;
 }

@@ -35,8 +35,8 @@ const Header = () => {
             <div className=" App-header mx-auto max-w-screen-laptop px-6 flex flex-col h-[117px] sm:h-[70px] w-full ">
                 <div className="h-[70px] w-full gap-5 flex items-center justify-between">
                     <Link href={"/"} className="object-cover cursor-pointer h-fit ">
-                        <Image sizes="150px" priority height={70} width={150} className="tablet:block hidden" alt="Logo" src={Logo} />
-                        <Image sizes="50px" priority height={50} width={50} alt="Logo" className="block tablet:hidden" src={Logo_Small} />
+                        <Image sizes="150px" loading="lazy" height={70} width={150} className="tablet:block hidden" alt="Logo" src={Logo} />
+                        <Image sizes="50px" loading="lazy" height={50} width={50} alt="Logo" className="block tablet:hidden" src={Logo_Small} />
                     </Link>
 
                     {/* <Input /> */}

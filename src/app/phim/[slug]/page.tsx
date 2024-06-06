@@ -6,12 +6,28 @@ import Text from "@/components/text";
 import { getMovieBySlug } from "@/services/movies";
 import React from "react";
 import EpisodesList from "@/containers/movie-details/episodes";
+import { Metadata } from "next";
 
 interface PageProps {
     params: {
         slug: string;
     };
 }
+export async function generateMetadata({
+    params,
+}: {
+    params: {
+        slug: string;
+    };
+}): Promise<Metadata> {
+    const slug = params.slug;
+
+    const movie = await getMovieBySlug(slug);
+    return {
+        title: movie ? `${movie.movie.name} - kmovie` : "404 - kmovie",
+    };
+}
+
 export default async function Page({ params }: PageProps) {
     const movie = await getMovieBySlug(params.slug);
     console.log("movies", movie);
