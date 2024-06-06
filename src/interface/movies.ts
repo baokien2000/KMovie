@@ -35,7 +35,7 @@ export interface IOphimMovie {
     status: boolean;
     msg: string;
     movie: IMovieDetails;
-    episodes: Episode[];
+    episodes: IServer[];
   }
 export interface IMovieDetails {
     tmdb: Tmdb;
@@ -94,7 +94,7 @@ interface Country {
     name: string;
     slug: string;
 }
-interface Episode {
+export interface IServer {
     server_name: string;
     server_data: IServerData[];
 }

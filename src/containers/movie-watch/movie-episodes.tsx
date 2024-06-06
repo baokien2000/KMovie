@@ -1,5 +1,4 @@
 import { IServerData } from "@/interface/movies";
-import { cn } from "@/lib/cn";
 import Link from "next/link";
 import React from "react";
 interface EpisodesProps {
@@ -8,17 +7,17 @@ interface EpisodesProps {
 }
 const EpisodesList = ({ slug, episodes }: EpisodesProps) => {
     return (
-        <div className={cn("sm:w-[300px] w-full p-3 space-y-2 bg-[#3A3A3A] rounded")}>
+        <div className="w-full p-3 space-y-2 text-default  bg-des rounded">
             <h3 className="font-semibold ">Danh sách tập phim</h3>
-            <div className="customScrollBar pr-2 text-sm overflow-auto items-start flex flex-wrap  max-h-[300px]">
+            <div className=" text-sm overflow-auto items-start flex flex-wrap ">
                 {episodes.map((ep, index) => {
                     return (
                         <Link
-                            href={"/phim/" + slug + "/tap-" + (ep.slug.toString() === "kep" ? ep.slug : ep.filename)}
+                            href={"/phim/" + slug + "/tap-" + ep.slug + (ep.slug.toString() === "kep" ? "-" + ep.filename : "")}
                             key={ep.slug + index}
-                            className="hover:bg-[#ffce4f] hover:text-[#000] px-[10px] py-[5px] text-center sm:w-1/4 w-1/5 bg-[#333232] border-[1px] border-[#4e4e4e]"
+                            className="hover:bg-mainColor hover:border-[#4A4A4A] hover:text-black  py-1 text-center w-[45px] bg-[#333232] border border-[#4e4e4e]"
                         >
-                            {ep.slug.toString() === "full" ? "full" : index + 1}
+                            {ep.slug + 33}
                         </Link>
                     );
                 })}

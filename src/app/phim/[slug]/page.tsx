@@ -1,11 +1,11 @@
 import Action from "@/containers/movie-details/action";
 import CommentList from "@/containers/movie-comment";
 import Description from "@/containers/movie-details/description";
-import Episodes from "@/containers/movie-details/episodes";
 import Info from "@/containers/movie-details/info";
 import Text from "@/components/text";
 import { getMovieBySlug } from "@/services/movies";
 import React from "react";
+import EpisodesList from "@/containers/movie-details/episodes";
 
 interface PageProps {
     params: {
@@ -21,7 +21,7 @@ export default async function Page({ params }: PageProps) {
             <Info movie={movie.movie} />
             <Action slug={params.slug} episodes={movie.episodes[0].server_data[0]} />
             <div className="flex sm:flex-row flex-col gap-3 text-[#ccc] ">
-                <Episodes slug={params.slug} episodes={movie.episodes[0].server_data} />
+                <EpisodesList slug={params.slug} episodes={movie.episodes[0].server_data} />
                 <Description content={movie.movie.content} />
             </div>
             <CommentList id={movie.movie._id} />
