@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import MovieListTitle from "../movies/movie-list-title";
+import MovieListTitle from "../../components/movies/movie-list-title";
 import { getKMovie } from "@/services/movies";
-import MoviesList from "../movies/movies-list";
-import MoviePagination from "../movies/movie-pagination";
+import MoviesList from "../../components/movies/movies-list";
+import MoviePagination from "../../components/movies/movie-pagination";
 import { useQuery } from "@tanstack/react-query";
 import NewMovieSkeleton from "./new-movie-skeleton";
 

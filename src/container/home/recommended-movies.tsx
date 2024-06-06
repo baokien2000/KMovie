@@ -1,9 +1,9 @@
 import React from "react";
-import MovieListTitle from "../movies/movie-list-title";
+import MovieListTitle from "../../components/movies/movie-list-title";
 import { getKMovie } from "@/services/movies";
 import dynamic from "next/dynamic";
 import RecommendedMoviesSkeleton from "./recommended-movies-skeleton";
-const MovieSlider = dynamic(() => import("../movies/slider"), {
+const MovieSlider = dynamic(() => import("../../components/movies/slider"), {
     ssr: false,
     loading: () => <RecommendedMoviesSkeleton />,
 });

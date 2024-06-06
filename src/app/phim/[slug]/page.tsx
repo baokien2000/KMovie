@@ -1,8 +1,8 @@
-import Action from "@/components/movie-details/action";
-import CommentList from "@/components/movie-details/comment";
-import Description from "@/components/movie-details/description";
-import Episodes from "@/components/movie-details/episodes";
-import Info from "@/components/movie-details/info";
+import Action from "@/container/movie-details/action";
+import CommentList from "@/container/movie-comment";
+import Description from "@/container/movie-details/description";
+import Episodes from "@/container/movie-details/episodes";
+import Info from "@/container/movie-details/info";
 import Text from "@/components/text";
 import { getMovieBySlug } from "@/services/movies";
 import React from "react";

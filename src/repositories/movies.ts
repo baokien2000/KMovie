@@ -2,11 +2,10 @@ import { IMovie, IOphimMovie, ImovieList } from "@/interface/movies";
 import { cache } from "react";
 import axios from "axios";
 import { dynamicBlurDataUrl } from "@/utils/image";
+import { baseURL, resourceURL } from ".";
 
 
-const baseURL = "https://kmovie-api.vercel.app/movies"
-// const baseURL = "http://localhost:5000/movies";
-const resourceURL = "https://ophim1.com/phim/"
+
 class MoviesRepository {
 
     static searchKMovie = cache(async (value: string,limit:number) => {
@@ -14,7 +13,7 @@ class MoviesRepository {
             value: value,
             limit: limit,
         }
-        const url = `${baseURL}/Search`;
+        const url = `${baseURL}/movies/Search`;
         try {
             const response = await axios({
                 method: 'get',
@@ -38,7 +37,7 @@ class MoviesRepository {
             pageSize: pageSize,
             search: search ?? "",
         }
-        const url = baseURL;
+        const url = baseURL+"/movies";
     
         try {
             const response = await axios({

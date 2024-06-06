@@ -2,10 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/cn";
-import ReactQueryProvider from "@/components/providers/react-query-provider";
-import Header from "@/components/header";
-import { Toaster } from "react-hot-toast";
-import Lincese from "@/components/footer/lincese";
+import LayoutProvider from "@/providers/layout-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -83,12 +80,7 @@ export default function RootLayout({
                 <link rel="windows-touch-icon" href="/favicon.ico" />
             </head>
             <body className={cn(inter.className, " bg-mainBackground min-h-screen h-full w-full ")}>
-                <ReactQueryProvider>
-                    <Header />
-                    <div className=" max-w-screen-laptop mx-auto w-full h-full">{children}</div>
-                </ReactQueryProvider>
-                <Toaster containerClassName="text-xs sm:text-sm " />
-                <Lincese />
+                <LayoutProvider>{children}</LayoutProvider>
             </body>
         </html>
     );
