@@ -14,7 +14,7 @@ const EpisodesList = ({ slug, episodes }: EpisodesProps) => {
                 {episodes.map((ep, index) => {
                     return (
                         <Link
-                            href={"/phim/" + slug + "/tap-" + (ep.slug.toString() === "kep" ? ep.slug : ep.filename)}
+                            href={`/phim/${slug}/tap-${ep.slug === "kep" ? ep.slug : index + 1}`}
                             key={ep.slug + index}
                             className="hover:bg-[#ffce4f] hover:text-[#000] px-[10px] py-[5px] text-center sm:w-1/4 w-1/5 bg-[#333232] border-[1px] border-[#4e4e4e]"
                         >
