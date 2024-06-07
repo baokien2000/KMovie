@@ -19,6 +19,8 @@ export default function SearchMovie() {
     const { data: movies, isLoading } = useQuery({
         queryKey: ["search-movie", debouncedQuery],
         queryFn: async () => searchKMovie(query, 5),
+        refetchOnWindowFocus: false,
+        enabled: debouncedQuery.length > 0,
     });
     return (
         <div className="relative w-full h-fit " ref={refOutsideClick}>
