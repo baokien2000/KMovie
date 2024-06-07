@@ -9,10 +9,10 @@ interface MovieCardProp {
     className?: string;
     ImagePath?: string;
     blurUrl?: string;
-    priority?: boolean;
+    loading?: "eager" | "lazy";
 }
 const MovieCard = (props: MovieCardProp) => {
-    const { movie, className, ImagePath } = props;
+    const { movie, className, ImagePath, loading = "lazy" } = props;
     return (
         <Link
             href={"/phim/" + movie.slug}
@@ -26,7 +26,7 @@ const MovieCard = (props: MovieCardProp) => {
                     fill
                     rel={"preload"}
                     // priority={props?.priority ?? false}
-                    loading="lazy"
+                    loading={loading}
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"
