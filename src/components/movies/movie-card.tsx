@@ -21,7 +21,7 @@ const MovieCard = (props: MovieCardProp) => {
         >
             <div className="relative h-[calc(100%-25px)] w-full">
                 <Image
-                    quality={75}
+                    quality={10}
                     src={ImagePath + movie.thumb_url}
                     fill
                     rel={props?.priority ? "preload" : undefined}
