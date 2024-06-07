@@ -1,9 +1,7 @@
 "use client";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay, FreeMode } from "swiper/modules";
+import { Scrollbar, A11y, Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "./style.css";
 import { ImovieList } from "@/interface/movies";
@@ -15,14 +13,13 @@ const MovieSlider = (props: { movies: ImovieList }) => {
     return (
         <Swiper
             // @ts-ignore
-            modules={[FreeMode, Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            modules={[FreeMode, Scrollbar, A11y, Autoplay]}
             loop={true}
             speed={500}
             freeMode={true}
             scrollbar={{
                 hide: false,
             }}
-            initialSlide={1}
             autoplay={{
                 delay: 2000,
                 disableOnInteraction: false,
@@ -40,6 +37,7 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                     <MovieCard
                         blurUrl={movies?.blurImagesUrls?.[index]}
                         key={item._id}
+                        priority={index < 5 ? true : false}
                         movie={item}
                         ImagePath={movies.pathImage}
                         className="w-full h-64"

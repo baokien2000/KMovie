@@ -9,6 +9,7 @@ interface MovieCardProp {
     className?: string;
     ImagePath?: string;
     blurUrl?: string;
+    priority?: boolean;
 }
 const MovieCard = (props: MovieCardProp) => {
     const { movie, className, ImagePath } = props;
@@ -16,16 +17,17 @@ const MovieCard = (props: MovieCardProp) => {
         <Link
             href={"/phim/" + movie.slug}
             className={cn(" bg-black block p-[5px] mx-[2px] my-[5px] relative cursor-pointer hover:opacity-[80%] ", className)}
-            rel="preload"
+            rel={props?.priority ? "preload" : undefined}
         >
             <div className="relative h-[calc(100%-25px)] w-full">
                 <Image
                     quality={75}
                     src={ImagePath + movie.thumb_url}
                     fill
+                    rel={props?.priority ? "preload" : undefined}
+                    priority={props?.priority ?? false}
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
-                    loading="lazy"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"
                 />
             </div>

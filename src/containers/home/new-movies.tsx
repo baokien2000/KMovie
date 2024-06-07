@@ -15,18 +15,13 @@ const NewMovies = ({ searchParams }: { searchParams?: { [key: string]: string | 
     });
     console.log("isFetching", isFetching);
     console.log("movies", movies);
-    return (
-        <div className="space-y-3 ">
-            <MovieListTitle id={"MovieListTitle"} title="Phim mới cập nhật" />
-            {!isFetching ? (
-                <>
-                    <MoviesList movies={movies} />
-                    <MoviePagination totalPage={Math.ceil(movies?.pagination?.totalPages ?? 0)} />
-                </>
-            ) : (
-                <NewMovieSkeleton />
-            )}
-        </div>
+    return !isFetching ? (
+        <>
+            <MoviesList movies={movies} />
+            {/* <MoviePagination totalPage={Math.ceil(movies?.pagination?.totalPages ?? 0)} /> */}
+        </>
+    ) : (
+        <NewMovieSkeleton />
     );
 };
 

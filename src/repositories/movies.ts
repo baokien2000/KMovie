@@ -51,7 +51,7 @@ class MoviesRepository {
         } 
     })
 
-    static getMovieBySlug = async (slug: string): Promise<IOphimMovie | undefined> => { 
+    static getMovieBySlug = cache(async (slug: string): Promise<IOphimMovie | undefined> => { 
             const url = resourceURL + slug
             try {
                 const response = await axios({
@@ -62,7 +62,7 @@ class MoviesRepository {
             } catch (error) {
                 console.log(error)
             } 
-        }
+        })
     
 }
 
