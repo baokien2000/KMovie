@@ -10,9 +10,10 @@ interface MovieCardProp {
     ImagePath?: string;
     blurUrl?: string;
     loading?: "eager" | "lazy";
+    quality?: number;
 }
 const MovieCard = (props: MovieCardProp) => {
-    const { movie, className, ImagePath, loading = "lazy" } = props;
+    const { movie, className, ImagePath, loading = "lazy", quality } = props;
     return (
         <Link
             href={"/phim/" + movie.slug}
@@ -21,7 +22,6 @@ const MovieCard = (props: MovieCardProp) => {
         >
             <div className="relative h-[calc(100%-25px)] w-full">
                 <Image
-                    quality={5}
                     src={ImagePath + movie.thumb_url}
                     fill
                     rel={"preload"}
