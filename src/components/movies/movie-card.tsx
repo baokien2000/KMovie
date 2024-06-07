@@ -25,7 +25,8 @@ const MovieCard = (props: MovieCardProp) => {
                     src={ImagePath + movie.thumb_url}
                     fill
                     rel={props?.priority ? "preload" : undefined}
-                    priority={props?.priority ?? false}
+                    // priority={props?.priority ?? false}
+                    loading="lazy"
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"
