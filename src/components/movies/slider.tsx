@@ -37,7 +37,7 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                     <MovieCard
                         blurUrl={movies?.blurImagesUrls?.[index]}
                         key={item._id}
-                        loading={index < 5 ? "eager" : "lazy"}
+                        loading={"lazy"}
                         movie={item}
                         ImagePath={movies.pathImage}
                         className="w-full h-64"
