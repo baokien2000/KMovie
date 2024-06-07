@@ -17,14 +17,14 @@ const MovieCard = (props: MovieCardProp) => {
         <Link
             href={"/phim/" + movie.slug}
             className={cn(" bg-black block p-[5px] mx-[2px] my-[5px] relative cursor-pointer hover:opacity-[80%] ", className)}
-            rel={props?.priority ? "preload" : undefined}
+            rel={"preload"}
         >
             <div className="relative h-[calc(100%-25px)] w-full">
                 <Image
-                    quality={10}
+                    quality={5}
                     src={ImagePath + movie.thumb_url}
                     fill
-                    rel={props?.priority ? "preload" : undefined}
+                    rel={"preload"}
                     // priority={props?.priority ?? false}
                     loading="lazy"
                     alt={"thumbnail " + movie.name}
