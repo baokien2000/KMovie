@@ -1,4 +1,4 @@
-import { devtools, persist } from "zustand/middleware";
+import {  persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 import { StateCreator as ZustandStateCreator, create } from "zustand";
 
@@ -20,15 +20,11 @@ const storeApi: ZustandStateCreator<AuthStore> = (set) => ({
 });
 
 export const useAuthStore = create<AuthStore>()(
-    devtools(
         persist(immer(storeApi), {
             name: "user",
             partialize: (state) => ({
                 user: state.user,
             })
         }),
-        {
-            name: "AuthStore"
-        }
-    )
+
 );
