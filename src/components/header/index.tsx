@@ -6,7 +6,7 @@ import Logo from "../../../public/static/images/logo/logo_sm_light.png";
 import Logo_Small from "../../../public/static/images/logo/Icon_light.png";
 import { BookmarkIcon, ClockIcon, LogoutIcon } from "../../../public/static/svg";
 import SearchMovie from "./search/search-movie";
-import CategoryBtn from "./category/category-btn";
+import FilterButton from "./filter/filter-btn";
 
 const Header = () => {
     // const [scroll, setScroll] = React.useState(0);
@@ -42,7 +42,7 @@ const Header = () => {
                     {/* <Input /> */}
                     <SearchMovie />
                     <div className="flex gap-3">
-                        <CategoryBtn />
+                        <FilterButton />
                         <Link
                             href={"/"}
                             aria-label="watch-history"

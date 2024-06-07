@@ -1,14 +1,20 @@
 import { cn } from "@/lib/cn";
-import React, { useState } from "react";
-import { HamburgerIcon } from "../../../../public/static/svg";
-import { Popover, PopoverButton, PopoverPanel, Transition } from "@headlessui/react";
-import { TabGroup, TabPanels } from "@headlessui/react";
-import CategoryContent from "./category-content";
-import YearContent from "./years-content";
-import CountriesContent from "./countries";
-import CategoryTabList from "./category-tab-list";
+import React from "react";
+import { HamburgerIcon, LoadingIcon } from "../../../../public/static/svg";
+import { Popover, PopoverButton, PopoverPanel, TabGroup, Transition } from "@headlessui/react";
+// import FilterContent from "./filter-content";
+import FilterTabHeader from "./filter-tab-header";
+import dynamic from "next/dynamic";
 
-const CategoryBtn = () => {
+const FilterContent = dynamic(() => import("./filter-content"), {
+    ssr: false,
+    loading: () => (
+        <div className="w-full  flex items-center h-[50px]">
+            <LoadingIcon className="m-auto w-fit " fill="#cac9c9" />
+        </div>
+    ),
+});
+const FilterButton = () => {
     return (
         <div className="flex gap-8 ">
             <Popover>
@@ -30,18 +36,15 @@ const CategoryBtn = () => {
                             leave="transition ease-in duration-150"
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 translate-y-1"
+                            appear={true}
                         >
                             <PopoverPanel
                                 anchor="bottom"
-                                className=" mt-6 !max-w-screen-laptop px-6 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full rounded overflow-hidden text-sm/6 "
+                                className=" mt-6 !max-w-screen-laptop px-6 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full  text-sm/6 "
                             >
-                                <TabGroup className={"bg-mainBackground/90 border border-des"}>
-                                    <CategoryTabList />
-                                    <TabPanels>
-                                        <CategoryContent />
-                                        <YearContent />
-                                        <CountriesContent />
-                                    </TabPanels>
+                                <TabGroup className={"bg-mainBackground/90 border border-t-0 border-des rounded overflow-hidden"}>
+                                    <FilterTabHeader />
+                                    <FilterContent />
                                 </TabGroup>
                             </PopoverPanel>
                         </Transition>
@@ -52,4 +55,4 @@ const CategoryBtn = () => {
     );
 };
 
-export default CategoryBtn;
+export default FilterButton;

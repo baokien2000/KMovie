@@ -196,7 +196,7 @@ export const XIcon = (props: SVGProps) => {
 export const LoadingIcon = (props: SVGProps) => {
     return (
         <svg
-            className={props.className + " loader"}
+            className={props.className + " animate-spin"}
             width={props.size ?? "24"}
             height={props.size ?? "24"}
             viewBox="0 0 24 24"

@@ -3,7 +3,7 @@ import { Tab, TabList } from "@headlessui/react";
 import Link from "next/link";
 import React from "react";
 
-const CategoryTabList = () => {
+const FilterTabHeader = () => {
     return (
         <TabList className={"flex font-semibold   border-mainColor border-t-2 "}>
             {MovieTabs.map((item, index) =>
@@ -30,4 +30,4 @@ const CategoryTabList = () => {
     );
 };
 
-export default CategoryTabList;
+export default FilterTabHeader;

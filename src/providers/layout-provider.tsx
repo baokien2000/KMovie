@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import ReactQueryProvider from "@/components/providers/react-query-provider";
 import Header from "@/components/header";
 import { Toaster } from "react-hot-toast";
 import Lincese from "@/components/footer/lincese";
 import AuthProvider from "@/providers/auth-provider";
+import ReactQueryProvider from "./react-query-provider";
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
     return (
