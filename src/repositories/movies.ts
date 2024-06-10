@@ -19,6 +19,7 @@ class MoviesRepository {
                 method: 'get',
                 url: url,
                 params: payload,
+                headers: { 'Cache-Control': 'public, max-age=3600' }, // 1 hour
             });
             return response.data
             
@@ -44,6 +45,7 @@ class MoviesRepository {
                 method: 'get',
                 url: url,
                 params: payload,
+                headers: { 'Cache-Control': 'public, max-age=3600' }, // 1 hour
             });
             return response.data
         } catch (error) {
@@ -57,6 +59,7 @@ class MoviesRepository {
                 const response = await axios({
                     method: 'get',
                     url: url,
+                    headers: { 'Cache-Control': 'public, max-age=3600' }, // 1 hour
                 });
                 return response.data as IOphimMovie
             } catch (error) {

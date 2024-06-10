@@ -3,14 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/cn";
 import LayoutProvider from "@/providers/layout-provider";
-import { NextApiResponse, NextApiRequest } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {}
-export function handler(req: NextApiRequest, res: NextApiResponse) {
-    res.setHeader("Cache-Control", "private");
-}
 export async function generateMetadata({}: Props, parent: ResolvingMetadata): Promise<Metadata> {
     return {
         title: {
