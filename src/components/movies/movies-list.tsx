@@ -5,7 +5,7 @@ interface MovieListProp {
     movies: ImovieList;
 }
 const MoviesList = ({ movies }: MovieListProp) => {
-    if (!movies.items) return null;
+    if (!movies?.items) return null;
     return (
         <div className={" p-[10px] grid grid-cols-5  gap-x-[10px] rounded-[8px]  w-full bg-[#404040]"}>
             {movies.items.map((movie, index) => {

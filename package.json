@@ -16,7 +16,6 @@
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.2.6",
     "immer": "^10.1.1",
     "jwt-decode": "^4.0.0",
     "next": "14.1.3",
