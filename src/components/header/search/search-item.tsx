@@ -1,6 +1,4 @@
 import { imagePath } from "@/enum";
-import { ComboboxOption } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

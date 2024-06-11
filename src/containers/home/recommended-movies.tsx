@@ -1,6 +1,5 @@
 import React from "react";
 import MovieListTitle from "../../components/movies/movie-list-title";
-import { getKMovie } from "@/services/movies";
 import dynamic from "next/dynamic";
 import RecommendedMoviesSkeleton from "./recommended-movies-skeleton";
 import { ImovieList } from "@/interface/movies";

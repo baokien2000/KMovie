@@ -2,7 +2,6 @@ import Action from "@/containers/movie-details/action";
 import CommentList from "@/containers/movie-comment";
 import Description from "@/containers/movie-details/description";
 import Info from "@/containers/movie-details/info";
-import Text from "@/components/text";
 import { getMovieBySlug } from "@/services/movies";
 import React from "react";
 import EpisodesList from "@/containers/movie-details/episodes";

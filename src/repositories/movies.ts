@@ -1,7 +1,6 @@
-import { IMovie, IOphimMovie, ImovieList } from "@/interface/movies";
+import { IOphimMovie} from "@/interface/movies";
 import { cache } from "react";
 import axios from "axios";
-import { dynamicBlurDataUrl } from "@/utils/image";
 import { baseURL, resourceURL } from ".";
 
 
