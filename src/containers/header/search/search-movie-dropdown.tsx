@@ -9,7 +9,7 @@ import Link from "next/link";
 import Input from "@/components/UI/input";
 import { useOutsideClick } from "@/hook/useOutsideClick";
 
-export default function SearchMovie() {
+export default function SearchMovieDropdown() {
     const [query, setQuery] = useState("");
     const debouncedQuery = useDebounce(query, 500);
     const [isOpen, setIsOpen] = useState(false);
@@ -45,9 +45,9 @@ export default function SearchMovie() {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
             >
-                <div className=" absolute left-0 w-full h-fit mt-3 top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground p-1 ">
+                <div className=" absolute left-0 w-full h-fit mt-3 top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground/95 p-1 ">
                     <div className="w-full flex p-3 py-2 justify-between items-center">
-                        <Link href="/search" className="text-title">
+                        <Link href={query ? `/search?name=${query}` : "/search"} className="text-title text-sm hover:text-mainColor">
                             Đến trang tìm kiếm
                         </Link>
                         <XIcon className="cursor-pointer" onClick={() => setIsOpen(false)} />

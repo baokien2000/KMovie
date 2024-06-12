@@ -5,11 +5,22 @@ import React, { useEffect } from "react";
 import Logo from "../../../public/static/images/logo/logo_sm_light.png";
 import Logo_Small from "../../../public/static/images/logo/Icon_light.png";
 import { BookmarkIcon, ClockIcon, LogoutIcon } from "../../../public/static/svg";
-import SearchMovie from "./search/search-movie";
 import FilterButton from "./filter/filter-btn";
+// import SearchMovie from "./search/search-movie";
+// import SearchMovieDropdown from "./search/search-movie-dropdown";
 
+import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+const SearchMovieDropdown = dynamic(() => import("./search/search-movie-dropdown"), {
+    ssr: false,
+});
+const SearchMovie = dynamic(() => import("./search/search-movie"), {
+    ssr: false,
+});
 const Header = () => {
     // const [scroll, setScroll] = React.useState(0);
+    const pathName = usePathname();
+    console.log("pathName", pathName);
     let scroll = 0;
     useEffect(() => {
         const handleScroll = () => {
@@ -40,7 +51,8 @@ const Header = () => {
                     </Link>
 
                     {/* <Input /> */}
-                    <SearchMovie />
+                    {/* <SearchMovieDropdown /> */}
+                    {pathName === "/search" ? <SearchMovie /> : <SearchMovieDropdown />}
                     <div className="flex gap-3">
                         <FilterButton />
                         <Link

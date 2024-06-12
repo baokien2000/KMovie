@@ -8,10 +8,11 @@ interface InputProps {
     placeholder?: string;
     onIconClick?: () => void;
     onChange?: ChangeEventHandler<HTMLInputElement>;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     icon?: ReactNode;
     ariaLabel?: string;
 }
-export default function Input({ className, placeholder, onClick, onIconClick, onChange, icon, ariaLabel }: InputProps) {
+export default function Input({onKeyDown,className, placeholder, onClick, onIconClick, onChange, icon, ariaLabel }: InputProps) {
     return (
         <Field
             className={cn(
@@ -24,6 +25,7 @@ export default function Input({ className, placeholder, onClick, onIconClick, on
             aria-label={ariaLabel}
         >
             <HeadLessInput
+                onKeyDown={onKeyDown }
                 placeholder={placeholder}
                 onClick={onClick}
                 onChange={onChange}
