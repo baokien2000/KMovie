@@ -64,7 +64,7 @@ const FilterMovies = ({ searchParams, initialData }: { searchParams?: { [key: st
     const pathname = usePathname();
     useEffect(() => {
         setLoading(false);
-    }, [initialData.pagination.currentPage]);
+    }, [initialData?.pagination?.currentPage]);
     const handlePageClick = (data: { selected: number }) => {
         setLoading(true);
         const queryString = createQueryString(searchParams, "page", (data.selected + 1).toString());
