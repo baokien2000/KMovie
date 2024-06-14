@@ -9,6 +9,8 @@ import { scrollToTitleId } from "@/utils/scroll";
 import Loading from "@/app/loc-phim/loading";
 
 const FilterMovies = ({ searchParams, initialData }: { searchParams?: { [key: string]: string | undefined }; initialData: ImovieList }) => {
+    console.log("filterMovies", initialData);
+
     // const queryClient = useQueryClient();
     // const router = useRouter();
     // const pathname = usePathname();
