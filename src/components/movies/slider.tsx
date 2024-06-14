@@ -1,7 +1,7 @@
 "use client";
 import { Scrollbar, A11y, Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "swiper/swiper-bundle.css";
 import "swiper/css/scrollbar";
 import "./style.css";
 import { ImovieList } from "@/interface/movies";

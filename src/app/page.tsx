@@ -20,9 +20,7 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
         <main className="p-6  ">
             <div className="space-y-1 ">
                 <MovieListTitle title="Phim đề xuất" />
-                <Suspense fallback={<RecommendedMoviesSkeleton />}>
-                    <MovieSlider movies={recommended} />
-                </Suspense>
+                <MovieSlider movies={recommended} />
             </div>
 
             <div className="space-y-3 ">
