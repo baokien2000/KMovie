@@ -35,7 +35,8 @@ const MovieSlider = (props: { movies: ImovieList }) => {
             {movies.items.map((item, index) => (
                 <SwiperSlide key={item._id}>
                     <MovieCard
-                        blurUrl={movies?.blurImagesUrls?.[index]}
+                        enableBlur
+                        quality={50}
                         key={item._id}
                         loading={"lazy"}
                         movie={item}
