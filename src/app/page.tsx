@@ -6,7 +6,6 @@ import { getKMovie } from "@/services/movies";
 export const dynamic = "force-dynamic";
 
 export default async function Page({ params, searchParams }: { params: { slug: string }; searchParams?: { [key: string]: string | undefined } }) {
-    console.count("movies");
     const [initialData, recommended] = await Promise.all([
         getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, 20, ""),
         getKMovie(1, 10, ""),

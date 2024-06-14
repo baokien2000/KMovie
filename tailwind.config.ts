@@ -36,6 +36,7 @@ const config: Config = {
       dark1: "#474747",
       dark2: "#171717",
       dark3: "#a7a7a7",
+      dark4:"#1D1C1C",
         gradientPurple: "linear-gradient(to right, #215bf0, #be54ff)",
         brand: "#1E5BEE",
         purple50: "#5661F5",

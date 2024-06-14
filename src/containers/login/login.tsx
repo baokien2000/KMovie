@@ -10,23 +10,17 @@ const LoginPage = () => {
     const user = useAuthStore((state) => state.user);
     const setUser = useAuthStore((state) => state.setUser);
     const onLoginSubmit = async () => {
-        console.log("name", name);
-        console.log("password", password);
         const res = await Login(name, password);
-        console.log("Login Res", res);
         if (res) {
             setUser(res);
         }
     };
 
     const onCreateUserSubmit = async () => {
-        console.log("name", name);
-        console.log("password", password);
         const res = await SignUp(name, password);
         if (res) {
             setUser(res);
         }
-        console.log("Login Res", res);
     };
     return (
         <div className="text-title flex flex-col gap-2">

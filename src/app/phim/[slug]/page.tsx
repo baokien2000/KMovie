@@ -29,7 +29,6 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageProps) {
     const movie = await getMovieBySlug(params.slug);
-    console.log("movies", movie);
     if (!movie) return <div>404</div>;
     return (
         <main className="p-6 py-4 space-y-3">

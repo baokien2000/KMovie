@@ -18,7 +18,7 @@ const FilterButton = () => {
     return (
         <div className="flex gap-8 ">
             <Popover>
-                {({ open }) => (
+                {({ open, close }) => (
                     <>
                         <PopoverButton
                             className={cn(
@@ -43,8 +43,8 @@ const FilterButton = () => {
                                 className=" mt-6 !max-w-screen-laptop px-6 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full  text-sm/6 "
                             >
                                 <TabGroup className={"bg-mainBackground/95 border border-t-0 border-des rounded overflow-hidden"}>
-                                    <FilterTabHeader />
-                                    <FilterContent />
+                                    <FilterTabHeader close={close} />
+                                    <FilterContent close={close} />
                                 </TabGroup>
                             </PopoverPanel>
                         </Transition>

@@ -63,6 +63,57 @@ class MoviesRepository {
             } 
         })
     
+    static getFilterMovie = cache(async(
+        page: number,
+        pageSize: number,
+        sort?: string,
+        type?: string,
+        year?: string,
+        category?: string,
+        status?: string,
+        country?: string,
+    ) => {
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            sort: sort ?? null,
+            type: type ?? null,
+            status:status?? null,
+            year: year ?? null,
+            categories: category?.split(" ") ?? null,
+            country: country ?? null,
+        }
+        const url = baseURL+"/movies/FilterMovie";
+        try {
+            const response = await axios({
+                method: 'get',
+                url: url,
+                params: payload,
+            });
+            return response.data
+        } catch (error) {
+            console.log(error)
+        }
+    })
+    static getCategoryMovies = cache(async (page: number,pageSize:number,category:string) => {
+        const url = baseURL + "/movies/Category";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            category: category
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    })
 }
 
 export default MoviesRepository;

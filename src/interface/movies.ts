@@ -26,6 +26,10 @@ export interface IMovie {
     episode_current: string,
     episode_total: string,
     year: number;
+    view: number;
+    status: string;
+    type: string;
+    time: string;
 }
 
 

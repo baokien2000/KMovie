@@ -4,12 +4,12 @@ import CategoryContent from "./content/categories";
 import YearContent from "./content/years";
 import CountriesContent from "./content/countries";
 
-const FilterContent = () => {
+const FilterContent = ({ close }: { close: () => void }) => {
     return (
         <TabPanels>
-            <CategoryContent />
-            <YearContent />
-            <CountriesContent />
+            <CategoryContent close={close} />
+            <YearContent close={close} />
+            <CountriesContent close={close} />
         </TabPanels>
     );
 };

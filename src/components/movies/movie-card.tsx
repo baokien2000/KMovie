@@ -8,12 +8,12 @@ interface MovieCardProp {
     movie: IMovie;
     className?: string;
     ImagePath?: string;
-    blurUrl?: string;
     loading?: "eager" | "lazy";
     quality?: number;
+    enableBlur?: boolean;
 }
 const MovieCard = (props: MovieCardProp) => {
-    const { movie, className, ImagePath, loading = "lazy", quality } = props;
+    const { movie, className, ImagePath, loading = "lazy", quality = 75, enableBlur } = props;
     return (
         <Link
             href={"/phim/" + movie.slug}
@@ -25,8 +25,10 @@ const MovieCard = (props: MovieCardProp) => {
                     src={ImagePath + movie.thumb_url}
                     fill
                     rel={"preload"}
-                    // priority={props?.priority ?? false}
                     loading={loading}
+                    placeholder={enableBlur && movie.blurImage ? "blur" : "empty"}
+                    blurDataURL={movie.blurImage}
+                    quality={quality}
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"

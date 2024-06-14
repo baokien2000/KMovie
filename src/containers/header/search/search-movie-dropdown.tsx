@@ -8,6 +8,7 @@ import { LoadingIcon, SearchIcon, XIcon } from "../../../../public/static/svg";
 import Link from "next/link";
 import Input from "@/components/UI/input";
 import { useOutsideClick } from "@/hook/useOutsideClick";
+import { IMovie } from "@/interface/movies";
 
 export default function SearchMovieDropdown() {
     const [query, setQuery] = useState("");
@@ -47,7 +48,7 @@ export default function SearchMovieDropdown() {
             >
                 <div className=" absolute left-0 w-full h-fit mt-3 top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground/95 p-1 ">
                     <div className="w-full flex p-3 py-2 justify-between items-center">
-                        <Link href={query ? `/search?name=${query}` : "/search"} className="text-title text-sm hover:text-mainColor">
+                        <Link href={query ? `/tim-kiem?name=${query}` : "/tim-kiem"} className="text-title text-sm hover:text-mainColor">
                             Đến trang tìm kiếm
                         </Link>
                         <XIcon className="cursor-pointer" onClick={() => setIsOpen(false)} />
@@ -59,7 +60,7 @@ export default function SearchMovieDropdown() {
     );
 }
 
-const RenderMovie = ({ movies, isLoading, query }: { movies?: any[]; isLoading: boolean; query: string }) => {
+const RenderMovie = ({ movies, isLoading, query }: { movies?: IMovie[]; isLoading: boolean; query: string }) => {
     if (isLoading) return <LoadingIcon className="mx-auto animate-spin" />;
     if (movies && movies.length === 0) return <div className=" p-3 text-title text-xs text-center">Không tìm thấy phim theo từ khóa</div>;
     return movies?.map((movie: any) => <SearchItem key={movie._id} value={movie} />);

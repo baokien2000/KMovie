@@ -6,8 +6,6 @@ import Logo from "../../../public/static/images/logo/logo_sm_light.png";
 import Logo_Small from "../../../public/static/images/logo/Icon_light.png";
 import { BookmarkIcon, ClockIcon, LogoutIcon } from "../../../public/static/svg";
 import FilterButton from "./filter/filter-btn";
-// import SearchMovie from "./search/search-movie";
-// import SearchMovieDropdown from "./search/search-movie-dropdown";
 
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -20,18 +18,26 @@ const SearchMovie = dynamic(() => import("./search/search-movie"), {
 const Header = () => {
     // const [scroll, setScroll] = React.useState(0);
     const pathName = usePathname();
-    console.log("pathName", pathName);
     let scroll = 0;
     useEffect(() => {
         const handleScroll = () => {
-            console.log("scroll", scroll, window.scrollY);
+            const headerAppClass = document?.getElementById("header-app")?.classList;
+            const hasAutoScroll = headerAppClass?.contains("auto-scroll");
+            const hasOpacity = headerAppClass?.contains("opacity-0");
+
             if (scroll >= window.scrollY || window.scrollY < 72) {
-                document?.getElementById("header-app")?.classList.remove("opacity-0");
+                if (!hasAutoScroll) {
+                    headerAppClass?.remove("opacity-0");
+                }
+                if (window.scrollY < 72) {
+                    headerAppClass?.remove("auto-scroll");
+                    headerAppClass?.remove("opacity-0");
+                }
             } else {
-                document?.getElementById("header-app")?.classList.add("opacity-0");
+                headerAppClass?.add("opacity-0");
+                headerAppClass?.remove("auto-scroll");
             }
 
-            // setScroll(window.scrollY);
             scroll = window.scrollY;
         };
 
@@ -46,13 +52,29 @@ const Header = () => {
             <div className=" App-header mx-auto max-w-screen-laptop px-6 flex flex-col h-[117px] sm:h-[70px] w-full ">
                 <div className="h-[70px] w-full gap-5 flex items-center justify-between">
                     <Link href={"/"} className="object-cover cursor-pointer h-fit ">
-                        <Image sizes="150px" loading="lazy" height={70} width={150} className="tablet:block hidden" alt="Logo" src={Logo} />
-                        <Image sizes="50px" loading="lazy" height={50} width={50} alt="Logo" className="block tablet:hidden" src={Logo_Small} />
+                        <Image
+                            sizes="150px"
+                            loading="lazy"
+                            height={70}
+                            width={90}
+                            className="tablet:block max-w-[90px] hidden"
+                            alt="Logo"
+                            src={Logo}
+                        />
+                        <Image
+                            sizes="50px"
+                            loading="lazy"
+                            height={50}
+                            width={50}
+                            alt="Logo"
+                            className="block h-auto max-w-[50px] tablet:hidden"
+                            src={Logo_Small}
+                        />
                     </Link>
 
                     {/* <Input /> */}
                     {/* <SearchMovieDropdown /> */}
-                    {pathName === "/search" ? <SearchMovie /> : <SearchMovieDropdown />}
+                    {pathName === "/tim-kiem" ? <SearchMovie /> : <SearchMovieDropdown />}
                     <div className="flex gap-3">
                         <FilterButton />
                         <Link

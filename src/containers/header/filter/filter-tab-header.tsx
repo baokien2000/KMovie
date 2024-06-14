@@ -3,7 +3,7 @@ import { Tab, TabList } from "@headlessui/react";
 import Link from "next/link";
 import React from "react";
 
-const FilterTabHeader = () => {
+const FilterTabHeader = ({ close }: { close: () => void }) => {
     return (
         <TabList className={"flex font-semibold   border-mainColor border-t-2 "}>
             {MovieTabs.map((item, index) =>
@@ -11,7 +11,7 @@ const FilterTabHeader = () => {
                     <Tab
                         key={index}
                         className={
-                            "w-full transition-colors !outline-none duration-500 rounded-b ease-in data-[selected]:text-dark1 py-3 data-[selected]:bg-mainColor hover:text-mainColor text-title"
+                            "w-full transition-colors !outline-none duration-500 rounded-b ease-in data-[selected]:text-black py-3 data-[selected]:bg-mainColor hover:text-mainColor text-title"
                         }
                     >
                         {item.name}
@@ -19,7 +19,8 @@ const FilterTabHeader = () => {
                 ) : (
                     <Link
                         className="w-full transition-colors text-center !outline-none duration-500 rounded-b ease-in data-[selected]:text-dark1 py-3 data-[selected]:bg-mainColor hover:text-mainColor text-title"
-                        href={`/movies/${item.slug}`}
+                        href={`/${item.slug}`}
+                        onClick={close}
                         key={index}
                     >
                         {item.name}

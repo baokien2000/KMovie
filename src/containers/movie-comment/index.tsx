@@ -1,5 +1,4 @@
 import { RefreshIcon } from "../../../public/static/svg";
-import KLogo from "../../../public/static/images/logo/Icon_light.png";
 import Comment from "./comment";
 interface Prop {
     id: string;

@@ -1,36 +1,23 @@
-"use client";
 import "./pagination.css";
 import ReactPaginate from "react-paginate";
 import MoviePaginationInput from "./movie-pagination-input";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { createQueryString } from "@/utils/format-string";
-import { scrollToTitleId } from "@/utils/scroll";
-import { useQueryClient } from "@tanstack/react-query";
+import { useRouter, useSearchParams } from "next/navigation";
 interface MoviePaginationProp {
     totalPage: number;
+    onPageClick: (data: { selected: number }) => void;
 }
 
-const MoviePagination = ({ totalPage }: MoviePaginationProp) => {
+const MoviePagination = ({ totalPage,onPageClick }: MoviePaginationProp) => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const queryClient = useQueryClient();
 
-    const handlePageClick = (data: { selected: number }) => {
-        const queryString = createQueryString(searchParams, "page", (data.selected + 1).toString());
-        console.log("queryString", queryString);
-        queryClient.invalidateQueries({
-            queryKey: ["getMoviesPerPage", data.selected + 1],
-        });
-        scrollToTitleId("MovieListTitle");
-        router.replace(`${pathname}?${queryString}`, { scroll: false });
-    };
+
     return (
         <div className="flex text-sm  bg-[#585858] mx-auto my-[10px] overflow-hidden w-fit items-center rounded shadow-sm justify-center">
             <ReactPaginate
                 nextLabel={<ChevronRightIcon className="h-5 w-5" aria-hidden="true" />}
-                onPageChange={handlePageClick}
+                onPageChange={onPageClick}
                 pageRangeDisplayed={3}
                 marginPagesDisplayed={2}
                 pageCount={totalPage}
