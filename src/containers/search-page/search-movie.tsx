@@ -25,8 +25,8 @@ const SearchMovies = ({ searchParams }: { searchParams?: { [key: string]: string
         queryClient.invalidateQueries({
             queryKey: ["getMoviesSearch", data.selected + 1, searchParams?.name],
         });
-        scrollToTitleId("SearchListTitle");
         router.replace(`${pathname}?${queryString}`, { scroll: false });
+        scrollToTitleId("SearchListTitle");
     };
     return !isFetching ? (
         <>
