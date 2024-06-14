@@ -1,10 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import { getFilterMovie, getKMovie } from "@/services/movies";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import MoviePagination from "@/components/movies/movie-pagination";
 import { ImovieList } from "@/interface/movies";
-import NewMovieSkeleton from "../home/new-movie-skeleton";
 import MoviesList from "@/components/movies/movies-list";
 import { createQueryString } from "@/utils/format-string";
 import { usePathname, useRouter } from "next/navigation";
