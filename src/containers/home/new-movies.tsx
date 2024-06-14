@@ -22,7 +22,7 @@ const NewMovies = ({ searchParams, initialData }: { searchParams?: { [key: strin
         scrollToTitleId("MovieListTitle");
         router.replace(`${pathname}?${queryString}`, { scroll: false });
     };
-    return !loading ? (
+    return loading ? (
         <NewMovieSkeleton />
     ) : (
         <>
