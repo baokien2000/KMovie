@@ -2,7 +2,7 @@ import MovieListTitle from "@/components/movies/movie-list-title";
 import FilterMovies from "@/containers/filter-page/filter-movies";
 import FilterNotFound from "@/containers/filter-page/filter-not-found";
 import MovieFilter from "@/containers/filter-page/movie-filter";
-import { getFilterMovie, getKMovie } from "@/services/movies";
+import { getFilterMovie } from "@/services/movies";
 import React, { Suspense } from "react";
 import Loading from "./loading";
 
@@ -22,7 +22,11 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
             <MovieListTitle id="FilterListTitle" title={"Trang lọc phim"} />
             <MovieFilter />
             <Suspense fallback={<Loading />}>
-                {filterMovies?.items?.length === 0 ? <FilterNotFound /> : <FilterMovies initialData={filterMovies} searchParams={searchParams} />}
+                {!filterMovies && filterMovies?.items?.length === 0 ? (
+                    <FilterNotFound />
+                ) : (
+                    <FilterMovies initialData={filterMovies} searchParams={searchParams} />
+                )}
             </Suspense>
         </main>
     );

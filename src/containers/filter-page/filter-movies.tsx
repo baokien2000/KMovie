@@ -9,58 +9,6 @@ import { scrollToTitleId } from "@/utils/scroll";
 import Loading from "@/app/loc-phim/loading";
 
 const FilterMovies = ({ searchParams, initialData }: { searchParams?: { [key: string]: string | undefined }; initialData: ImovieList }) => {
-    console.log("filterMovies", initialData);
-
-    // const queryClient = useQueryClient();
-    // const router = useRouter();
-    // const pathname = usePathname();
-    // const page = searchParams?.page ? parseInt(searchParams.page) : 1;
-    // const { data: movies, isFetching } = useQuery({
-    //     queryKey: [
-    //         "getMoviesFilter",
-    //         searchParams?.page,
-    //         searchParams?.sort,
-    //         searchParams?.type,
-    //         searchParams?.year,
-    //         searchParams?.categories,
-    //         searchParams?.status,
-    //         searchParams?.country,
-    //     ],
-    //     queryFn: async () =>
-    //         getFilterMovie(
-    //             page,
-    //             20,
-    //             searchParams?.sort,
-    //             searchParams?.type,
-    //             searchParams?.year,
-    //             searchParams?.categories,
-    //             searchParams?.status,
-    //             searchParams?.country
-    //         ),
-    //     refetchOnWindowFocus: false,
-    //     initialData: initialData,
-    //     enabled: searchParams?.page !== undefined && searchParams?.page !== null,
-    // });
-    // console.log(
-    //     "initialData",
-    //     initialData?.items.map((i) => i.view)
-    // );
-    // const handlePageClick = (data: { selected: number }) => {
-    //     const queryString = createQueryString(searchParams, "page", (data.selected + 1).toString());
-    //     queryClient.invalidateQueries({
-    //         queryKey: ["getMoviesFilter", data.selected + 1, searchParams?.name],
-    //     });
-    //     scrollToTitleId("FilterListTitle");
-    //     router.replace(`${pathname}?${queryString}`, { scroll: false });
-    // };
-    // return !isFetching ? (
-    //     <>
-    //         <MoviesList quality={50} enableBlur movies={movies} />
-    //         <MoviePagination onPageClick={handlePageClick} totalPage={Math.ceil(movies?.pagination?.totalPages ?? 0)} />
-    //     </>
-    // ) : (
-    //     <NewMovieSkeleton />
-    // );
     const [loading, setLoading] = React.useState(false);
     const router = useRouter();
     const pathname = usePathname();
