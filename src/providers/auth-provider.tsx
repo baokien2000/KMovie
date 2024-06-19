@@ -20,7 +20,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         } else {
             if (isTokenExpired(user?.accessToken) || isTokenOneDayToExpired(user?.accessToken)) {
                 const newToken = await refreshToken();
-                setToken(newToken.accessToken);
+                console.log("newToken", newToken);
+                setToken(newToken?.accessToken);
             }
         }
     };

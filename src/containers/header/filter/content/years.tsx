@@ -1,6 +1,6 @@
 import { years } from "@/enum/movies";
 import { TabPanel } from "@headlessui/react";
-import Link from "next/link";
+import { Link } from "@/lib/router-events";
 import React from "react";
 
 const YearContent = ({ close }: { close: () => void }) => {

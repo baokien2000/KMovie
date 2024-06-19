@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "nprogress/nprogress.css";
+/* Hidden nprogress spinner */
+#nprogress .spinner{
+  display: none;
+}
+#nprogress .bar {
+  background: #ffce4f !important;
+  }
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,

@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
-import { getKMovie } from "@/services/movies";
-import MoviesList from "../../components/movies/movies-list";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import MoviesList from "../../components/movies/list/movies-list";
 import NewMovieSkeleton from "./new-movie-skeleton";
-import MoviePagination from "@/components/movies/movie-pagination";
+import MoviePagination from "@/components/movies/pagiantion/movie-pagination";
 import { ImovieList } from "@/interface/movies";
 import { createQueryString } from "@/utils/format-string";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { scrollToTitleId } from "@/utils/scroll";
+import { useRouter } from "@/lib/router-events";
 
 const NewMovies = ({ searchParams, initialData }: { searchParams?: { [key: string]: string | undefined }; initialData: ImovieList }) => {
     const [loading, setLoading] = React.useState(false);
@@ -20,7 +19,7 @@ const NewMovies = ({ searchParams, initialData }: { searchParams?: { [key: strin
     const handlePageClick = (data: { selected: number }) => {
         const queryString = createQueryString(searchParams, "page", (data.selected + 1).toString());
         scrollToTitleId("MovieListTitle");
-        router.replace(`${pathname}?${queryString}`, { scroll: false });
+        router.push(`${pathname}?${queryString}`, { scroll: false });
     };
     return loading ? (
         <NewMovieSkeleton />

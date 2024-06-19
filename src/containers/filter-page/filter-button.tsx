@@ -1,13 +1,10 @@
+import { useRouter } from "@/lib/router-events";
 import { useFilterStore } from "@/store/movies/filter.store";
-import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 const FilterButton = () => {
     const { status, type, year, categories, sort, country } = useFilterStore();
-
     const router = useRouter();
-    const queryClient = useQueryClient();
     const handleFilter = () => {
         let string = "";
         if (status) string += `status=${status}&`;
@@ -17,9 +14,6 @@ const FilterButton = () => {
         if (country) string += `country=${country}&`;
         if (sort) string += `sort=${sort}&`;
         router.push(`/loc-phim?${string}`);
-        queryClient.invalidateQueries({
-            queryKey: ["getMoviesFilter", 1, sort, type, year, country, categories.join(" "), status],
-        });
     };
     return (
         <div onClick={handleFilter} className="mx-auto text-sm text-black cursor-pointer my-4 p-2 px-3 rounded bg-mainColor/90 hover:bg-mainColor">

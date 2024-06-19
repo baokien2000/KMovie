@@ -1,14 +1,13 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect } from "react";
 import Logo from "../../../public/static/images/logo/logo_sm_light.png";
 import Logo_Small from "../../../public/static/images/logo/Icon_light.png";
 import { BookmarkIcon, ClockIcon, LogoutIcon } from "../../../public/static/svg";
 import FilterButton from "./filter/filter-btn";
-
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
+import { Link } from "@/lib/router-events";
 const SearchMovieDropdown = dynamic(() => import("./search/search-movie-dropdown"), {
     ssr: false,
 });
@@ -47,6 +46,7 @@ const Header = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+
     return (
         <nav id="header-app" className="w-full h-[72px] sticky transition-all duration-500 top-0 block z-10 bg-mainBackground shadow-lg">
             <div className=" App-header mx-auto max-w-screen-laptop px-6 flex flex-col h-[117px] sm:h-[70px] w-full ">
@@ -78,14 +78,14 @@ const Header = () => {
                     <div className="flex gap-3">
                         <FilterButton />
                         <Link
-                            href={"/"}
+                            href={"/xem-gan-day"}
                             aria-label="watch-history"
                             className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
                         >
                             <ClockIcon />
                         </Link>
                         <Link
-                            href={"/"}
+                            href={"/theo-doi"}
                             aria-label="bookmark"
                             className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
                         >

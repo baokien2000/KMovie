@@ -1,11 +1,14 @@
-import { IServerData } from "@/interface/movies";
-import Link from "next/link";
+import { IHistory, IServerData } from "@/interface/movies";
+import { cn } from "@/lib/cn";
+import { Link } from "@/lib/router-events";
 import React from "react";
 interface EpisodesProps {
     slug: string;
     episodes: IServerData[];
+    history: IHistory;
+    currentEpisode: string;
 }
-const EpisodesList = ({ slug, episodes }: EpisodesProps) => {
+const EpisodesList = ({ slug, episodes, history, currentEpisode }: EpisodesProps) => {
     return (
         <div className="w-full p-3 space-y-2 text-default  bg-des rounded">
             <h3 className="font-semibold ">Danh sách tập phim</h3>
@@ -15,9 +18,15 @@ const EpisodesList = ({ slug, episodes }: EpisodesProps) => {
                         <Link
                             href={`/phim/${slug}/tap-${ep.slug === "kep" ? ep.slug : index + 1}`}
                             key={ep.slug + index}
-                            className="hover:bg-mainColor hover:border-[#4A4A4A] hover:text-black  py-1 text-center w-[45px] bg-[#333232] border border-[#4e4e4e]"
+                            className={cn(
+                                "hover:bg-mainColor/90 hover:border-[#4A4A4A] hover:text-black  py-1 text-center w-[45px] bg-[#333232] border border-[#4e4e4e]",
+                                {
+                                    "bg-black/80": history?.episodes?.includes(ep.slug),
+                                    "bg-mainColor text-black": currentEpisode === ep.slug,
+                                }
+                            )}
                         >
-                            {ep.slug.toString() === "full" ? "full" : index + 1}
+                            {["full", "trailer"].includes(ep.slug) ? ep.slug : index + 1}
                         </Link>
                     );
                 })}

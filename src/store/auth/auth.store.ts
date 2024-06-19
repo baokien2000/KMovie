@@ -21,7 +21,7 @@ const storeApi: ZustandStateCreator<AuthStore> = (set) => ({
 
 export const useAuthStore = create<AuthStore>()(
         persist(immer(storeApi), {
-            name: "user",
+            name: "auth",
             partialize: (state) => ({
                 user: state.user,
             })

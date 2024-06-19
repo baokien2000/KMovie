@@ -105,7 +105,13 @@ export interface IServer {
 export interface IServerData {
     name: string;
     slug: string;
-    filename: string;
+    filename?: string;
     link_embed: string;
-    link_m3u8: string;
-  }
+    link_m3u8?: string;
+}
+  
+export interface IHistory{
+    slug: string;
+    time: number;
+    episodes: string[];
+}

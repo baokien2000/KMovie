@@ -13,6 +13,7 @@ const LoginPage = () => {
         const res = await Login(name, password);
         if (res) {
             setUser(res);
+            console.log("onLoginSubmit", res);
         }
     };
 

@@ -33,9 +33,13 @@ export default async function Page({ params }: PageProps) {
     return (
         <main className="p-6 py-4 space-y-3">
             <Info movie={movie.movie} />
-            <Action slug={params.slug} episodes={movie.episodes[0].server_data[0]} />
+            <Action slug={params.slug} episodes={movie.episodes[0].server_data[0]} isTrailer={movie.movie.episode_current === "Trailer"} />
             <div className="flex sm:flex-row flex-col gap-3 text-[#ccc] ">
-                <EpisodesList slug={params.slug} episodes={movie.episodes[0].server_data} />
+                <EpisodesList
+                    trailerUrl={movie.movie.episode_current === "Trailer" ? movie.movie.trailer_url : null}
+                    slug={params.slug}
+                    episodes={movie.episodes[0].server_data}
+                />
                 <Description content={movie.movie.content} />
             </div>
             <CommentList id={movie.movie._id} />

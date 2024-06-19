@@ -114,6 +114,83 @@ class MoviesRepository {
             return;
         }
     })
+    static getMovieBySlugArray = cache(async (page: number, pageSize: number, slugs: string[]) => {
+        const url = baseURL + "/movies/getMoviesBySlug";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            slugs: slugs
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    })
+
+    static getEpisodeHistory = async (userId: string, slug: string) => {
+        const url = baseURL + "/history/getEpisodeHistory";
+        const payload = {
+            userId: userId,
+            movieSlug: slug
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    }
+    static addEpisodeHistory = async (userId: string, movieSlug: string, episodeSlug: string) => { 
+        const url = baseURL + "/history/addEpisodeHistory";
+        const payload = {
+            userId: userId,
+            movieSlug: movieSlug,
+            episodeSlug: episodeSlug
+        }
+        try {
+            const response = await axios({
+                method: "post",
+                url: url,
+                data:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    }
+    static getHistoryKMovie = async (page: number, pageSize: number,userId:string) => { 
+        const url = baseURL + "/history/getHistory";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            userId: userId
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    }
+
 }
 
 export default MoviesRepository;

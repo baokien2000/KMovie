@@ -1,12 +1,13 @@
-import MovieListTitle from "@/components/movies/movie-list-title";
+import MovieListTitle from "@/components/movies/list/movie-list-title";
 import SearchMovies from "@/containers/search-page/search-movie";
 import SearchNotFound from "@/containers/search-page/search-not-found";
 import { getKMovie } from "@/services/movies";
 import React, { Suspense } from "react";
 import Loading from "../loc-phim/loading";
+import { pageSize } from "@/enum/movies";
 
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
-    const searchMovies = await getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, 20, searchParams?.name);
+    const searchMovies = await getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, searchParams?.name);
     if (!searchMovies || !searchParams?.name) return <SearchNotFound />;
     return (
         <main className="p-6 space-y-4  ">

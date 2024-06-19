@@ -5,7 +5,7 @@ import "swiper/swiper-bundle.css";
 import "swiper/css/scrollbar";
 import "./style.css";
 import { ImovieList } from "@/interface/movies";
-import MovieCard from "./movie-card";
+import MovieCard from "../card/movie-card";
 import { memo } from "react";
 
 const MovieSlider = (props: { movies: ImovieList }) => {
@@ -41,7 +41,7 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                         loading={"lazy"}
                         movie={item}
                         ImagePath={movies.pathImage}
-                        className="w-full h-64"
+                        className="w-full h-72"
                     />
                 </SwiperSlide>
             ))}

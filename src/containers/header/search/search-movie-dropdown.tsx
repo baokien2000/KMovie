@@ -5,7 +5,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { searchKMovie } from "@/services/movies";
 import { useQuery } from "@tanstack/react-query";
 import { LoadingIcon, SearchIcon, XIcon } from "../../../../public/static/svg";
-import Link from "next/link";
+import { Link } from "@/lib/router-events";
 import Input from "@/components/UI/input";
 import { useOutsideClick } from "@/hook/useOutsideClick";
 import { IMovie } from "@/interface/movies";

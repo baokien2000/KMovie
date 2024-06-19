@@ -1,8 +1,8 @@
 import { Input } from "@headlessui/react";
 import React from "react";
-import { SearchIcon } from "../../../public/static/svg";
+import { SearchIcon } from "../../../../public/static/svg";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/router-events";
 interface MoviePaginationInputProp {
     totalPage: number;
 }

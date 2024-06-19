@@ -11,13 +11,13 @@ import FilterButton from "./filter-button";
 import Sort from "./sort";
 import { useSearchParams } from "next/navigation";
 import CountryFilter from "./country-filter";
+import { useFilterStore } from "@/store/movies/filter.store";
 
 type TFilter = "category" | "year" | "type" | "status" | "country" | "sort";
 const Type: TFilter[] = ["category", "year", "type", "status", "country", "sort"];
 const MovieFilter = () => {
     const [selectedFilter, setSelectedFilter] = useState<TFilter[]>([]);
     const searhParams = useSearchParams();
-
     useEffect(() => {
         let arr = [];
         if (searhParams.has("categories")) arr.push("category");
@@ -27,7 +27,7 @@ const MovieFilter = () => {
         if (searhParams.has("country")) arr.push("country");
         if (searhParams.has("sort")) arr.push("sort");
         setSelectedFilter(arr as TFilter[]);
-    }, []);
+    }, [searhParams]);
     const handleSelectFilter = (type: TFilter) => {
         if (selectedFilter.includes(type)) {
             setSelectedFilter(selectedFilter.filter((filter) => filter !== type));

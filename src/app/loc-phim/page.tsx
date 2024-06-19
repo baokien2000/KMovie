@@ -1,15 +1,16 @@
-import MovieListTitle from "@/components/movies/movie-list-title";
+import MovieListTitle from "@/components/movies/list/movie-list-title";
 import FilterMovies from "@/containers/filter-page/filter-movies";
 import FilterNotFound from "@/containers/filter-page/filter-not-found";
 import MovieFilter from "@/containers/filter-page/movie-filter";
 import { getFilterMovie } from "@/services/movies";
 import React, { Suspense } from "react";
 import Loading from "./loading";
+import { pageSize } from "@/enum/movies";
 
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     const filterMovies = await getFilterMovie(
         searchParams?.page ? parseInt(searchParams.page) : 1,
-        20,
+        pageSize,
         searchParams?.sort,
         searchParams?.type,
         searchParams?.year,

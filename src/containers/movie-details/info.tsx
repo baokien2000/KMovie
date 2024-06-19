@@ -1,7 +1,7 @@
 import { MovieStatus } from "@/enum/movies";
 import { ICategory, IMovie, IMovieDetails } from "@/interface/movies";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/lib/router-events";
 import React from "react";
 interface InfoProps {
     movie: IMovieDetails;

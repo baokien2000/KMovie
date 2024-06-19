@@ -1,6 +1,6 @@
 import React from "react";
 import { FilmIcon, ReportIcon } from "../../../public/static/svg";
-import Link from "next/link";
+import { Link } from "@/lib/router-events";
 interface MovieTiltleProps {
     name: string;
     episode: string;

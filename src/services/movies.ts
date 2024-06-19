@@ -17,3 +17,16 @@ export async function getFilterMovie(page: number, pageSize: number, sort?: stri
 export async function getCategoryMovies(page: number, pageSize: number, category: string) { 
     return await MoviesRepository.getCategoryMovies(page, pageSize, category);
 }
+export async function getMovieBySlugArray(page: number, pageSize: number, slugs: string[]) { 
+    return await MoviesRepository.getMovieBySlugArray(page, pageSize, slugs);
+}
+
+export async function getEpisodeHistory(userId:string,slug:string) { 
+    return await MoviesRepository.getEpisodeHistory(userId, slug);
+}
+export async function addEpisodeHistory(userId:string,movieSlug:string,episodeSlug:string) { 
+    return await MoviesRepository.addEpisodeHistory(userId, movieSlug, episodeSlug);
+}
+export async function getHistoryKMovie (page:number,pageSize:number,userId:string) {
+    return await MoviesRepository.getHistoryKMovie(page,pageSize,userId);
+}

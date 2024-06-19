@@ -1,9 +1,11 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import Lincese from "@/containers/footer/lincese";
 import AuthProvider from "@/providers/auth-provider";
 import ReactQueryProvider from "./react-query-provider";
 import Header from "@/containers/header";
+import { NavigationEvents } from "@/components/router/navigation-event";
+import { HandleOnComplete } from "@/lib/router-events";
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
     return (
@@ -16,6 +18,7 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
             </ReactQueryProvider>
             <Toaster containerClassName="text-xs sm:text-sm " />
             <Lincese />
+            <HandleOnComplete />
         </>
     );
 };

@@ -1,7 +1,7 @@
 import { imagePath } from "@/enum";
 import { IMovie } from "@/interface/movies";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/lib/router-events";
 import React from "react";
 interface SearchItemProps {
     value: IMovie;

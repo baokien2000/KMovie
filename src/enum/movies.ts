@@ -1,3 +1,4 @@
+export const pageSize = 24;
 export const MovieStatus = new Map([
     ["trailer", "Sắp chiếu"],
     ["ongoing", "Đang tiến hành"],
@@ -255,39 +256,144 @@ export const countriesMap = new Map([
     ["arap-xe-ut", "Ả Rập Xê Út"],
 ])
 export const countries = [
-    "Trung Quốc",
-    "Hàn Quốc",
-    "Nhật Bản",
-    "Thái Lan",
-    "Âu Mỹ",
-    "Đài Loan",
-    "Hồng Kông",
-    "Ấn Độ",
-    "Anh",
-    "Pháp",
-    "Canada",
-    "Quốc Gia Khác",
-    "Đức",
-    "Tây Ban Nha",
-    "Thổ Nhĩ Kỳ",
-    "Hà Lan",
-    "Indonesia",
-    "Nga",
-    "Mexico",
-    "Ba lan",
-    "Úc",
-    "Thụy Điển",
-    "Malaysia",
-    "Brazil",
-    "Philippines",
-    "Bồ Đào Nha",
-    "Ý",
-    "Đan Mạch",
-    "UAE",
-    "Na Uy",
-    "Thụy Sĩ",
-    "Châu Phi",
-    "Nam Phi",
-    "Ukraina",
-    "Ả Rập Xê Út",
-];
+    {
+        name: "Trung Quốc",
+        slug: "trung-quoc",
+    },
+    {
+        name: "Hàn Quốc",
+        slug: "han-quoc",
+    },
+    {
+        name: "Nhật Bản",
+        slug: "nhat-ban",
+    },
+    {
+        name: "Thái Lan",
+        slug: "thai-lan",
+    },
+    {
+        name: "Âu Mỹ",
+        slug: "au-my",
+    },
+    {
+        name: "Đài Loan",
+        slug: "dai-loan",
+    },
+    {
+        name: "Hồng Kông",
+        slug: "hong-kong",
+    },
+    {
+        name: "Ấn Độ",
+        slug: "an-do",
+    },
+    {
+        name: "Anh",
+        slug: "anh",
+    },
+    {
+        name: "Pháp",
+        slug: "phap",
+    },
+    {
+        name: "Canada",
+        slug: "canada",
+    },
+    {
+        name: "Quốc Gia Khác",
+        slug: "quoc-gia-khac",
+    },
+    {
+        name: "Đức",
+        slug: "duc",
+    },
+    {
+        name: "Tây Ban Nha",
+        slug: "tay-ban-nha",
+    },
+    {
+        name: "Thổ Nhĩ Kỳ",
+        slug: "tho-nhi-ky",
+    },
+    {
+        name: "Hà Lan",
+        slug: "ha-lan",
+    },
+    {
+        name: "Indonesia",
+        slug: "indonesia",
+    },
+    {
+        name: "Nga",
+        slug: "nga",
+    },
+    {
+        name: "Mexico",
+        slug: "mexico",
+    },
+    {
+        name: "Ba lan",
+        slug: "ba-lan",
+    },
+    {
+        name: "Úc",
+        slug: "uc",
+    },
+    {
+        name: "Thụy Điển",
+        slug: "thuy-dien",
+    },
+    {
+        name: "Malaysia",
+        slug: "malaysia",
+    },
+    {
+        name: "Brazil",
+        slug: "brazil",
+    },
+    {
+        name: "Philippines",
+        slug: "philippines",
+    },
+    {
+        name: "Bồ Đào Nha",
+        slug: "bo-dao-nha",
+    },
+    {
+        name: "Ý",
+        slug: "y",
+    },
+    {
+        name: "Đan Mạch",
+        slug: "dan-mach",
+    },
+    {
+        name: "UAE",
+        slug: "uae",
+    },
+    {
+        name: "Na Uy",
+        slug: "na-uy",
+    },
+    {
+        name: "Thụy Sĩ",
+        slug: "thuy-si",
+    },
+    {
+        name: "Châu Phi",
+        slug: "chau-phi",
+    },
+    {
+        name: "Nam Phi",
+        slug: "nam-phi",
+    },
+    {
+        name: "Ukraina",
+        slug: "ukraina",
+    },
+    {
+        name: "Ả Rập Xê Út",
+        slug: "arap-xe-ut",
+    },
+]

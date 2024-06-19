@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SearchIcon } from "../../../../public/static/svg";
 import Input from "@/components/UI/input";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/lib/router-events";
 
 export default function SearchMovie() {
     const [query, setQuery] = useState("");

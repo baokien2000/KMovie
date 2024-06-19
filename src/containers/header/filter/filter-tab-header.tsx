@@ -1,6 +1,6 @@
 import { MovieTabs } from "@/enum/movies";
+import { Link } from "@/lib/router-events";
 import { Tab, TabList } from "@headlessui/react";
-import Link from "next/link";
 import React from "react";
 
 const FilterTabHeader = ({ close }: { close: () => void }) => {

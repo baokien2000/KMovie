@@ -2,14 +2,13 @@ import "./pagination.css";
 import ReactPaginate from "react-paginate";
 import MoviePaginationInput from "./movie-pagination-input";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 interface MoviePaginationProp {
     totalPage: number;
     onPageClick: (data: { selected: number }) => void;
 }
 
 const MoviePagination = ({ totalPage, onPageClick }: MoviePaginationProp) => {
-    const router = useRouter();
     const searchParams = useSearchParams();
 
     return (
