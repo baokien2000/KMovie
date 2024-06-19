@@ -1,7 +1,7 @@
 import React from "react";
-import MovieCardSkeleton from "../../components/movies/card/movie-card-skeleton";
+import MovieCardSkeleton from "../card/movie-card-skeleton";
 
-const NewMovieSkeleton = () => {
+const MovieListSkeleton = () => {
     return (
         <div className={" p-[10px] grid grid-cols-5  gap-x-[10px] rounded-[8px]  w-full bg-[#404040]"}>
             {Array.from({ length: 25 }).map((movie, index) => {
@@ -11,4 +11,4 @@ const NewMovieSkeleton = () => {
     );
 };
 
-export default NewMovieSkeleton;
+export default MovieListSkeleton;

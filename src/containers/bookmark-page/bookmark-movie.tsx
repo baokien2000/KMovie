@@ -27,8 +27,6 @@ const BookmarkMovies = ({ searchParams, page }: BookmarkMoviesProps) => {
         refetchOnWindowFocus: false,
         enabled: bookmarks.length > 0,
     });
-    console.log("movies", movies);
-    return <Loading />;
     if (isLoading || isFetching) return <Loading />;
     if (!bookmarks || bookmarks.length === 0) {
         return <div className="text-center text-base">Bạn chưa theo dõi bộ phim nào</div>;

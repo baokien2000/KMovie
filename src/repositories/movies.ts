@@ -95,6 +95,25 @@ class MoviesRepository {
             console.log(error)
         }
     })
+    static getCountryMovies = cache(async (page: number,pageSize:number,country:string) => {
+        const url = baseURL + "/movies/Country";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            country: country
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    })
     static getCategoryMovies = cache(async (page: number,pageSize:number,category:string) => {
         const url = baseURL + "/movies/Category";
         const payload = {
@@ -114,6 +133,26 @@ class MoviesRepository {
             return;
         }
     })
+    static getYearMovies = cache(async (page: number,pageSize:number,year:string) => {
+        const url = baseURL + "/movies/Year";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            year: year
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    })
+    
     static getMovieBySlugArray = cache(async (page: number, pageSize: number, slugs: string[]) => {
         const url = baseURL + "/movies/getMoviesBySlug";
         const payload = {

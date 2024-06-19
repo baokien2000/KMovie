@@ -6,16 +6,11 @@ import CountriesContent from "./content/countries";
 import { useFilterStore } from "@/store/movies/filter.store";
 
 const FilterContent = ({ close }: { close: () => void }) => {
-    const reset = useFilterStore((state) => state.reset);
-    const handleClose = () => {
-        reset();
-        close();
-    };
     return (
         <TabPanels>
-            <CategoryContent close={handleClose} />
-            <YearContent close={handleClose} />
-            <CountriesContent close={handleClose} />
+            <CategoryContent close={close} />
+            <YearContent close={close} />
+            <CountriesContent close={close} />
         </TabPanels>
     );
 };

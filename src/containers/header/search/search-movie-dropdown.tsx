@@ -1,3 +1,4 @@
+"use client";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
 import SearchItem from "./search-item";
@@ -48,7 +49,7 @@ export default function SearchMovieDropdown() {
             >
                 <div className=" absolute left-0 w-full h-fit mt-3 top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground/95 p-1 ">
                     <div className="w-full flex p-3 py-2 justify-between items-center">
-                        <Link href={query ? `/tim-kiem?name=${query}` : "/tim-kiem"} className="text-title text-sm hover:text-mainColor">
+                        <Link href={query ? `/tim-kiem?key=${query}` : "/tim-kiem"} className="text-title text-sm hover:text-mainColor">
                             Đến trang tìm kiếm
                         </Link>
                         <XIcon className="cursor-pointer" onClick={() => setIsOpen(false)} />

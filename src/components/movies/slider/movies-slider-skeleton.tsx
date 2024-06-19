@@ -1,7 +1,7 @@
 import React from "react";
-import MovieCardSkeleton from "../../components/movies/card/movie-card-skeleton";
+import MovieCardSkeleton from "../card/movie-card-skeleton";
 
-const RecommendedMoviesSkeleton = () => {
+const MoviesSliderSkeleton = () => {
     return (
         <div className="flex gap-4 w-full pb-5">
             <MovieCardSkeleton />
@@ -14,4 +14,4 @@ const RecommendedMoviesSkeleton = () => {
     );
 };
 
-export default RecommendedMoviesSkeleton;
+export default MoviesSliderSkeleton;

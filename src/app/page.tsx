@@ -1,16 +1,16 @@
 import MovieListTitle from "@/components/movies/list/movie-list-title";
-import NewMovies from "@/containers/home/new-movies";
 import { getKMovie } from "@/services/movies";
 import { Suspense } from "react";
-import Loading from "./loc-phim/loading";
 import nextDynamic from "next/dynamic";
 
 export const dynamic = "force-dynamic";
-import RecommendedMoviesSkeleton from "@/containers/home/recommended-movies-skeleton";
 import { pageSize } from "@/enum/movies";
+import MovieListSkeleton from "@/components/movies/list/movie-list-skeleton";
+import MoviesSliderSkeleton from "@/components/movies/slider/movies-slider-skeleton";
+import MovieListContainer from "@/components/movies/list/movie-list-container";
 const MovieSlider = nextDynamic(() => import("@/components/movies/slider/slider"), {
     ssr: false,
-    loading: () => <RecommendedMoviesSkeleton />,
+    loading: () => <MoviesSliderSkeleton />,
 });
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     const [initialData, recommended] = await Promise.all([
@@ -26,8 +26,8 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
 
             <div className="space-y-3 ">
                 <MovieListTitle id={"MovieListTitle"} title="Phim mới cập nhật" />
-                <Suspense fallback={<Loading />}>
-                    <NewMovies initialData={initialData} searchParams={searchParams} />
+                <Suspense fallback={<MovieListSkeleton />}>
+                    <MovieListContainer titleId="MovieListTitle" initialData={initialData} searchParams={searchParams} />
                 </Suspense>
             </div>
         </main>

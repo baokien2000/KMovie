@@ -7,7 +7,7 @@ import { createQueryString } from "@/utils/format-string";
 import { usePathname } from "next/navigation";
 import { scrollToTitleId } from "@/utils/scroll";
 import { useRouter } from "@/lib/router-events";
-import Loading from "@/app/(movie-list-container)/theo-doi/loading";
+import MovieListSkeleton from "@/components/movies/list/movie-list-skeleton";
 interface MovieListContainerProps {
     searchParams?: { [key: string]: string | undefined };
     initialData: ImovieList;
@@ -29,7 +29,7 @@ const MovieListContainer = ({ searchParams, initialData, titleId }: MovieListCon
         router.push(`${pathname}?${queryString}`, { scroll: false });
     };
     return loading ? (
-        <Loading />
+        <MovieListSkeleton />
     ) : (
         <>
             <MoviesList quality={50} enableBlur movies={initialData} />

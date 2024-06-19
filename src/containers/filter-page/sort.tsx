@@ -23,6 +23,7 @@ const Sort = () => {
                                 "px-2 cursor-pointer  h-9 bg-[#444444] flex items-center justify-center hover:text-black hover:bg-mainColor/95 ",
                                 {
                                     "bg-mainColor hover:bg-mainColor text-black": currentSort === sort,
+                                    "pointer-events-none  opacity-50": ["rate", "comment"].includes(sort),
                                 }
                             )}
                             key={`sort-${index}`}

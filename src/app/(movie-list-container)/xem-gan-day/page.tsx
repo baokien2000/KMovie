@@ -4,7 +4,12 @@ import React, { Suspense } from "react";
 import { pageSize } from "@/enum/movies";
 import Loading from "../theo-doi/loading";
 import MovieListContainer from "@/components/movies/list/movie-list-container";
-
+import { Metadata } from "next";
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: `Phim xem gần đây - kmovies`,
+    };
+}
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     const historyMovies = await getHistoryKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, "66715fb6a1d2d291a9c17d20");
     if (!historyMovies) return <div>Bạn chưa xem bộ phim nào</div>;

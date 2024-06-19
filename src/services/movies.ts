@@ -17,6 +17,19 @@ export async function getFilterMovie(page: number, pageSize: number, sort?: stri
 export async function getCategoryMovies(page: number, pageSize: number, category: string) { 
     return await MoviesRepository.getCategoryMovies(page, pageSize, category);
 }
+export async function getCountryMovies(page: number, pageSize: number, country: string) { 
+    return await MoviesRepository.getCountryMovies(page, pageSize, country);
+}
+
+export async function getYearMovies(page: number, pageSize: number, year: string) { 
+    const yearRegex = /^[0-9]{4}$/;
+    if (yearRegex.test(year) || year === "19XX") {
+        return await MoviesRepository.getYearMovies(page, pageSize, year  );
+    } else {
+        return null;
+    }
+}
+
 export async function getMovieBySlugArray(page: number, pageSize: number, slugs: string[]) { 
     return await MoviesRepository.getMovieBySlugArray(page, pageSize, slugs);
 }

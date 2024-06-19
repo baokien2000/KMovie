@@ -1,4 +1,3 @@
-import NewMovieSkeleton from "@/containers/home/new-movie-skeleton";
 import { LoadingIcon } from "../../../../public/static/svg";
 
 export default function Loading() {
