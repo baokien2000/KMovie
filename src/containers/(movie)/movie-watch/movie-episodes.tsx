@@ -1,14 +1,24 @@
-import { IHistory, IServerData } from "@/interface/movies";
+"use client";
+import { IServerData } from "@/interface/movies";
 import { cn } from "@/lib/cn";
 import { Link } from "@/lib/router-events";
+import { getEpisodeHistory } from "@/services/movies";
+import { useAuthStore } from "@/store/auth/auth.store";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 interface EpisodesProps {
     slug: string;
     episodes: IServerData[];
-    history: IHistory;
     currentEpisode: string;
 }
-const EpisodesList = ({ slug, episodes, history, currentEpisode }: EpisodesProps) => {
+const EpisodesList = ({ slug, episodes, currentEpisode }: EpisodesProps) => {
+    const user = useAuthStore((state) => state.user);
+    const { data: history, isFetching } = useQuery({
+        queryKey: ["viewed-movie", user?._id],
+        queryFn: async () => getEpisodeHistory(user?._id ?? "", slug),
+        refetchOnWindowFocus: false,
+        enabled: (user?._id?.length ?? 0) > 0,
+    });
     return (
         <div className="w-full p-3 space-y-2 text-default  bg-des rounded">
             <h3 className="font-semibold ">Danh sách tập phim</h3>

@@ -2,7 +2,7 @@
 import { useUserStore } from "@/store/user/user.store";
 import { Button } from "@headlessui/react";
 import React from "react";
-import { BookmarkIcon } from "../../../public/static/svg";
+import { BookmarkIcon } from "../../../../public/static/svg";
 import { cn } from "@/lib/cn";
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/20/solid";
 

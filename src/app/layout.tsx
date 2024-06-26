@@ -13,7 +13,7 @@ export async function generateMetadata({}: Props, parent: ResolvingMetadata): Pr
             template: "%s | KMovie",
             default: "KMovie",
         },
-        description: "Watch for free",
+        description: "Kmovie - Xem phim online xem trên điện thoại di động và máy tính nhanh nhất. Là một website xem phim miễn phí tốt nhất.",
         icons: {
             icon: ["/favicon.ico"],
             apple: ["/favicon.ico"],
@@ -21,10 +21,11 @@ export async function generateMetadata({}: Props, parent: ResolvingMetadata): Pr
         openGraph: {
             type: "website",
             locale: "vi",
-            url: `https://kmovie2000.netlify.app`,
-            description: "Watch for free",
+            url: `https://kmovie-one.vercel.app/`,
+            description:
+                "Kmovie - Xem phim anime vietsub online xem trên điện thoại di động và máy tính nhanh nhất. Là một website xem phim miễn phí tốt nhất.",
             siteName: "KMovie",
-            alternateLocale: [`https://kmovie2000.netlify.app`],
+            alternateLocale: [`https://kmovie-one.vercel.app/`],
         },
     };
 }

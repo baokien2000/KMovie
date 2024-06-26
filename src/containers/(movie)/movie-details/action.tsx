@@ -1,7 +1,7 @@
 import { IMovieDetails, IServerData } from "@/interface/movies";
 import { Link } from "@/lib/router-events";
 import React from "react";
-import { PlayIcon, StarIcon } from "../../../public/static/svg";
+import { PlayIcon, StarIcon } from "../../../../public/static/svg";
 import Bookmark from "./bookmark";
 interface ActionProps {
     slug: string;
@@ -10,7 +10,7 @@ interface ActionProps {
 }
 const Action = ({ slug, isTrailer, episodes }: ActionProps) => {
     return (
-        <div className="flex justify-between p-3 bg-[#3A3A3A]  text-sm  rounded">
+        <div className="flex justify-between p-3 bg-cardBackground  text-sm  rounded">
             <Link
                 href={`/phim/${slug}/${isTrailer ? "trailer" : "/tap-" + episodes.slug} `}
                 className="py-1 font-bold text-[#111827] rounded-md flex opacity-90 hover:opacity-100 items-center justify-center gap-2 sm:w-[200px] w-[130px]  bg-[#ffce4f]"

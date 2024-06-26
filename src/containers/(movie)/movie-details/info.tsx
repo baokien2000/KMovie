@@ -9,7 +9,7 @@ interface InfoProps {
 const Info = ({ movie }: InfoProps) => {
     return (
         <div className="w-full text-sm rounded overflow-hidden">
-            <h1 className="p-3 bg-[#3a3a3a] text-base text-center text-[#cccccc] font-bold ">{movie.name}</h1>
+            <h1 className="p-3 bg-cardBackground text-base text-center text-[#cccccc] font-bold ">{movie.name}</h1>
 
             <div className="flex h-full flex-col sm:flex-row p-[10px] bg-[#191919] items-start  ">
                 <div className="w-fit h-full p-[5px] bg-black rounded">

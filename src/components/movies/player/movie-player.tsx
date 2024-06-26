@@ -3,22 +3,23 @@ import React, { useEffect, useState } from "react";
 import { LoadingIcon } from "../../../../public/static/svg";
 import { cn } from "@/lib/cn";
 import { IServerData } from "@/interface/movies";
-import { useUserStore } from "@/store/user/user.store";
-import axios from "axios";
 import { addEpisodeHistory, getEpisodeHistory } from "@/services/movies";
+import { useAuthStore } from "@/store/auth/auth.store";
 interface MoviePlayerProps {
     episode: IServerData;
     movieSlug: string;
 }
 const MoviePlayer = ({ episode, movieSlug }: MoviePlayerProps) => {
     const [loading, setLoading] = useState(true);
-
+    const user = useAuthStore((state) => state.user);
     useEffect(() => {
-        const addHistoryEpisode = async () => {
-            const addRes = await addEpisodeHistory("66715fb6a1d2d291a9c17d20", movieSlug, episode.slug);
-        };
-        addHistoryEpisode();
-    }, []);
+        if (user?._id) {
+            const addHistoryEpisode = async () => {
+                const addRes = await addEpisodeHistory(user?._id, movieSlug, episode.slug);
+            };
+            addHistoryEpisode();
+        }
+    }, [user?._id]);
     return (
         <div className="relative h-[200px] sm:h-[100svh] w-full">
             <div

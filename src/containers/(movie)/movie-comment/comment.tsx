@@ -1,5 +1,5 @@
 import React from "react";
-import KLogo from "../../../public/static/images/logo/Icon_light.png";
+import KLogo from "../../../../public/static/images/logo/Icon_light.png";
 import Image from "next/image";
 
 const Comment = () => {

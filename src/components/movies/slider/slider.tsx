@@ -32,7 +32,7 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                 1223: { slidesPerView: 6, spaceBetween: 20 }, // when window width is >: 768px
             }}
         >
-            {movies.items.map((item, index) => (
+            {movies?.items?.map((item, index) => (
                 <SwiperSlide key={item._id}>
                     <MovieCard
                         enableBlur

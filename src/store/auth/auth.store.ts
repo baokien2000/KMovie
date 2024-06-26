@@ -1,18 +1,22 @@
 import {  persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 import { StateCreator as ZustandStateCreator, create } from "zustand";
+import { IUser } from "@/interface/user";
 
 
 export type AuthStore = {
-    user: any | null;
-    setUser: (user: any | null) => void;
+    user: IUser | null;
+    setUser: (user: IUser | null) => void;
     updateUserToken: (string: string) => void;
+  
 };
 
 const storeApi: ZustandStateCreator<AuthStore> = (set) => ({
     user: null,
-    setUser: (user: any | null) => set(() => ({ user })),
+ 
+    setUser: (user: IUser | null) => set(() => ({ user })),
     updateUserToken: (accessToken: string) => set((state) => {
+        if(state.user === null) return state;
         state.user.accessToken = accessToken;
         return state;
     }),

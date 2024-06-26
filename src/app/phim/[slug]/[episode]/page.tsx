@@ -1,13 +1,11 @@
 import { getEpisodeHistory, getMovieBySlug } from "@/services/movies";
 import React, { Suspense } from "react";
-import MovieTiltle from "@/containers/movie-watch/movie-tiltle";
-import MovieServer from "@/containers/movie-watch/movie-server";
-import EpisodesList from "@/containers/movie-watch/movie-episodes";
-import CommentList from "@/containers/movie-comment";
+import MovieTiltle from "@/containers/(movie)/movie-watch/movie-tiltle";
+import MovieServer from "@/containers/(movie)/movie-watch/movie-server";
+import EpisodesList from "@/containers/(movie)/movie-watch/movie-episodes";
+import CommentList from "@/containers/(movie)/movie-comment";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
 import MoviePlayer from "@/components/movies/player/movie-player";
-import { cookies } from "next/headers";
 
 interface PageProps {
     params: {
@@ -50,14 +48,12 @@ export default async function Page({ params }: PageProps) {
           }
         : movie.episodes[0].server_data.find((e) => e.slug === episodeParam || e.name === episodeParam);
     if (!episode) return <div>Không tìm thấy tập phim | 404</div>;
-    const history = await getEpisodeHistory("66715fb6a1d2d291a9c17d20", movie.movie.slug);
-    console.log("history", history);
     return (
         <main className="p-6 py-4 space-y-3 ">
             <MovieTiltle slug={movie.movie.slug} episode={episode.slug} name={movie.movie.name} />
             <MovieServer servers={movie.episodes} />
             <MoviePlayer movieSlug={movie.movie.slug} episode={episode} />
-            <EpisodesList currentEpisode={episodeParam} history={history} slug={movie.movie.slug} episodes={movie.episodes[0].server_data} />
+            <EpisodesList currentEpisode={episodeParam} slug={movie.movie.slug} episodes={movie.episodes[0].server_data} />
             <CommentList id={movie.movie._id} />
         </main>
     );

@@ -34,7 +34,7 @@ const MoviePagination = ({ totalPage, onPageClick }: MoviePaginationProp) => {
                 forcePage={parseInt(searchParams.get("page") || "1") - 1}
                 renderOnZeroPageCount={null}
             />
-            <MoviePaginationInput totalPage={totalPage} />
+            {totalPage !== 0 && <MoviePaginationInput totalPage={totalPage} />}
         </div>
     );
 };

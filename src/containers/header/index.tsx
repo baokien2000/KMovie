@@ -1,18 +1,17 @@
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 import Logo from "../../../public/static/images/logo/logo_sm_light.png";
 import Logo_Small from "../../../public/static/images/logo/Icon_light.png";
-import { BookmarkIcon, ClockIcon, LogoutIcon } from "../../../public/static/svg";
+import { BookmarkIcon, ClockIcon, LoginIcon, LogoutIcon } from "../../../public/static/svg";
 import FilterButton from "./filter/filter-btn";
 import dynamic from "next/dynamic";
 import { Link } from "@/lib/router-events";
 import SearchMovieSkeleton from "./search/search-skeleton";
 import SearchContainer from "./search/search-container";
 import HeaderDisplay from "./header-display";
+import UserButton from "./user-button";
 
 const Header = () => {
-
-
     return (
         <nav id="header-app" className="w-full h-[72px] sticky transition-all duration-500 top-0 block z-10 bg-mainBackground shadow-lg">
             <div className=" App-header mx-auto items-center justify-between gap-5 max-w-screen-laptop px-6 flex  h-[117px] sm:h-[70px] w-full ">
@@ -34,27 +33,29 @@ const Header = () => {
                     <Link
                         href={"/xem-gan-day"}
                         aria-label="watch-history"
-                        className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
+                        className="w-[42px] h-9 rounded flex items-center  bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
                     >
-                        <ClockIcon />
+                        <ClockIcon className="mx-auto" />
                     </Link>
                     <Link
                         href={"/theo-doi"}
                         aria-label="bookmark"
-                        className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
+                        className="w-[42px] h-9 rounded flex items-center  bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
                     >
-                        <BookmarkIcon />
+                        <BookmarkIcon className="mx-auto" />
                     </Link>
-                    <Link
-                        href={"/phim"}
-                        aria-label="logout"
-                        className="h-[36px] rounded flex items-center px-[10px] py-[5px] bg-black border-[1px] cursor-pointer border-des hover:opacity-80"
+                    <Suspense
+                        fallback={
+                            <div className="w-[42px] h-9 rounded flex items-center  bg-black border-[1px] cursor-pointer border-des hover:opacity-80">
+                                <LoginIcon className="size-[22px] mx-auto" />
+                            </div>
+                        }
                     >
-                        <LogoutIcon />
-                    </Link>
+                        <UserButton />
+                    </Suspense>
                 </div>
             </div>
-            <HeaderDisplay/>
+            <HeaderDisplay />
         </nav>
     );
 };

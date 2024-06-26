@@ -1,4 +1,4 @@
-import { RefreshIcon } from "../../../public/static/svg";
+import { RefreshIcon } from "../../../../public/static/svg";
 import Comment from "./comment";
 interface Prop {
     id: string;
@@ -7,7 +7,7 @@ const CommentList = (props: Prop) => {
     const { id } = props;
 
     return (
-        <div className="flex flex-col p-3 gap-3  bg-[#3A3A3A] rounded text-default">
+        <div className="flex flex-col p-3 gap-3  bg-cardBackground rounded text-default">
             <div className="flex justify-between w-full">
                 <h3 className="font-semibold mt-[5px]">Bình luận</h3>
                 <RefreshIcon className="cursor-pointer" fill={"#ccc"} />

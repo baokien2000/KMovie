@@ -1,10 +1,10 @@
-import Action from "@/containers/movie-details/action";
-import CommentList from "@/containers/movie-comment";
-import Description from "@/containers/movie-details/description";
-import Info from "@/containers/movie-details/info";
+import Action from "@/containers/(movie)/movie-details/action";
+import CommentList from "@/containers/(movie)/movie-comment";
+import Description from "@/containers/(movie)/movie-details/description";
+import Info from "@/containers/(movie)/movie-details/info";
 import { getMovieBySlug } from "@/services/movies";
 import React from "react";
-import EpisodesList from "@/containers/movie-details/episodes";
+import EpisodesList from "@/containers/(movie)/movie-details/episodes";
 import { Metadata } from "next";
 
 interface PageProps {

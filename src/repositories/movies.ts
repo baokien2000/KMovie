@@ -229,6 +229,23 @@ class MoviesRepository {
             return;
         }
     }
+    static getViewedMovie = async (userId: string) => {
+        const url = baseURL + "/history/getViewedMovie";
+        const payload = {
+            userId: userId
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params: payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error", error);
+            return;
+        }
+     }
 
 }
 

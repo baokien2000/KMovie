@@ -13,12 +13,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const setUser = useAuthStore((state) => state.setUser);
     const tokenCheck = async () => {
         const RefToken = (await axios({ url: "/api", method: "get", withCredentials: true }))?.data?.token?.value;
+        console.log("RefToken", RefToken);
         if ((RefToken && isTokenExpired(RefToken)) || !RefToken) {
             setUser(null);
-            await axios({ url: "/api", method: "post", withCredentials: true });
+            await axios({ url: "/api", method: "delete", withCredentials: true });
             toast.error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
         } else {
-            if (isTokenExpired(user?.accessToken) || isTokenOneDayToExpired(user?.accessToken)) {
+            if (!user?.accessToken || isTokenExpired(user?.accessToken)) {
                 const newToken = await refreshToken();
                 console.log("newToken", newToken);
                 setToken(newToken?.accessToken);
@@ -26,7 +27,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
     useEffect(() => {
-        if (!user || !user?.accessToken) return;
+        if (!user) return;
         tokenCheck();
     }, [setToken, setUser, user]);
 

@@ -22,5 +22,11 @@ const token = cookieStore.delete('refreshToken')
     status: 200,
     
   })
-
+}
+export async function DELETE() {
+  const cookieStore = cookies()
+  const token = cookieStore.delete('refreshToken')
+  return new Response("success", {
+    status: 200,
+  })
 }

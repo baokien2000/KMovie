@@ -97,14 +97,14 @@ body::-webkit-scrollbar-track {
 }
 /* Handle */
 body::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #555;
   border: 6px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
   border-radius: 20px;
 }
 /* Handle on hover */
 body::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #444;
   border: 6px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
@@ -129,4 +129,26 @@ body::-webkit-scrollbar-thumb:hover {
   }
   .customScrollBar::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  /* Loading button text */
+  @keyframes loadingDots {
+    0%, 100% {
+      content: "Đang xử lý";
+    }
+    25% {
+      content: "Đang xử lý.";
+    }
+    50% {
+      content: "Đang xử lý..";
+    }
+    75% {
+      content: "Đang xử lý...";
+    }
+  }
+  
+  .loadingText::after {
+    display: inline-block;
+    content: "Đang xử lý";
+    animation: loadingDots 2s infinite;
   }
