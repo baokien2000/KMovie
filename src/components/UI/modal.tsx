@@ -1,6 +1,5 @@
 import { cn } from "@/lib/cn";
 import { Dialog, Transition } from "@headlessui/react";
-import classNames from "classnames";
 import { Fragment, ReactNode, cloneElement, createContext, forwardRef, useContext, useEffect, useState } from "react";
 
 type ModalContextType = {
