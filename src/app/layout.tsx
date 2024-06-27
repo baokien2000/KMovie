@@ -25,7 +25,7 @@ export async function generateMetadata({}: Props, parent: ResolvingMetadata): Pr
             description:
                 "Kmovie - Xem phim anime vietsub online xem trên điện thoại di động và máy tính nhanh nhất. Là một website xem phim miễn phí tốt nhất.",
             siteName: "KMovie",
-            alternateLocale: [`https://kmovie-one.vercel.app/`],
+            alternateLocale: `https://kmovie-one.vercel.app/`,
         },
     };
 }
