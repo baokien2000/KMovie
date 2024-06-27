@@ -1,7 +1,7 @@
 import MovieListTitle from "@/components/movies/list/movie-list-title";
 import { getCountryMovies } from "@/services/movies";
 import React, { Suspense } from "react";
-import { countriesMap, pageSize } from "@/enum/movies";
+import { countriesMap, countriesSlug, pageSize } from "@/enum/movies";
 import Loading from "../../theo-doi/loading";
 import MovieListContainer from "@/components/movies/list/movie-list-container";
 import { Metadata } from "next";
@@ -10,6 +10,13 @@ export async function generateMetadata({ params }: { params: { country: string }
     return {
         title: country ? `Phim ${country} - kmovies` : "404 - kmovies",
     };
+}
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+    return countriesSlug.map((country) => ({
+        country: country,
+    }));
 }
 export default async function Page({ searchParams, params }: { searchParams?: { [key: string]: string | undefined }; params: { country: string } }) {
     const isCountryValid = countriesMap.get(params?.country);

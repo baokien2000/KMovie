@@ -1,4 +1,4 @@
-import { getEpisodeHistory, getMovieBySlug } from "@/services/movies";
+import { getEpisodeHistory, getKMovie, getMovieBySlug } from "@/services/movies";
 import React, { Suspense } from "react";
 import MovieTiltle from "@/containers/(movie)/movie-watch/movie-tiltle";
 import MovieServer from "@/containers/(movie)/movie-watch/movie-server";
@@ -6,12 +6,21 @@ import EpisodesList from "@/containers/(movie)/movie-watch/movie-episodes";
 import CommentList from "@/containers/(movie)/movie-comment";
 import { Metadata } from "next";
 import MoviePlayer from "@/components/movies/player/movie-player";
+import { ImovieList } from "@/interface/movies";
 
 interface PageProps {
     params: {
         slug: string;
         episode: string;
     };
+}
+export async function generateStaticParams() {
+    const movies: ImovieList = await getKMovie(1, 24, "");
+
+    return movies.items.map((movie) => ({
+        slug: movie.slug,
+        episode: "tap-1",
+    }));
 }
 export async function generateMetadata({
     params,

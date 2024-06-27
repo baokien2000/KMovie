@@ -12,6 +12,8 @@ export async function generateMetadata({ searchParams }: { searchParams?: { [key
         title: `Trang lọc phim - kmovies`,
     };
 }
+export const dynamic = "force-static";
+
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     const filterMovies = await getFilterMovie(
         searchParams?.page ? parseInt(searchParams.page) : 1,

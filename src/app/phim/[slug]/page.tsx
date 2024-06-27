@@ -2,15 +2,23 @@ import Action from "@/containers/(movie)/movie-details/action";
 import CommentList from "@/containers/(movie)/movie-comment";
 import Description from "@/containers/(movie)/movie-details/description";
 import Info from "@/containers/(movie)/movie-details/info";
-import { getMovieBySlug } from "@/services/movies";
+import { getKMovie, getMovieBySlug } from "@/services/movies";
 import React from "react";
 import EpisodesList from "@/containers/(movie)/movie-details/episodes";
 import { Metadata } from "next";
+import { ImovieList } from "@/interface/movies";
 
 interface PageProps {
     params: {
         slug: string;
     };
+}
+export async function generateStaticParams() {
+    const movies: ImovieList = await getKMovie(1, 24, "");
+
+    return movies.items.map((movie) => ({
+        slug: movie.slug,
+    }));
 }
 export async function generateMetadata({
     params,

@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: "export", // For github pages,
     reactStrictMode: false,
     images: {
         // unoptimized: true,

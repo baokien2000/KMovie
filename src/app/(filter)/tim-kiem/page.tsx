@@ -12,6 +12,7 @@ export async function generateMetadata({ searchParams }: { searchParams?: { [key
         title: `Tìm kiếm theo từ khóa ${key ?? ""} - kmovies`,
     };
 }
+export const dynamic = "force-static";
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     const searchMovies = await getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, searchParams?.key);
     if (!searchMovies || !searchParams?.key) return <SearchNotFound />;
