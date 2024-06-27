@@ -2,14 +2,12 @@ import MovieListTitle from "@/components/movies/list/movie-list-title";
 import { getKMovie } from "@/services/movies";
 import { Suspense } from "react";
 import nextDynamic from "next/dynamic";
-
-// export const dynamic = "force-dynamic";
-export const dynamic = "force-static";
-
 import { pageSize } from "@/enum/movies";
 import MovieListSkeleton from "@/components/movies/list/movie-list-skeleton";
 import MoviesSliderSkeleton from "@/components/movies/slider/movies-slider-skeleton";
 import MovieListContainer from "@/components/movies/list/movie-list-container";
+
+export const dynamic = "force-dynamic";
 const MovieSlider = nextDynamic(() => import("@/components/movies/slider/slider"), {
     ssr: false,
     loading: () => <MoviesSliderSkeleton />,

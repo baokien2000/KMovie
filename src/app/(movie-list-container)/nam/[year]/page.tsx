@@ -11,7 +11,6 @@ export async function generateMetadata({ params }: { params: { year: string } })
         title: year ? `Phim ${params?.year} - kmovies` : "404 - kmovies",
     };
 }
-export const dynamic = "force-static";
 
 export async function generateStaticParams() {
     return years.map((year) => ({

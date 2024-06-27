@@ -20,6 +20,7 @@ export async function generateStaticParams() {
         slug: movie.slug,
     }));
 }
+
 export async function generateMetadata({
     params,
 }: {

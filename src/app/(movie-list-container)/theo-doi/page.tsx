@@ -6,7 +6,6 @@ export async function generateMetadata(): Promise<Metadata> {
         title: `Phim theo dõi - kmovies`,
     };
 }
-export const dynamic = "force-static";
 
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     return (

@@ -11,7 +11,6 @@ export async function generateMetadata({ params }: { params: { category: string 
         title: category ? `Phim ${category} - kmovies` : "404 - kmovies",
     };
 }
-export const dynamic = "force-static";
 
 export async function generateStaticParams() {
     return CategoriesSlug.map((category) => ({

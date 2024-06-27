@@ -11,7 +11,6 @@ export async function generateMetadata({ params }: { params: { country: string }
         title: country ? `Phim ${country} - kmovies` : "404 - kmovies",
     };
 }
-export const dynamic = "force-static";
 
 export async function generateStaticParams() {
     return countriesSlug.map((country) => ({

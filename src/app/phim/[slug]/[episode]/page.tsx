@@ -14,14 +14,7 @@ interface PageProps {
         episode: string;
     };
 }
-export async function generateStaticParams() {
-    const movies: ImovieList = await getKMovie(1, 24, "");
 
-    return movies.items.map((movie) => ({
-        slug: movie.slug,
-        episode: "tap-1",
-    }));
-}
 export async function generateMetadata({
     params,
 }: {

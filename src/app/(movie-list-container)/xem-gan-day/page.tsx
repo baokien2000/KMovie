@@ -1,12 +1,7 @@
 import MovieListTitle from "@/components/movies/list/movie-list-title";
-import { getHistoryKMovie, getKMovie } from "@/services/movies";
-import React, { Suspense } from "react";
-import { pageSize } from "@/enum/movies";
-import Loading from "../theo-doi/loading";
-import MovieListContainer from "@/components/movies/list/movie-list-container";
+import React from "react";
 import { Metadata } from "next";
 import MovieHistory from "@/containers/(movie)/movie-history";
-export const dynamic = "force-static";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
