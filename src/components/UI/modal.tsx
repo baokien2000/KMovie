@@ -7,7 +7,7 @@ type ModalContextType = {
     openModal: () => void;
     closeModal: () => void;
 };
-
+ 
 const ModalContext = createContext({} as ModalContextType);
 
 function Modal({ children, onRequestClose }: { children: React.ReactNode; onRequestClose?: () => void }) {
