@@ -24,3 +24,7 @@ export async function SendOTP (email: string) {
 export async function VerifyOTP (email: string, otp: string) {
     return await AuthRepository.VerifyOTP(email,otp);
 }
+
+export async function verifyCaptcha(token: string) {
+    return await AuthRepository.verifyCaptcha(token);
+ }

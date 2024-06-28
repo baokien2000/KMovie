@@ -11,6 +11,14 @@
     color:#cac9c9;
     min-width: 36px;
 }
+@media (max-width: 768px){
+    .pagination .page-item .page-link{
+  
+        padding: 4px;
+        min-width:32px;
+        font-size: 12px;
+    }
+}
 .pagination .page-item .page-link:hover{
     color:#ffce4f
 }

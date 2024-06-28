@@ -17,42 +17,40 @@ const FilterContent = dynamic(() => import("./filter-content"), {
 });
 const FilterButton = () => {
     return (
-        <div className="flex gap-8 ">
-            <Popover>
-                {({ open, close }) => (
-                    <>
-                        <PopoverButton
-                            className={cn(
-                                open ? "border-mainColor bg-mainColor" : "border-des bg-black",
-                                "h-[36px] w-[42px] outline-none rounded flex items-center  py-[5px]  border-[1px] cursor-pointer  hover:opacity-80"
-                            )}
-                            aria-label="category-button"
+        <Popover>
+            {({ open, close }) => (
+                <>
+                    <PopoverButton
+                        className={cn(
+                            open ? "border-mainColor bg-mainColor" : "border-des bg-black",
+                            "h-[36px] w-[42px] outline-none rounded flex items-center  py-[5px]  border-[1px] cursor-pointer  hover:opacity-80"
+                        )}
+                        aria-label="category-button"
+                    >
+                        <HamburgerIcon className={open ? "active" : ""} />
+                    </PopoverButton>
+                    <Transition
+                        enter="transition ease-out duration-200"
+                        enterFrom="opacity-0 translate-y-1"
+                        enterTo="opacity-100 translate-y-0"
+                        leave="transition ease-in duration-150"
+                        leaveFrom="opacity-100 translate-y-0"
+                        leaveTo="opacity-0 translate-y-1"
+                        appear={true}
+                    >
+                        <PopoverPanel
+                            anchor="bottom"
+                            className=" sm:mt-6 mt-4 !max-w-screen-laptop sm:px-6 px-3 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full  text-sm/6 "
                         >
-                            <HamburgerIcon className={open ? "active" : ""} />
-                        </PopoverButton>
-                        <Transition
-                            enter="transition ease-out duration-200"
-                            enterFrom="opacity-0 translate-y-1"
-                            enterTo="opacity-100 translate-y-0"
-                            leave="transition ease-in duration-150"
-                            leaveFrom="opacity-100 translate-y-0"
-                            leaveTo="opacity-0 translate-y-1"
-                            appear={true}
-                        >
-                            <PopoverPanel
-                                anchor="bottom"
-                                className=" mt-6 !max-w-screen-laptop px-6 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full  text-sm/6 "
-                            >
-                                <TabGroup className={"bg-mainBackground/95 border border-t-0 border-des rounded overflow-hidden"}>
-                                    <FilterTabHeader close={close} />
-                                    <FilterContent close={close} />
-                                </TabGroup>
-                            </PopoverPanel>
-                        </Transition>
-                    </>
-                )}
-            </Popover>
-        </div>
+                            <TabGroup className={"bg-mainBackground/95 border border-t-0 border-des rounded overflow-hidden"}>
+                                <FilterTabHeader close={close} />
+                                <FilterContent close={close} />
+                            </TabGroup>
+                        </PopoverPanel>
+                    </Transition>
+                </>
+            )}
+        </Popover>
     );
 };
 

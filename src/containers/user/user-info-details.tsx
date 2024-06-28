@@ -65,11 +65,10 @@ const UserGenderEditRow = ({
             {status === "idle" ? (
                 MUserGender.get(userGender ?? "") ?? ""
             ) : (
-                <div className="flex w-fit gap-1 items-center mx-auto">
+                <div className="flex w-fit gap-3 items-center mx-auto">
                     {["male", "female", "other", "unknown"].map((gender) => (
-                        <>
+                        <div key={`input-${gender}`} className="flex gap-1 items-center">
                             <input
-                                key={`input-${gender}`}
                                 id={`gender-${gender}`}
                                 className="cursor-pointer accent-mainColor"
                                 defaultChecked={userGender === gender}
@@ -78,10 +77,10 @@ const UserGenderEditRow = ({
                                 name="gender"
                                 onClick={() => setStatus("edited")}
                             />
-                            <label key={`label-${gender}`} htmlFor={`gender-${gender}`} className="mr-2 cursor-pointer accent-mainColor">
+                            <label htmlFor={`gender-${gender}`} className=" cursor-pointer accent-mainColor">
                                 {MUserGender.get(gender) ?? " Khác"}
                             </label>
-                        </>
+                        </div>
                     ))}
                 </div>
             )}

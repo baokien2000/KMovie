@@ -7,11 +7,14 @@ import { IUser } from "@/interface/user";
 import Modal from "@/components/UI/modal";
 import { ErrorIcon } from "../../../public/static/svg";
 import { FormField } from "./change-pass-field";
-import { changePassword } from "@/services/auth";
+import { changePassword, verifyCaptcha } from "@/services/auth";
 import toast from "react-hot-toast";
+import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
 
 const schema = z
     .object({
+        captcha: z.optional(z.boolean()),
         oldPassword: z.string({ message: "Mật khẩu cũ không được để trống" }).trim().min(1, { message: "Mật khẩu cũ không được để trống" }),
         newPassword: z
             .string({ message: "Mật khẩu mới không được để trống" })
@@ -49,8 +52,9 @@ const FieldData = [
     { label: "Xác nhận mật khẩu mới", name: "confirmPassword" },
 ];
 
-export default function ChangePassButton({ user }: { user: IUser }) {
+export default function ChangePassModal({ user }: { user: IUser }) {
     const [loading, setLoading] = React.useState(false);
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
     const {
         control,
         formState: { errors },
@@ -60,9 +64,24 @@ export default function ChangePassButton({ user }: { user: IUser }) {
         clearErrors,
     } = useForm<z.infer<typeof schema>>({
         resolver: zodResolver(schema),
+        defaultValues: {
+            captcha: false,
+        },
     });
+
     const formRef = useRef<HTMLFormElement>(null);
     const onSubmit = async (data: z.infer<typeof schema>, callback: () => void) => {
+        const captchaToken = recaptchaRef.current?.getValue();
+        if (!captchaToken) {
+            setError("captcha", { message: "Vui lòng xác nhận bạn không phải là robot" });
+            return;
+        }
+        const verify = await verifyCaptcha(captchaToken);
+        console.log("verifyCaptcha", verify);
+        if (verify.status !== 200) {
+            setError("captcha", { message: "Vui lòng xác nhận bạn không phải là robot" });
+            return;
+        }
         setLoading(true);
         try {
             console.log("onSubmit", data);
@@ -89,6 +108,14 @@ export default function ChangePassButton({ user }: { user: IUser }) {
         reset();
     };
 
+    console.log("process.env.NEXT_PUBLIC_SITE_KEY", process.env.NEXT_PUBLIC_SITE_KEY);
+    const onChange = async (value: string | null) => {
+        if (!value) {
+            setError("captcha", { message: "Vui lòng xác nhận bạn không phải là robot" });
+        } else {
+            clearErrors("captcha");
+        }
+    };
     return (
         <Modal onRequestClose={onClose}>
             <Modal.Open>
@@ -107,6 +134,13 @@ export default function ChangePassButton({ user }: { user: IUser }) {
                                         <FormField type="password" key={field.name} control={control} label={field.label} name={field.name} />
                                     ))}
                                 </div>
+                                <ReCAPTCHA
+                                    className="mt-3"
+                                    onChange={onChange}
+                                    theme={"dark"}
+                                    ref={recaptchaRef}
+                                    sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
+                                />
                                 <div className="text-red-500 text-xs min-h-6 h-fit flex gap-1 items-center">
                                     {Object.keys(errors).length > 0 && (
                                         <>
@@ -115,6 +149,7 @@ export default function ChangePassButton({ user }: { user: IUser }) {
                                                 {errors?.oldPassword?.message ||
                                                     errors?.newPassword?.message ||
                                                     errors?.confirmPassword?.message ||
+                                                    errors?.captcha?.message ||
                                                     ""}
                                             </p>
                                         </>

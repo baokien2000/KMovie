@@ -27,9 +27,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
     useEffect(() => {
-        if (!user) return;
+        if (!user?._id) return;
         tokenCheck();
-    }, [setToken, setUser, user]);
+    }, [user?._id]);
 
     return children;
 };

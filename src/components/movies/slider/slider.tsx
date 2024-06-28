@@ -41,7 +41,7 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                         loading={"lazy"}
                         movie={item}
                         ImagePath={movies.pathImage}
-                        className="w-full h-72"
+                        className="w-full h-60 md:h-72"
                     />
                 </SwiperSlide>
             ))}

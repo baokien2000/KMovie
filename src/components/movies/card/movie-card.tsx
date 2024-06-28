@@ -17,10 +17,10 @@ const MovieCard = (props: MovieCardProp) => {
     return (
         <Link
             href={"/phim/" + movie.slug}
-            className={cn(" bg-black block p-[5px] mx-[2px] my-[5px] relative cursor-pointer hover:opacity-[80%] ", className)}
+            className={cn(" bg-black block p-1 sm:p-[5px]  relative cursor-pointer hover:opacity-[80%] ", className)}
             rel={"preload"}
         >
-            <div className="relative h-[calc(100%-25px)] w-full">
+            <div className="relative h-[calc(100%-24px)] w-full">
                 <Image
                     src={ImagePath + movie.thumb_url}
                     fill
@@ -34,9 +34,11 @@ const MovieCard = (props: MovieCardProp) => {
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"
                 />
             </div>
-            <p className="truncate px-[3p] py-[5px] text-sm text-center text-[#cc8d4c] font-bold">{movie.name}</p>
-            <div className="absolute top-3  left-3 px-[12px]  border-[3px] border-double bg-[#383838] border-[#5a5a5a]">
-                <span className="text-[#cac9c9] font-bold text-sm">{renderEpisode(movie?.episode_current, movie?.episode_total)}</span>
+            <p className="truncate px-[3p] mt-1 h-5 flex items-center justify-center text-xs sm:text-sm text-center text-[#cc8d4c] font-bold">
+                {movie.name}
+            </p>
+            <div className="absolute sm:top-3 top-2 left-2  sm:left-3 rounded px-2 py-1 text-xs sm:text-sm  border-[3px] border-double bg-[#383838] border-[#5a5a5a]">
+                <span className="text-title font-semibold   ">{renderEpisode(movie?.episode_current, movie?.episode_total)}</span>
             </div>
         </Link>
     );

@@ -19,7 +19,7 @@ const UserButton = () => {
     return user ? (
         <Menu>
             <MenuButton className="w-[42px] h-9 rounded text-title flex items-center  bg-black border-[1px] cursor-pointer border-des hover:opacity-80">
-                <UserCircleIcon className="mx-auto  " />
+                <UserCircleIcon className="mx-auto size-[22px]  " />
             </MenuButton>
 
             <MenuItems

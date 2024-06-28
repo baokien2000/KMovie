@@ -147,6 +147,24 @@ class AuthRepository {
         }
 
     }
+
+    static verifyCaptcha = async (token: string) => {
+        const url = `${baseURL}/users/verifyCaptcha`;
+        const controller = new AbortController();
+        try {
+            const response = await axios({
+                url: url,
+                method: 'post',
+                data: { token },
+                signal: controller.signal,
+            })
+
+            return response
+            
+        } catch (error:any) {
+            return error.response
+        }
+    }
 }
 
 export default AuthRepository;

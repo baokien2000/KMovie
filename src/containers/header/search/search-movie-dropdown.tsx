@@ -47,8 +47,8 @@ export default function SearchMovieDropdown() {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
             >
-                <div className=" absolute left-0 w-full h-fit mt-3 top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground/95 p-1 ">
-                    <div className="w-full flex p-3 py-2 justify-between items-center">
+                <div className=" absolute left-0 w-full h-fit mt-3 top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground/95 sm:p-1 ">
+                    <div className="w-full flex sm:px-3 px-2 py-2 justify-between items-center">
                         <Link href={query ? `/tim-kiem?key=${query}` : "/tim-kiem"} className="text-title text-sm hover:text-mainColor">
                             Đến trang tìm kiếm
                         </Link>

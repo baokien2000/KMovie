@@ -3,6 +3,7 @@ import ReactPaginate from "react-paginate";
 import MoviePaginationInput from "./movie-pagination-input";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useSearchParams } from "next/navigation";
+import { useDeviceSize } from "@/hook/useDeviceSize";
 interface MoviePaginationProp {
     totalPage: number;
     onPageClick: (data: { selected: number }) => void;
@@ -10,13 +11,13 @@ interface MoviePaginationProp {
 
 const MoviePagination = ({ totalPage, onPageClick }: MoviePaginationProp) => {
     const searchParams = useSearchParams();
-
+    const [width, height] = useDeviceSize();
     return (
         <div className="flex text-sm  bg-[#585858] mx-auto my-[10px] overflow-hidden w-fit items-center rounded shadow-sm justify-center">
             <ReactPaginate
                 nextLabel={<ChevronRightIcon className="h-5 w-5" aria-hidden="true" />}
                 onPageChange={onPageClick}
-                pageRangeDisplayed={3}
+                pageRangeDisplayed={width > 640 ? 3 : 2}
                 marginPagesDisplayed={2}
                 pageCount={totalPage}
                 previousLabel={<ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />}

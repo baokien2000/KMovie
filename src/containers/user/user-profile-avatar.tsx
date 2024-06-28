@@ -4,6 +4,7 @@ import { getBase64 } from "@/utils/image";
 import { CameraIcon, UserIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import React, { use } from "react";
+import toast from "react-hot-toast";
 
 const UserProfileAvatar = ({
     avatar,
@@ -19,13 +20,15 @@ const UserProfileAvatar = ({
 
     const handleChangeImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
-            console.log("e", event.target.files[0]);
-            const avatarUrl = await getBase64(event.target.files[0]);
-            console.log("avatarUrl", avatarUrl);
+            const file = event.target.files[0];
+            if (file.size > 5242880) {
+                return toast.error("Ảnh quá lớn, vui lòng chọn ảnh dưới 5MB");
+            }
+            const avatarUrl = await getBase64(file);
             setCurrentAvatar(avatarUrl as string);
-            event.target.files = null;
-            event.target.value = "";
             setStatus("edited");
+            event.target.value = "";
+            event.target.files = null;
         }
     };
     return (

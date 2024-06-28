@@ -3,9 +3,9 @@ import MovieCardSkeleton from "../card/movie-card-skeleton";
 
 const MovieListSkeleton = () => {
     return (
-        <div className={" p-[10px] grid grid-cols-5  gap-x-[10px] rounded-[8px]  w-full bg-[#404040]"}>
-            {Array.from({ length: 25 }).map((movie, index) => {
-                return <MovieCardSkeleton key={index} className=" h-60 md:h-80" />;
+        <div className={" p-[10px] grid sm:grid-cols-6 grid-cols-2 gap-2 sm:gap-[10px] rounded  w-full bg-[#404040]"}>
+            {Array.from({ length: 24 }).map((movie, index) => {
+                return <MovieCardSkeleton key={index} className=" h-60 md:h-72" />;
             })}
         </div>
     );

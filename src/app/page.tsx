@@ -18,7 +18,7 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
         getKMovie(1, 10, ""),
     ]);
     return (
-        <main className="p-6  ">
+        <main className="sm:p-6  p-3 ">
             <div className="space-y-1 ">
                 <MovieListTitle title="Phim đề xuất" />
                 <MovieSlider movies={recommended} />
