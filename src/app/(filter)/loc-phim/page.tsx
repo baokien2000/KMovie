@@ -9,7 +9,7 @@ import MovieListContainer from "@/components/movies/list/movie-list-container";
 import { Metadata } from "next";
 export async function generateMetadata({ searchParams }: { searchParams?: { [key: string]: string | undefined } }): Promise<Metadata> {
     return {
-        title: `Trang lọc phim - kmovies`,
+        title: `Trang lọc phim`,
     };
 }
 
@@ -25,7 +25,7 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
         searchParams?.country
     );
     return (
-        <main className="p-6 space-y-4  ">
+        <main className="md:p-6 sm:p-3 py-3  space-y-3  ">
             <MovieListTitle id="FilterListTitle" title={"Trang lọc phim"} />
             <MovieFilter />
             <Suspense fallback={<MovieListSkeleton />}>

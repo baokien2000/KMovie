@@ -1,21 +1,43 @@
 "use client";
 import { Link } from "@/lib/router-events";
 import React from "react";
-import { LoginIcon, LogoutIcon, PencilSquareIcon, UserCircleIcon } from "../../../public/static/svg";
+import { BookmarkIcon, ClockIcon, LoginIcon, LogoutIcon, PencilSquareIcon, UserCircleIcon } from "../../../public/static/svg";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { PencilIcon } from "@heroicons/react/20/solid";
 import { useAuthStore } from "@/store/auth/auth.store";
 import axios from "axios";
+import { usePathname } from "next/navigation";
+import { on } from "events";
+import { cn } from "@/lib/cn";
+
+const UserButtonData = [
+    {
+        icon: <PencilSquareIcon className="size-5 " />,
+        title: "Tài khoản",
+        href: "/tai-khoan",
+    },
+    {
+        icon: <ClockIcon className="size-5 " />,
+        title: "Xem gần đây",
+        href: "/xem-gan-day",
+        className: "flex sm:hidden",
+    },
+    {
+        icon: <BookmarkIcon className="size-5 " />,
+        title: "Phim đã lưu",
+        href: "/phim-da-luu",
+        className: "flex sm:hidden",
+    },
+];
 
 const UserButton = () => {
     const user = useAuthStore((state) => state.user);
-    console.log("user", user);
-
+    const pathName = usePathname();
     const handleLogout = async () => {
         useAuthStore.setState({ user: null });
         const res = await axios({ url: "/api", method: "delete", withCredentials: true });
-        console.log("logout res", res);
     };
+
     return user ? (
         <Menu>
             <MenuButton className="w-[42px] h-9 rounded text-title flex items-center  bg-black border-[1px] cursor-pointer border-des hover:opacity-80">
@@ -26,14 +48,23 @@ const UserButton = () => {
                 anchor="bottom end"
                 className="w-52 z-10 mt-4 origin-top-right rounded-xl border border-white/5 bg-mainBackground/90 p-1 text-sm/6 text-title transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
             >
-                <MenuItem>
-                    <Link href="/tai-khoan" className="group  flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:text-mainColor">
-                        <PencilSquareIcon className="size-5 " />
-                        <span>Tài khoản</span>
+                {UserButtonData.map((item, index) => (
+                    <MenuItem key={item.href}>
+                        <Link
+                            href={item.href}
+                            className={cn(
+                                "group  flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:text-mainColor",
+                                item?.className,
+                                pathName === item.href ? "text-mainColor" : ""
+                            )}
+                        >
+                            {item.icon}
+                            <span>{item.title}</span>
 
-                        <kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-[focus]:inline">⌘</kbd>
-                    </Link>
-                </MenuItem>
+                            <kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-[focus]:inline">⌘</kbd>
+                        </Link>
+                    </MenuItem>
+                ))}
                 <MenuItem>
                     <button
                         onClick={handleLogout}

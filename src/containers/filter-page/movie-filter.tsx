@@ -11,7 +11,6 @@ import FilterButton from "./filter-button";
 import Sort from "./sort";
 import { useSearchParams } from "next/navigation";
 import CountryFilter from "./country-filter";
-import { useFilterStore } from "@/store/movies/filter.store";
 
 type TFilter = "category" | "year" | "type" | "status" | "country" | "sort";
 const Type: TFilter[] = ["category", "year", "type", "status", "country", "sort"];
@@ -37,16 +36,19 @@ const MovieFilter = () => {
     };
     return (
         <div className="w-full h-fit min-h-10 border bg-dark4 border-des flex flex-col text-dark3 ">
-            <div className={cn("flex justify-between text-sm", selectedFilter.length > 0 ? "border-b-2 border-mainColor" : "")}>
+            <div className={cn("flex overflow-x-auto  justify-between text-sm", selectedFilter.length > 0 ? "border-b-2 border-mainColor" : "")}>
                 {Type.map((type) => {
                     const active = selectedFilter.includes(type);
                     return (
                         <button
                             key={type}
                             onClick={() => handleSelectFilter(type)}
-                            className={cn("h-10 justify-center w-full gap-1 flex items-center", active ? "bg-mainColor text-black" : "")}
+                            className={cn(
+                                "h-10 whitespace-normal min-w-[100px] justify-center w-full gap-1 flex items-center",
+                                active ? "bg-mainColor text-black" : ""
+                            )}
                         >
-                            <span>{MovieFilterName.get(type)}</span>
+                            <span className="whitespace-normal">{MovieFilterName.get(type)}</span>
                             {active ? <ChevronDownIcon className="h-5 w-5" /> : <ChevronRightIcon className="h-5 w-5" />}
                         </button>
                     );

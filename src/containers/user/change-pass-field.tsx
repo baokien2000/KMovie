@@ -17,7 +17,7 @@ export const FormField = ({
     className?: string;
 }) => {
     return (
-        <div className={cn("flex ", className)}>
+        <div className={cn("flex flex-col sm:flex-row gap-1", className)}>
             <label className="block text-sm font-medium w-40 text-default">{label}</label>
             <Controller
                 name={name}

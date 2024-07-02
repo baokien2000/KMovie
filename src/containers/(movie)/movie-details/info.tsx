@@ -11,35 +11,35 @@ const Info = ({ movie }: InfoProps) => {
         <div className="w-full text-sm rounded overflow-hidden">
             <h1 className="p-3 bg-cardBackground text-base text-center text-[#cccccc] font-bold ">{movie.name}</h1>
 
-            <div className="flex h-full flex-col sm:flex-row p-[10px] bg-[#191919] items-start  ">
-                <div className="w-fit h-full p-[5px] bg-black rounded">
-                    <div className="relative aspect-[3/4] sm:w-[250px] rounded sm:min-w-[250px] w-full h-full ">
+            <div className="flex h-full flex-col sm:flex-row sm:p-3 bg-[#191919] items-start  ">
+                <div className="w-fit h-full sm:p-1 bg-black sm:rounded">
+                    <div className="relative aspect-[3/4] w-screen  sm:w-[250px] rounded sm:min-w-[250px]    h-auto ">
                         <Image
                             src={movie.thumb_url}
                             sizes="(max-width: 640px) 100vw,250px"
-                            quality={100}
+                            quality={75}
                             priority
                             rel="preload"
                             loading="eager"
                             alt="thumbnail"
                             fill
-                            className="object-cover rounded"
+                            className="object-cover sm:rounded"
                         />
                     </div>
                 </div>
                 {/* <img src={movie.thumb_url} alt="thumbnail" className="sm:w-[250px] w-full mb-[20px] sm:mb-[0] object-cover " /> */}
-                <div className="w-full text-[#ccc] ml-[10px] ">
+                <div className="w-full text-[#ccc] sm:ml-3  ">
                     <div className="flex w-full p-4 border-b border-secondary">
                         <span className="font-bold w-[100px] ">Tên Khác</span>
                         <span className="flex-1 text-center font-medium">{movie.origin_name}</span>
                     </div>
                     <div className="flex items-center w-full p-4 py-3.5 border-b border-secondary">
-                        <span className="font-bold w-[100px] ">Thể loại</span>
-                        <div className="flex-1 flex justify-center gap-[5px] font-medium">{renderMovieCategory(movie.category)}</div>
+                        <span className="font-bold w-[100px] whitespace-nowrap ">Thể loại</span>
+                        <div className="flex-1 flex-wrap flex justify-center gap-[5px] font-medium">{renderMovieCategory(movie.category)}</div>
                     </div>
                     <div className="flex w-full p-4 border-b border-secondary">
-                        <span className="font-bold w-[100px]">Trạng thái</span>
-                        <span className="flex-1 text-center font-medium">{MovieStatus.get(movie.status) ?? "Đang tiến hành"}</span>
+                        <span className="font-bold w-[100px] ">Trạng thái</span>
+                        <span className="flex-1   text-center font-medium">{MovieStatus.get(movie.status) ?? "Đang tiến hành"}</span>
                     </div>
                     <div className="flex w-full p-4 border-b border-secondary">
                         <span className="font-bold w-[100px]">Điểm</span>
@@ -65,13 +65,29 @@ const renderMovieCategory = (category: ICategory[]) => {
     // const categoryList = []
     const categoryList = category.map((item) => {
         return (
-            <Link
-                href={"/the-loai/" + item.slug}
-                key={item.id}
-                className="py-1 transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
-            >
-                {item.name}
-            </Link>
+            <>
+                <Link
+                    href={"/the-loai/" + item.slug}
+                    key={item.id}
+                    className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
+                >
+                    {item.name}
+                </Link>{" "}
+                <Link
+                    href={"/the-loai/" + item.slug}
+                    key={item.id}
+                    className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
+                >
+                    {item.name}
+                </Link>{" "}
+                <Link
+                    href={"/the-loai/" + item.slug}
+                    key={item.id}
+                    className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
+                >
+                    {item.name}
+                </Link>
+            </>
         );
     });
     return categoryList;

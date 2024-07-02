@@ -13,6 +13,9 @@ interface PageProps {
         slug: string;
         episode: string;
     };
+    searchParams: {
+        server: string;
+    };
 }
 
 export async function generateMetadata({
@@ -27,33 +30,45 @@ export async function generateMetadata({
     const episodeParam = params.episode?.replace("tap-", "");
 
     const movie = await getMovieBySlug(slug);
-    if (!movie) return { title: "404 - kmovie" };
+    if (!movie) return { title: "404" };
     const isTrailer = episodeParam === "trailer";
-    if (isTrailer) return { title: `Trailer - ${movie.movie.name} - kmovie` };
+    if (isTrailer) return { title: `Trailer - ${movie.movie.name}` };
     const episode = movie.episodes[0].server_data.find((e) => e.slug === episodeParam || e.name === episodeParam);
     return {
-        title: episode ? `Tập ${episode.slug} - ${movie.movie.name} - kmovie` : "404 - kmovie",
+        title: episode ? `Tập ${episode.slug} - ${movie.movie.name}` : "404",
     };
 }
 
-export default async function Page({ params }: PageProps) {
-    const episodeParam = params.episode?.replace("tap-", "");
+export default async function Page({ params, searchParams }: PageProps) {
+    console.log("searchParams", searchParams);
+    let episodeParam = params.episode?.replace("tap-", "");
     const movie = await getMovieBySlug(params.slug);
 
     const isTrailer = episodeParam === "trailer";
     if (!movie) return <div>Không tìm thấy phim | 404</div>;
-    const episode = isTrailer
-        ? {
-              slug: "trailer",
-              link_embed: movie.movie.trailer_url.replace("watch?v=", "embed/"), // For Youtube video
-              name: "Trailer",
-          }
-        : movie.episodes[0].server_data.find((e) => e.slug === episodeParam || e.name === episodeParam);
+    let episode = null;
+    if (isTrailer) {
+        episode = {
+            slug: "trailer",
+            link_embed: movie.movie.trailer_url.replace("watch?v=", "embed/"), // For Youtube video
+            name: "Trailer",
+        };
+    } else {
+        if (searchParams.server) {
+            console.log("find 1", (episode = movie.episodes.find((i) => i.server_name.replace("#", "") === searchParams.server.replace("#", ""))));
+            const server = (episode = movie.episodes.find((i) => i.server_name.replace("#", "") === searchParams.server.replace("#", "")));
+            episode = server?.server_data.find((e) => e.slug === episodeParam || e.name === episodeParam || e.slug.toLocaleLowerCase() === "full");
+        } else {
+            episode = movie.episodes[0].server_data.find((e) => e.slug === episodeParam || e.name === episodeParam);
+        }
+    }
+
     if (!episode) return <div>Không tìm thấy tập phim | 404</div>;
+    // console.log("movie", movie);
     return (
-        <main className="p-6 py-4 space-y-3 ">
+        <main className="md:p-6 sm:p-3 py-3 space-y-3 ">
             <MovieTiltle slug={movie.movie.slug} episode={episode.slug} name={movie.movie.name} />
-            <MovieServer servers={movie.episodes} />
+            <MovieServer currentEpisode={episodeParam} servers={movie.episodes} slug={movie.movie.slug} />
             <MoviePlayer movieSlug={movie.movie.slug} episode={episode} />
             <EpisodesList currentEpisode={episodeParam} slug={movie.movie.slug} episodes={movie.episodes[0].server_data} />
             <CommentList id={movie.movie._id} />

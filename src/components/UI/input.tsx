@@ -25,7 +25,8 @@ export default function Input({onKeyDown,className, placeholder, onClick, onIcon
             aria-label={ariaLabel}
         >
             <HeadLessInput
-                onKeyDown={onKeyDown }
+                onKeyDown={onKeyDown}
+                autoComplete="off"
                 placeholder={placeholder}
                 onClick={onClick}
                 onChange={onChange}

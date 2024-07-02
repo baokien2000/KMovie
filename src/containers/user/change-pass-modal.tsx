@@ -1,8 +1,7 @@
-import React, { use, useEffect, useMemo, useRef } from "react";
+import React, { useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { cn } from "@/lib/cn";
 import { IUser } from "@/interface/user";
 import Modal from "@/components/UI/modal";
 import { ErrorIcon } from "../../../public/static/svg";
@@ -10,7 +9,6 @@ import { FormField } from "./change-pass-field";
 import { changePassword, verifyCaptcha } from "@/services/auth";
 import toast from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
-import axios from "axios";
 
 const schema = z
     .object({
@@ -69,7 +67,6 @@ export default function ChangePassModal({ user }: { user: IUser }) {
         },
     });
 
-    const formRef = useRef<HTMLFormElement>(null);
     const onSubmit = async (data: z.infer<typeof schema>, callback: () => void) => {
         const captchaToken = recaptchaRef.current?.getValue();
         if (!captchaToken) {
@@ -108,7 +105,6 @@ export default function ChangePassModal({ user }: { user: IUser }) {
         reset();
     };
 
-    console.log("process.env.NEXT_PUBLIC_SITE_KEY", process.env.NEXT_PUBLIC_SITE_KEY);
     const onChange = async (value: string | null) => {
         if (!value) {
             setError("captcha", { message: "Vui lòng xác nhận bạn không phải là robot" });
@@ -116,31 +112,38 @@ export default function ChangePassModal({ user }: { user: IUser }) {
             clearErrors("captcha");
         }
     };
+
     return (
         <Modal onRequestClose={onClose}>
             <Modal.Open>
-                <button className="py-1 self-start h-9 font-bold text-[#111827] rounded-md flex items-center justify-center gap-2 sm:w-[200px] w-[130px] bg-[#ffce4f]/90 hover:bg-[#ffce4f]">
+                <button className="py-1 self-start px-2 h-8 sm:h-9  text-sm font-bold text-[#111827] rounded flex items-center justify-center gap-2 w-fit bg-[#ffce4f]/90 hover:bg-[#ffce4f]">
                     Đổi mật khẩu
                 </button>
             </Modal.Open>
-            <Modal.Content className=" aspect-auto w-[500px]  rounded-2xl bg-cardBackground p-10 py-12 text-default" icon={<></>}>
+            <Modal.Content
+                className=" aspect-auto w-[calc(100svw-24px)] sm:w-[500px]  rounded bg-cardBackground p-3 sm:p-10 py-6 sm:py-12 text-default"
+                icon={<></>}
+            >
                 {(closeModal) => {
                     return (
                         <div className="space-y-3">
-                            <h2 className="text-2xl font-medium">Đổi Mật Khẩu</h2>
+                            <h2 className="text-base uppercase sm:text-2xl font-medium">Đổi Mật Khẩu</h2>
                             <form onSubmit={handleSubmit((value) => onSubmit(value, closeModal!))} className="  text-sm  text-default">
-                                <div className="flex flex-col gap-3">
+                                <div className="flex flex-col gap-1 sm:gap-3">
                                     {FieldData.map((field) => (
                                         <FormField type="password" key={field.name} control={control} label={field.label} name={field.name} />
                                     ))}
                                 </div>
-                                <ReCAPTCHA
-                                    className="mt-3"
-                                    onChange={onChange}
-                                    theme={"dark"}
-                                    ref={recaptchaRef}
-                                    sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
-                                />
+                                <div className="captcha scale-75 phone:scale-100 " style={{ transformOrigin: "0 0" }}>
+                                    <ReCAPTCHA
+                                        className="mt-3"
+                                        onChange={onChange}
+                                        theme={"dark"}
+                                        ref={recaptchaRef}
+                                        sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
+                                    />
+                                </div>
+
                                 <div className="text-red-500 text-xs min-h-6 h-fit flex gap-1 items-center">
                                     {Object.keys(errors).length > 0 && (
                                         <>
@@ -155,16 +158,24 @@ export default function ChangePassModal({ user }: { user: IUser }) {
                                         </>
                                     )}
                                 </div>
-                                <div className=" ml-auto max-w-[200px]">
+                                <div className="flex text-sm items-center gap-3 justify-end">
+                                    <button
+                                        onClick={closeModal}
+                                        disabled={loading}
+                                        type="button"
+                                        className="bg-dark1 rounded w-fit  p-2 text-default  font-bold tracking-wider"
+                                    >
+                                        Hủy
+                                    </button>
                                     {loading ? (
-                                        <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
+                                        <div className="loadingText rounded cursor-wait text-center bg-mainColor/90  w-fit p-2 text-des  font-bold tracking-wider" />
                                     ) : (
                                         <button
                                             type="submit"
                                             disabled={loading}
-                                            className="bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider hover:text-black hover:bg-mainColor"
+                                            className="bg-mainColor/90 rounded  w-fit p-2 text-des  font-bold tracking-wider hover:text-black hover:bg-mainColor"
                                         >
-                                            Đổi mật khẩu
+                                            Xác nhận
                                         </button>
                                     )}
                                 </div>

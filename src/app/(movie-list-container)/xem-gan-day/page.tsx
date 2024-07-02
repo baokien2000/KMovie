@@ -5,12 +5,12 @@ import MovieHistory from "@/containers/(movie)/movie-history";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: `Phim xem gần đây - kmovies`,
+        title: `Phim xem gần đây`,
     };
 }
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     return (
-        <main className="p-6 space-y-4  ">
+        <main className="md:p-6 sm:p-3 py-3 space-y-3  ">
             <MovieListTitle id="HistoryListTitle" title={"Xem gần đây"} />
             <MovieHistory searchParams={searchParams} />
         </main>

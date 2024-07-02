@@ -10,7 +10,7 @@ interface ActionProps {
 }
 const Action = ({ slug, isTrailer, episodes }: ActionProps) => {
     return (
-        <div className="flex justify-between p-3 bg-cardBackground  text-sm  rounded">
+        <div className="flex justify-between p-3 bg-cardBackground  text-sm  sm:rounded">
             <Link
                 href={`/phim/${slug}/${isTrailer ? "trailer" : "/tap-" + episodes.slug} `}
                 className="py-1 font-bold text-[#111827] rounded-md flex opacity-90 hover:opacity-100 items-center justify-center gap-2 sm:w-[200px] w-[130px]  bg-[#ffce4f]"
@@ -27,7 +27,7 @@ const Action = ({ slug, isTrailer, episodes }: ActionProps) => {
                 >
                     {" "}
                     <StarIcon fill="currentColor" />
-                    Đánh giá
+                    <span className="hidden sm:inline">Đánh giá</span>
                 </Link>
             </div>
         </div>

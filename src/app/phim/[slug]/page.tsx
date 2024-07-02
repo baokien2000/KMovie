@@ -32,7 +32,7 @@ export async function generateMetadata({
 
     const movie = await getMovieBySlug(slug);
     return {
-        title: movie ? `${movie.movie.name} - kmovie` : "404 - kmovie",
+        title: movie ? `${movie.movie.name}` : "404",
     };
 }
 
@@ -40,7 +40,7 @@ export default async function Page({ params }: PageProps) {
     const movie = await getMovieBySlug(params.slug);
     if (!movie) return <div>404</div>;
     return (
-        <main className="p-6 py-4 space-y-3">
+        <main className="md:p-6 sm:p-3 py-3 space-y-3">
             <Info movie={movie.movie} />
             <Action slug={params.slug} episodes={movie.episodes[0].server_data[0]} isTrailer={movie.movie.episode_current === "Trailer"} />
             <div className="flex sm:flex-row flex-col gap-3 text-[#ccc] ">

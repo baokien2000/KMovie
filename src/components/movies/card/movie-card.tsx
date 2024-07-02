@@ -17,7 +17,7 @@ const MovieCard = (props: MovieCardProp) => {
     return (
         <Link
             href={"/phim/" + movie.slug}
-            className={cn(" bg-black block p-1 sm:p-[5px]  relative cursor-pointer hover:opacity-[80%] ", className)}
+            className={cn(" bg-black block p-1 sm:p-1  relative cursor-pointer hover:opacity-[80%] h-full w-full aspect-[3/4]", className)}
             rel={"preload"}
         >
             <div className="relative h-[calc(100%-24px)] w-full">
@@ -29,12 +29,12 @@ const MovieCard = (props: MovieCardProp) => {
                     placeholder={enableBlur && movie.blurImage ? "blur" : "empty"}
                     blurDataURL={movie.blurImage}
                     quality={quality}
-                    alt={"kmovie-thumbnail " + movie.name}
+                    alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
                     sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"
                 />
             </div>
-            <p className="truncate px-[3p] mt-1 h-5 flex items-center justify-center text-xs sm:text-sm text-center text-[#cc8d4c] font-bold">
+            <p className="truncate  whitespace-nowrap w-full px-1 leading-5 mt-1 h-5  text-xs laptopSmall:text-sm text-center text-[#cc8d4c] font-bold">
                 {movie.name}
             </p>
             <div className="absolute sm:top-3 top-2 left-2  sm:left-3 rounded px-2 py-1 text-xs sm:text-sm  border-[3px] border-double bg-[#383838] border-[#5a5a5a]">

@@ -22,14 +22,14 @@ const EpisodesList = ({ slug, episodes, currentEpisode }: EpisodesProps) => {
     return (
         <div className="w-full p-3 space-y-2 text-default  bg-des rounded">
             <h3 className="font-semibold ">Danh sách tập phim</h3>
-            <div className=" text-sm overflow-auto items-start flex flex-wrap ">
+            <div className=" text-sm overflow-auto  items-start flex flex-wrap ">
                 {episodes.map((ep, index) => {
                     return (
                         <Link
                             href={`/phim/${slug}/tap-${ep.slug === "kep" ? ep.slug : index + 1}`}
                             key={ep.slug + index}
                             className={cn(
-                                "hover:bg-mainColor/90 hover:border-[#4A4A4A] hover:text-black  py-1 text-center w-[45px] bg-[#333232] border border-[#4e4e4e]",
+                                "hover:bg-mainColor/90 hover:border-[#4A4A4A] hover:text-black  py-1 text-center w-[48px] bg-[#333232] border border-[#4e4e4e]",
                                 {
                                     "bg-black/80": history?.episodes?.includes(ep.slug),
                                     "bg-mainColor text-black": currentEpisode === ep.slug,

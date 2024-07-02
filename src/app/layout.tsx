@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/cn";
 import LayoutProvider from "@/providers/layout-provider";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,8 +46,10 @@ export default function RootLayout({
                 <link rel="android-touch-icon" href="/favicon.ico" />
                 <link rel="windows-touch-icon" href="/favicon.ico" />
             </head>
-            <body className={cn(inter.className, " bg-mainBackground min-h-screen h-full w-full ")}>
+            <body className={cn(inter.className, " bg-mainBackground  flex flex-col min-h-screen h-full w-full ")}>
+                {/* <Suspense fallback={<Loading />}> */}
                 <LayoutProvider>{children}</LayoutProvider>
+                {/* </Suspense> */}
             </body>
         </html>
     );

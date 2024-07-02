@@ -19,8 +19,8 @@ const UserContainer = () => {
     return (
         <>
             <div className="w-full text-sm rounded overflow-hidden">
-                <h1 className="p-3 bg-cardBackground text-base text-center text-[#cccccc] font-bold uppercase">Thông tin cá nhân</h1>
-                <div className="flex h-full flex-col sm:flex-row p-[10px] bg-[#191919] items-start">
+                <h1 className="p-3 bg-cardBackground text-sm   text-center text-[#cccccc] font-bold uppercase">Thông tin cá nhân</h1>
+                <div className="flex h-full flex-col sm:flex-row sm:p-2 bg-[#191919] items-start">
                     <UserProfileAvatar setStatus={setStatus} avatar={user?.avatar} status={status} />
                     <UserInfoDetails user={user} status={status} setStatus={setStatus} viewedMovie={viewedMovie?.movies ?? 0} />
                 </div>

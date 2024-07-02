@@ -8,7 +8,7 @@ import { Metadata } from "next";
 export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
     const category = categoriesMap.get(params?.category);
     return {
-        title: category ? `Phim ${category} - kmovies` : "404 - kmovies",
+        title: category ? `Phim ${category}` : "404",
     };
 }
 
@@ -24,7 +24,7 @@ export default async function Page({ searchParams, params }: { searchParams?: { 
     const categoryMovie = await getCategoryMovies(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, params?.category);
     if (!categoryMovie) return <div>Không tìm thấy</div>;
     return (
-        <main className="p-6 space-y-4  ">
+        <main className="md:p-6 sm:p-3 py-3  space-y-3  ">
             <MovieListTitle id="CategoryListTitle" title={"Phim " + categoriesMap.get(params?.category) ?? ""} />
             <Suspense fallback={<Loading />}>
                 <MovieListContainer titleId="CategoryListTitle" initialData={categoryMovie} searchParams={searchParams} />

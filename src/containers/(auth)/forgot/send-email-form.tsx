@@ -47,7 +47,10 @@ const SendEmailForm = ({ setForm, setOtpRes }: SendEmailFormProps) => {
     };
     console.log("error", errors);
     return (
-        <form onSubmit={handleSubmit((value) => handleSendEmail(value))} className="  text-sm  text-default p-6 w-[400px]">
+        <form
+            onSubmit={handleSubmit((value) => handleSendEmail(value))}
+            className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] sm:w-[400px]"
+        >
             <div className="">
                 <input
                     {...register("email")}
@@ -69,12 +72,12 @@ const SendEmailForm = ({ setForm, setOtpRes }: SendEmailFormProps) => {
                 )}
             </div>
             {loading ? (
-                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
+                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
             ) : (
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-mainColor/90   w-full p-2 text-sm text-des uppercase font-bold tracking-wider cursor-pointer hover:bg-mainColor hover:text-black "
+                    className="bg-mainColor/90   w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider cursor-pointer hover:bg-mainColor hover:text-black "
                 >
                     Gửi mã xác nhận
                 </button>

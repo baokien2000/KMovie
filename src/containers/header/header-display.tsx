@@ -11,13 +11,18 @@ const HeaderDisplay = () => {
             if (scroll >= window.scrollY || window.scrollY < 72) {
                 if (!hasAutoScroll) {
                     headerAppClass?.remove("opacity-0");
+                    headerAppClass?.remove("pointer-events-none");
                 }
                 if (window.scrollY < 72) {
                     headerAppClass?.remove("auto-scroll");
                     headerAppClass?.remove("opacity-0");
+                    headerAppClass?.remove("pointer-events-none");
+
                 }
             } else {
                 headerAppClass?.add("opacity-0");
+
+                headerAppClass?.add("pointer-events-none");
                 headerAppClass?.remove("auto-scroll");
             }
 

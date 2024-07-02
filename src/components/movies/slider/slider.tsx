@@ -26,23 +26,17 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                 pauseOnMouseEnter: true,
             }}
             breakpoints={{
-                0: { slidesPerView: 1, spaceBetween: 5 }, // when window width is >= 640px
-                360: { slidesPerView: 2, spaceBetween: 20 }, // when window width is >= 768px
-                1023: { slidesPerView: 4, spaceBetween: 20 }, // when window width is >: 768px
-                1223: { slidesPerView: 6, spaceBetween: 20 }, // when window width is >: 768px
+                0: { slidesPerView: 1, spaceBetween: 4 }, // when window width is >= 640px
+                320: { slidesPerView: 2, spaceBetween: 4 }, // when window width is >= 768px
+                500: { slidesPerView: 3, spaceBetween: 4 }, // when window width is >= 768px
+                640: { slidesPerView: 4, spaceBetween: 8 }, // when window width is >= 768px
+                768: { slidesPerView: 5, spaceBetween: 8 }, // when window width is >: 768px
+                1024: { slidesPerView: 6, spaceBetween: 8 }, // when window width is >: 768px
             }}
         >
             {movies?.items?.map((item, index) => (
                 <SwiperSlide key={item._id}>
-                    <MovieCard
-                        enableBlur
-                        quality={50}
-                        key={item._id}
-                        loading={"lazy"}
-                        movie={item}
-                        ImagePath={movies.pathImage}
-                        className="w-full h-60 md:h-72"
-                    />
+                    <MovieCard enableBlur quality={50} key={item._id} loading={"lazy"} movie={item} ImagePath={movies.pathImage} />
                 </SwiperSlide>
             ))}
         </Swiper>

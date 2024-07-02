@@ -20,7 +20,10 @@ export async function getCategoryMovies(page: number, pageSize: number, category
 export async function getCountryMovies(page: number, pageSize: number, country: string) { 
     return await MoviesRepository.getCountryMovies(page, pageSize, country);
 }
+export async function getTypeMovies(page: number, pageSize: number, type: string) { 
+    return await MoviesRepository.getTypeMovies(page, pageSize, type);
 
+}
 export async function getYearMovies(page: number, pageSize: number, year: string) { 
     const yearRegex = /^[0-9]{4}$/;
     if (yearRegex.test(year) || year === "19XX") {

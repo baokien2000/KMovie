@@ -21,7 +21,7 @@ const MoviePaginationInput = ({ totalPage }: MoviePaginationInputProp) => {
         setPage(undefined);
     };
     return (
-        <div className="sm:flex hidden ">
+        <div className=" hidden sm:flex items-center">
             <Input
                 type="number"
                 max={9999}
@@ -32,7 +32,11 @@ const MoviePaginationInput = ({ totalPage }: MoviePaginationInputProp) => {
                 className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-title   "
                 placeholder="Nhập"
             />
-            <SearchIcon className="w-4 h-4 text-title hover:text-mainColor mx-3 cursor-pointer" onClick={handleRedirect} fill="currentColor" />
+            <SearchIcon
+                className="w-4 h-4 text-title hover:text-mainColor ml-1 mr-2 sm:mx-3 cursor-pointer"
+                onClick={handleRedirect}
+                fill="currentColor"
+            />
         </div>
     );
 };

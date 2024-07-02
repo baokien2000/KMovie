@@ -9,7 +9,7 @@ interface EpisodesProps {
 }
 const EpisodesList = ({ slug, episodes, trailerUrl }: EpisodesProps) => {
     return (
-        <div className={cn("sm:w-[300px] w-full p-3 space-y-2 bg-cardBackground rounded")}>
+        <div className={cn("sm:w-[300px] w-full p-3 space-y-2 bg-cardBackground sm:rounded")}>
             <h3 className="font-semibold ">Danh sách tập phim</h3>
             <div className="customScrollBar pr-2 text-sm overflow-auto items-start flex flex-wrap  max-h-[300px]">
                 {trailerUrl ? (
@@ -25,7 +25,7 @@ const EpisodesList = ({ slug, episodes, trailerUrl }: EpisodesProps) => {
                             <Link
                                 href={`/phim/${slug}/tap-${ep.slug === "kep" ? ep.slug : index + 1}`}
                                 key={ep.slug + index}
-                                className="hover:bg-[#ffce4f] hover:text-[#000] px-[10px] py-[5px] text-center sm:w-1/4 w-1/5 bg-[#333232] border-[1px] border-[#4e4e4e]"
+                                className="hover:bg-[#ffce4f] hover:text-[#000] px-[10px] py-[5px] text-center  w-1/4 smallPhone:w-1/5 phone:w-1/6 bigPhone:w-[calc(100%/7)] min-[480px]:w-[calc(100%/8)] min-[540px]:w-[calc(100%/9)]  smallTablet:w-[10%] sm:w-1/5 bg-[#333232] border-[1px] border-[#4e4e4e]"
                             >
                                 {ep.slug.toString() === "full" ? "full" : index + 1}
                             </Link>

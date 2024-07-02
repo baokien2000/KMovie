@@ -16,12 +16,12 @@ interface PageProps {
     };
 }
 export async function generateMetadata(): Promise<Metadata> {
-    return { title: "Thông tin cá nhân - kmovie" };
+    return { title: "Thông tin cá nhân" };
 }
 
 export default async function Page() {
     return (
-        <main className="p-6 py-4 space-y-3">
+        <main className="md:p-6 sm:p-3 py-3  space-y-3 ">
             <Suspense fallback={<UserContainerSkeleton />}>
                 <UserContainer />
             </Suspense>

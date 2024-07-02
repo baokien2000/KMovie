@@ -6,6 +6,8 @@ import { Popover, PopoverButton, PopoverPanel, TabGroup, Transition } from "@hea
 // import FilterContent from "./filter-content";
 import FilterTabHeader from "./filter-tab-header";
 import dynamic from "next/dynamic";
+import { useDeviceSize } from "@/hook/useDeviceSize";
+import { useOutsideClick } from "@/hook/useOutsideClick";
 
 const FilterContent = dynamic(() => import("./filter-content"), {
     ssr: false,
@@ -15,11 +17,15 @@ const FilterContent = dynamic(() => import("./filter-content"), {
         </div>
     ),
 });
+
 const FilterButton = () => {
+
     return (
         <Popover>
             {({ open, close }) => (
                 <>
+                    {open && <div className="fixed left-0 top-0 h-[100svh] w-[100svw] bg-black/50 "></div>}
+
                     <PopoverButton
                         className={cn(
                             open ? "border-mainColor bg-mainColor" : "border-des bg-black",
@@ -30,6 +36,7 @@ const FilterButton = () => {
                         <HamburgerIcon className={open ? "active" : ""} />
                     </PopoverButton>
                     <Transition
+                        show={open}
                         enter="transition ease-out duration-200"
                         enterFrom="opacity-0 translate-y-1"
                         enterTo="opacity-100 translate-y-0"
@@ -39,6 +46,7 @@ const FilterButton = () => {
                         appear={true}
                     >
                         <PopoverPanel
+                            modal
                             anchor="bottom"
                             className=" sm:mt-6 mt-4 !max-w-screen-laptop sm:px-6 px-3 !left-1/2 z-[100] !-translate-x-1/2 transform   w-full  text-sm/6 "
                         >

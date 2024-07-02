@@ -55,12 +55,11 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
     }, []);
 
     return (
-        <div className=" mx-auto text-center  p-4  ">
-            <p className="text-sm text-title mb-3 ">
-                Nhập 6 số vừa được gửi đến email <b>{otpRes.email}</b>
-                <br />
+        <div className=" mx-auto text-center w-[calc(100svw-24px)] sm:w-full p-3 sm:p-4  ">
+            <div className="text-sm text-title  mb-3 ">
+                Nhập 6 số vừa được gửi đến email <p className="font-bold">{otpRes.email}</p>
                 <span className="text-xs"> Vui lòng kiểm tra cả bên trong thư rác</span>
-            </p>
+            </div>
             <form onSubmit={handleSubmit} id="otp-form">
                 <div className="flex items-center justify-center gap-3">
                     {Array.from({ length: 6 }).map((_, index) => (
@@ -83,7 +82,7 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
                                     focusNextInput(index);
                                 }
                             }}
-                            className="size-12 text-center text-xl font-extrabold text-default bg-dark4   appearance-none rounded p-4 outline-none border border-transparent focus:border-mainColor "
+                            className="size-8 sm:size-12 text-center text-base sm:text-xl font-extrabold text-default bg-dark4   appearance-none rounded p-2 sm:p-4 outline-none border border-transparent focus:border-mainColor "
                             pattern="\d*"
                             maxLength={1}
                             onFocus={(e) => {
@@ -92,7 +91,7 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
                         />
                     ))}
                 </div>
-                <div className="max-w-[260px] mx-auto mt-4">
+                <div className="sm:max-w-[260px] max-w-[160px] mx-auto mt-4">
                     {loading ? (
                         <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
                     ) : (

@@ -61,7 +61,10 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
     };
     console.log("error", errors);
     return (
-        <form onSubmit={handleSubmit((value) => handleReset(value))} className="  text-sm  text-default p-6 w-[400px]">
+        <form
+            onSubmit={handleSubmit((value) => handleReset(value))}
+            className="  text-sm  text-default sm:p-6 p-3 w-[calc(100svw-24px)] sm:w-[400px]"
+        >
             <div className="mb-3">
                 <input
                     {...register("password")}
@@ -95,12 +98,12 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
                 )}
             </div>
             {loading ? (
-                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
+                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
             ) : (
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider hover:text-black hover:bg-mainColor"
+                    className="bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider hover:text-black hover:bg-mainColor"
                 >
                     Đặt lại mật khẩu
                 </button>

@@ -52,14 +52,22 @@ const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setS
         }
     };
     return (
-        <div className="w-full gap-4 flex">
+        <div className="w-full flex-wrap px-3 sm:px-0 text-sm gap-4 flex">
             {user && status === "idle" && <ChangePassModal user={user} />}
             {status === "edited" && !loading && (
-                <ReCAPTCHA onChange={onChange} theme={"dark"} ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!} />
+                <div className="captcha scale-75 phone:scale-100 " style={{ transformOrigin: "0 0" }}>
+                    <ReCAPTCHA
+                        onChange={onChange}
+                        className="w-full sm:w-fit "
+                        theme={"dark"}
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
+                    />
+                </div>
             )}
             <button
                 onClick={() => setStatus("idle")}
-                className={`py-1 h-9 font-bold text-default rounded-md flex items-center justify-center px-5 gap-2 w-fit  bg-cardBackground  ${
+                className={`py-1 h-8 sm:h-9 px-2 font-bold text-default rounded flex items-center justify-center  gap-2 w-fit  bg-cardBackground  ${
                     status === "idle" ? "hidden" : "block ml-auto"
                 }`}
             >
@@ -67,7 +75,7 @@ const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setS
             </button>
             <button
                 disabled={status === "editing" || loading || !captchaVerified}
-                className={`py-1 disabled:bg-mainColor/50  h-9 font-bold text-[#111827] rounded-md flex items-center justify-center gap-2 sm:w-[200px] w-[130px] bg-[#ffce4f]/90 hover:bg-[#ffce4f] ${
+                className={`py-1 disabled:bg-mainColor/50  h-8 sm:h-9 px-2 font-bold text-[#111827] rounded flex items-center justify-center gap-2 w-fit bg-[#ffce4f]/90 hover:bg-[#ffce4f] ${
                     status === "idle" ? "hidden" : "block "
                 }`}
                 onClick={handleUpdate}
@@ -76,7 +84,7 @@ const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setS
             </button>
             <button
                 onClick={() => setStatus("editing")}
-                className={`py-1 h-9 font-bold text-[#111827] rounded-md flex items-center justify-center gap-2 sm:w-[200px] w-[130px] bg-[#ffce4f]/90 hover:bg-[#ffce4f] ${
+                className={`py-1 disabled:bg-mainColor/50  h-8 sm:h-9 px-2 font-bold text-[#111827] rounded flex items-center justify-center gap-2 w-fit bg-[#ffce4f]/90 hover:bg-[#ffce4f] ${
                     status !== "idle" ? "hidden" : "block ml-auto"
                 }`}
             >

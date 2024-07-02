@@ -10,12 +10,13 @@ interface SearchItemProps {
 const SearchItem = ({ value, onClick }: SearchItemProps) => {
     return (
         <Link
+            onClick={onClick}
             href={"/phim/" + value.slug}
             className="group flex sm:hover:bg-white/10  cursor-pointer items-start gap-2 sm:rounded-md p-2 select-none "
         >
-            <div className="relative size-10 sm:size-14 min-w-[40px]">
+            <div className="relative size-12 sm:size-14 min-w-[48px]">
                 <Image
-                    sizes="(max-width: 640px) 40px, 56px"
+                    sizes="(max-width: 640px) 48px, 56px"
                     blurDataURL={value.blurImage}
                     placeholder={value.blurImage ? "blur" : "empty"}
                     src={imagePath + value.thumb_url}

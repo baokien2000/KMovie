@@ -1,5 +1,6 @@
 import { MUserGender, UserProfileType } from "@/enum/user";
 import { IUser } from "@/interface/user";
+import { cn } from "@/lib/cn";
 import { UserIcon } from "@heroicons/react/20/solid";
 import dayjs from "dayjs";
 import Image from "next/image";
@@ -12,28 +13,28 @@ interface UserInfoDetailsProps {
 }
 const UserInfoDetails = ({ user, status, setStatus, viewedMovie }: UserInfoDetailsProps) => {
     return (
-        <div className="w-full text-[#ccc] ml-[10px]">
+        <div className="w-full text-[#ccc]  sm:mx-2">
             <UserInfoRow label="Email" value={user?.email!} />
             <UserNameEditRow name={user?.name ?? ""} status={status} setStatus={setStatus} />
             <UserInfoRow label="Ngày tham gia" value={dayjs(user?.createdAt).format("DD/MM/YYYY")} />
             <UserGenderEditRow userGender={user?.gender} status={status} setStatus={setStatus} />
-            <UserInfoRow label="Số phim đã xem" value={viewedMovie ? viewedMovie : 0} />
+            <UserInfoRow className="border-none" label="Số phim đã xem" value={viewedMovie ? viewedMovie : 0} />
         </div>
     );
 };
 
 export default UserInfoDetails;
 
-const UserInfoRow = ({ label, value }: { label: string; value: string | number }) => (
-    <div className="flex w-full p-4 border-b border-secondary">
+const UserInfoRow = ({ label, value, className }: { label: string; value: string | number; className?: string }) => (
+    <div className={cn("flex w-full md:p-4 p-3 border-b border-secondary", className)}>
         <span className="font-bold w-[120px]">{label}</span>
         <span className="flex-1 text-center font-medium">{value}</span>
     </div>
 );
 
 const UserNameEditRow = ({ name, status, setStatus }: { name: string; status: UserProfileType; setStatus: (value: UserProfileType) => void }) => (
-    <div className="flex items-center w-full px-4 py-3.5 border-b border-secondary">
-        <span className="font-bold w-[120px]">Họ Tên</span>
+    <div className="flex max-smallPhone:flex-wrap max-smallPhone:gap-1 items-center w-full md:p-4 p-3  border-b border-secondary">
+        <span className={cn("font-bold w-[120px] ", status !== "idle" && "w-[80px]")}>Họ Tên</span>
         <div className="flex-1 flex justify-center gap-[5px] font-medium">
             {status === "idle" ? (
                 name
@@ -59,8 +60,8 @@ const UserGenderEditRow = ({
     status: UserProfileType;
     setStatus: (value: UserProfileType) => void;
 }) => (
-    <div className="flex w-full p-4 border-b border-secondary">
-        <span className="font-bold w-[120px]">Giới tính</span>
+    <div className="flex max-smallPhone:flex-wrap  max-smallPhone:gap-1  w-full md:p-4 p-3 border-b border-secondary">
+        <span className={cn("font-bold w-[120px] ", status !== "idle" && "w-[80px]")}>Giới tính</span>
         <span className="flex-1 text-center font-medium">
             {status === "idle" ? (
                 MUserGender.get(userGender ?? "") ?? ""
@@ -77,7 +78,7 @@ const UserGenderEditRow = ({
                                 name="gender"
                                 onClick={() => setStatus("edited")}
                             />
-                            <label htmlFor={`gender-${gender}`} className=" cursor-pointer accent-mainColor">
+                            <label htmlFor={`gender-${gender}`} className="whitespace-nowrap cursor-pointer accent-mainColor">
                                 {MUserGender.get(gender) ?? " Khác"}
                             </label>
                         </div>

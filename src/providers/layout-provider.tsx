@@ -12,11 +12,11 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
             <ReactQueryProvider>
                 <AuthProvider>
                     <Header />
-                    <div className=" max-w-screen-laptop mx-auto w-full h-full  ">{children}</div>
+                    <div className=" max-w-screen-laptop flex-1 mx-auto w-full h-full  ">{children}</div>
                 </AuthProvider>
             </ReactQueryProvider>
             <Toaster containerClassName="text-xs sm:text-sm " />
-            <Footer/>
+            <Footer />
             <HandleOnComplete />
         </>
     );

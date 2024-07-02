@@ -17,8 +17,8 @@ const MoviePagination = ({ totalPage, onPageClick }: MoviePaginationProp) => {
             <ReactPaginate
                 nextLabel={<ChevronRightIcon className="h-5 w-5" aria-hidden="true" />}
                 onPageChange={onPageClick}
-                pageRangeDisplayed={width > 640 ? 3 : 2}
-                marginPagesDisplayed={2}
+                pageRangeDisplayed={width > 640 ? 5 : 3}
+                marginPagesDisplayed={1}
                 pageCount={totalPage}
                 previousLabel={<ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />}
                 pageClassName="page-item"

@@ -30,6 +30,7 @@ export const MovieTabs = [{
     id: "movie",
     name: "Phim lẻ",
     slug: "phim-le",
+
 }, {
     id: "filter",
     name: "Lọc phim",

@@ -9,14 +9,14 @@ import { Metadata } from "next";
 export async function generateMetadata({ searchParams }: { searchParams?: { [key: string]: string | undefined } }): Promise<Metadata> {
     const key = searchParams?.key;
     return {
-        title: `Tìm kiếm theo từ khóa ${key ?? ""} - kmovies`,
+        title: `Tìm kiếm theo từ khóa ${key ?? ""}`,
     };
 }
 export default async function Page({ searchParams }: { searchParams?: { [key: string]: string | undefined } }) {
     const searchMovies = await getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, searchParams?.key);
     if (!searchMovies || !searchParams?.key) return <SearchNotFound />;
     return (
-        <main className="p-6 space-y-4  ">
+        <main className="md:p-6 sm:p-3 py-3  space-y-3  ">
             <MovieListTitle id="SearchListTitle" title={<>Tìm kiếm theo từ khóa {<b className="text-mainColor">{searchParams?.key}</b>}</>} />
             <Suspense fallback={<MovieListSkeleton />}>
                 {!searchMovies && searchMovies?.items?.length === 0 ? (

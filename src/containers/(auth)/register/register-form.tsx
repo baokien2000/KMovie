@@ -62,10 +62,12 @@ const RegisterForm = () => {
         // console.log("data", value);
         setLoading(false);
     };
-    console.log("error", errors);
     return (
-        <form onSubmit={handleSubmit((value) => handleLogin(value))} className="  text-sm  text-default p-6 w-[400px]">
-            <div className="mb-3">
+        <form
+            onSubmit={handleSubmit((value) => handleLogin(value))}
+            className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] sm:w-[400px]"
+        >
+            <div className="sm:mb-3 mb-2">
                 <input
                     {...register("email")}
                     className={cn(" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 ", {
@@ -113,12 +115,12 @@ const RegisterForm = () => {
             </div>
 
             {loading ? (
-                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
+                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
             ) : (
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider cursor-pointer hover:bg-mainColor hover:text-black "
+                    className="bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider cursor-pointer hover:bg-mainColor hover:text-black "
                 >
                     Đăng ký
                 </button>

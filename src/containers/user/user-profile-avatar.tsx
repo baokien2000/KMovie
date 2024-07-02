@@ -32,19 +32,18 @@ const UserProfileAvatar = ({
         }
     };
     return (
-        <div className="w-fit h-full p-[5px] bg-black rounded">
-            <div className="relative text-title aspect-square sm:w-[250px] rounded sm:min-w-[250px] w-full h-full">
+        <div className="w-full sm:w-[230px] sm:min-w-[230px] md:min-w-[265px] md:w-[265px] h-full p-[5px] bg-black rounded aspect-square ">
+            <div className="relative text-title rounded  w-full h-full">
                 {avatar || currentAvatar ? (
                     <Image
                         src={currentAvatar ? `data:image/jpeg;base64,${currentAvatar}` : avatar ?? ""}
                         sizes="(max-width: 640px) 100vw,250px"
-                        quality={100}
                         priority
                         rel="preload"
                         loading="eager"
                         alt="thumbnail"
                         fill
-                        className="object-cover rounded"
+                        className="object-contain rounded"
                     />
                 ) : (
                     <UserIcon />

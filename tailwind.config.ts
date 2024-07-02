@@ -18,12 +18,13 @@ const config: Config = {
       screens: {
         desktop: "1920px", 
         laptop: "1440px",
+        laptopMedium: "1280px",
         laptopSmall: "1024px",
         tablet: "768px",
         smallTablet: "600px",
-        bigPhone: "450px",
-        phone: "375px",
-        smallPhone: "280px"
+        bigPhone: "420px",
+        phone: "360px",
+        smallPhone: "320px"
     },
     colors: {
         primary: "#373743",

@@ -7,7 +7,7 @@ import { baseURL, resourceURL } from ".";
 
 class MoviesRepository {
 
-    static searchKMovie = cache(async (value: string,limit:number) => {
+    static searchKMovie = cache(async (value: string, limit: number) => {
         const payload = {
             value: value,
             limit: limit,
@@ -30,13 +30,13 @@ class MoviesRepository {
         page: number,
         pageSize: number,
         search?: string,
-    ) => { 
+    ) => {
         const payload = {
             page: page,
             pageSize: pageSize,
             search: search ?? "",
         }
-        const url = baseURL+"/movies";
+        const url = baseURL + "/movies";
     
         try {
             const response = await axios({
@@ -47,23 +47,23 @@ class MoviesRepository {
             return response.data
         } catch (error) {
             console.log(error)
-        } 
+        }
     })
 
-    static getMovieBySlug = cache(async (slug: string): Promise<IOphimMovie | undefined> => { 
-            const url = resourceURL + slug
-            try {
-                const response = await axios({
-                    method: 'get',
-                    url: url,
-                });
-                return response.data as IOphimMovie
-            } catch (error) {
-                console.log(error)
-            } 
-        })
+    static getMovieBySlug = cache(async (slug: string): Promise<IOphimMovie | undefined> => {
+        const url = resourceURL + slug
+        try {
+            const response = await axios({
+                method: 'get',
+                url: url,
+            });
+            return response.data as IOphimMovie
+        } catch (error) {
+            console.log(error)
+        }
+    })
     
-    static getFilterMovie = cache(async(
+    static getFilterMovie = cache(async (
         page: number,
         pageSize: number,
         sort?: string,
@@ -78,12 +78,12 @@ class MoviesRepository {
             pageSize: pageSize,
             sort: sort ?? null,
             type: type ?? null,
-            status:status?? null,
+            status: status ?? null,
             year: year ?? null,
             categories: category?.split(" ") ?? null,
             country: country ?? null,
         }
-        const url = baseURL+"/movies/FilterMovie";
+        const url = baseURL + "/movies/FilterMovie";
         try {
             const response = await axios({
                 method: 'get',
@@ -95,7 +95,7 @@ class MoviesRepository {
             console.log(error)
         }
     })
-    static getCountryMovies = cache(async (page: number,pageSize:number,country:string) => {
+    static getCountryMovies = cache(async (page: number, pageSize: number, country: string) => {
         const url = baseURL + "/movies/Country";
         const payload = {
             page: page,
@@ -106,14 +106,34 @@ class MoviesRepository {
             const response = await axios({
                 method: "get",
                 url: url,
-                params:payload
+                params: payload
             })
             return response.data
         } catch (error) {
-            console.log("error",error);
+            console.log("error", error);
             return;
         }
     })
+    static getTypeMovies = cache(async (page: number, pageSize: number, type: string) => {
+        const url = baseURL + "/movies/getTypeMovies";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            type: type
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params: payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error", error);
+            return
+        }
+    })
+
     static getCategoryMovies = cache(async (page: number,pageSize:number,category:string) => {
         const url = baseURL + "/movies/Category";
         const payload = {

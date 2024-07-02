@@ -8,7 +8,7 @@ import { Metadata } from "next";
 export async function generateMetadata({ params }: { params: { year: string } }): Promise<Metadata> {
     const year = years.includes(params?.year);
     return {
-        title: year ? `Phim ${params?.year} - kmovies` : "404 - kmovies",
+        title: year ? `Phim ${params?.year}` : "404",
     };
 }
 
@@ -24,7 +24,7 @@ export default async function Page({ searchParams, params }: { searchParams?: { 
     const yearMovie = await getYearMovies(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, params?.year);
     if (!yearMovie) return <div>Không tìm thấy</div>;
     return (
-        <main className="p-6 space-y-4  ">
+        <main className="md:p-6 sm:p-3 py-3  space-y-3  ">
             <MovieListTitle id="YearListTitle" title={`Phim năm ${params?.year ?? ""}`} />
             <Suspense fallback={<Loading />}>
                 <MovieListContainer titleId="YearListTitle" initialData={yearMovie} searchParams={searchParams} />

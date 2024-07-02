@@ -7,9 +7,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 6px;
     color:#cac9c9;
-    min-width: 36px;
+    min-width: 32px;
 }
 @media (max-width: 768px){
     .pagination .page-item .page-link{
