@@ -65,29 +65,13 @@ const renderMovieCategory = (category: ICategory[]) => {
     // const categoryList = []
     const categoryList = category.map((item) => {
         return (
-            <>
-                <Link
-                    href={"/the-loai/" + item.slug}
-                    key={item.id}
-                    className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
-                >
-                    {item.name}
-                </Link>{" "}
-                <Link
-                    href={"/the-loai/" + item.slug}
-                    key={item.id}
-                    className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
-                >
-                    {item.name}
-                </Link>{" "}
-                <Link
-                    href={"/the-loai/" + item.slug}
-                    key={item.id}
-                    className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
-                >
-                    {item.name}
-                </Link>
-            </>
+            <Link
+                href={"/the-loai/" + item.slug}
+                key={item.id}
+                className="py-1 whitespace-nowrap transition-colors hover:bg-mainColor hover:text-[#000] text-sm px-3 rounded cursor-pointer bg-[#313131]"
+            >
+                {item.name}
+            </Link>
         );
     });
     return categoryList;
