@@ -18,12 +18,10 @@ const CommentList = ({ movieId }: { movieId: string }) => {
                 {comments?.map((comment: IComment) => (
                     <Comment key={comment._id} comment={comment} />
                 ))}
-
-                {/* <Comment /> */}
             </div>
-            <button className="MovieWatchBtn bg-[#ffce4f] opacity-90 hover:opacity-100 w-full m-auto p-2 text-[#000] rounded    text-sm font-semibold">
+            {/* <button className="MovieWatchBtn bg-[#ffce4f] opacity-90 hover:opacity-100 w-full m-auto p-2 text-[#000] rounded    text-sm font-semibold">
                 Tải thêm bình luận
-            </button>
+            </button> */}
         </div>
     );
 };
