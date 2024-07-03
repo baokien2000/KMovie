@@ -25,16 +25,13 @@ const ResentOTPButton = ({ setOtpRes, otpRes }: ResentOTPButtonProps) => {
         } else {
             toast.error("Gửi mã OTP thất bại, vui lòng thử lại sau");
         }
-        console.log("SendOTP res", res);
         setLoading(false);
     };
     useEffect(() => {
         const expiresTime = new Date(otpRes.expires).getTime();
         const interval = setInterval(() => {
             const currentTime = new Date().getTime();
-            console.log("currentTime", currentTime, "expiresTime", expiresTime);
             if (currentTime < expiresTime) {
-                console.log("resentTime", resentTime);
                 setResentTime(expiresTime - currentTime);
             } else {
                 setResentTime(0);

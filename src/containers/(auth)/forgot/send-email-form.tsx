@@ -42,7 +42,6 @@ const SendEmailForm = ({ setForm, setOtpRes }: SendEmailFormProps) => {
                 message: res.data.message,
             });
         }
-        console.log("SendOTP res", res);
         setLoading(false);
     };
     console.log("error", errors);

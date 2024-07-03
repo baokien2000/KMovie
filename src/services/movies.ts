@@ -53,3 +53,13 @@ export async function getViewedMovie(userId: string) {
     if (!userId || userId ?.length === 0) return null;
     return await MoviesRepository.getViewedMovie(userId);
 }
+
+export async function addMovieComment({ movieId, userId, content }:{movieId:string,userId:string,content:string}) {
+    return await MoviesRepository.addMovieComment({ movieId, userId, content });
+}
+export async function getMovieCommentById(movieId: string) {
+    return await MoviesRepository.getMovieCommentById(movieId);
+}
+export async function replyMovieComment({ movieId, userId, content, replyId }: { movieId: string, userId: string, content: string,replyId:string }) {
+    return await MoviesRepository.replyMovieComment({ movieId, userId, content,replyId });
+}

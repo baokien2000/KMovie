@@ -15,7 +15,6 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
     const [loading, setLoading] = React.useState(false);
     const [code, setCode] = React.useState<string>("");
     const focusNextInput = (index: number) => {
-        console.log("focusNextInput", index);
         if (index < 5) {
             inputsRef.current[index + 1].focus();
         }

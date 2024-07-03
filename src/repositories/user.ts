@@ -9,7 +9,6 @@ class UserRepository {
     static updateUser = async (user: IUser,payload: any) => {
         const url = `${baseURL}/users/update`;
         const controller = new AbortController();
-        console.log("payload",payload);
         try {
             const response = await axios({
                 url: url,

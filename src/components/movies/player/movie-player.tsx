@@ -10,7 +10,6 @@ interface MoviePlayerProps {
     movieSlug: string;
 }
 const MoviePlayer = ({ episode, movieSlug }: MoviePlayerProps) => {
-    const [loading, setLoading] = useState(true);
     const user = useAuthStore((state) => state.user);
     useEffect(() => {
         if (user?._id) {
@@ -23,9 +22,6 @@ const MoviePlayer = ({ episode, movieSlug }: MoviePlayerProps) => {
     return (
         <div className="relative w-full bg-black h-auto aspect-video">
             <iframe
-                onLoadedData={() => console.log("onLoadedData")}
-                onLoad={() => setLoading(false)}
-                onPlay={() => console.log("onPlay")}
                 title="Movies"
                 allowFullScreen
                 className=" aspect-video w-full h-auto"

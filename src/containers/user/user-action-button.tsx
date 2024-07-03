@@ -1,7 +1,6 @@
 import { UserProfileType } from "@/enum/user";
 import { updateUser } from "@/services/user";
 import { useAuthStore } from "@/store/auth/auth.store";
-import { useQueryClient } from "@tanstack/react-query";
 import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useUserStore } from "@/store/user/user.store";

@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import KLogo from "../../../../public/static/images/logo/Icon_light.png";
 import Image from "next/image";
+import { IComment } from "@/interface/movies";
 
-const Comment = () => {
+import CommentBox from "./comment-box";
+import CommentArea from "./comment-area";
+import { useAuthStore } from "@/store/auth/auth.store";
+import CommentItem from "./comment-item";
+
+const Comment = ({ comment }: { comment: IComment }) => {
+    const [replyTo, setReplyTo] = useState<string | null>(null);
+    const user = useAuthStore((state) => state.user);
     return (
-        <div className="flex bg-dark2 rounded p-2 w-full">
-            <Image
-                width={60}
-                height={60}
-                src={KLogo.src}
-                alt="avatar"
-                className=" object-cover h-[60px] w-[60px] border-[3px] border-[#656565] rounded-[8px]"
-            />
-            <div className="flex-1 flex flex-col ml-[10px]">
-                <div className=" font-bold text-[#ffce4f] text-[14px]">Bảo Kiên</div>
-                <div className="text-[#afaaaa] text-[13px] break-all">Test bình luận</div>
-                <div className="text-[#7d7d7d] text-xs">1 giờ trước</div>
+        <div className="flex flex-col gap-1 w-full">
+            <CommentItem userId={user?._id} comment={comment} setReplyTo={setReplyTo} />
+            <div className="border-l border-black   flex flex-col gap-1 w-   pl-3 ml-3">
+                {comment.replies.map((reply) => (
+                    <CommentItem key={reply._id} userId={user?._id} setReplyTo={setReplyTo} comment={reply} />
+                ))}
+                {replyTo && <CommentArea replyTo={replyTo} replyId={comment._id} userId={user?._id!} row={1} movieId={comment.movieId} />}
+
+                {/* <Comment />
+        <Comment /> */}
+
+                {/* <div className="w-full flex justify-center">
+            <span className="cursor-pointer font-semibold text-sm hover:text-white/80">Tải thêm</span>
+        </div> */}
             </div>
         </div>
     );

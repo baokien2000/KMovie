@@ -12,7 +12,6 @@ const Bookmark = ({ slug }: { slug: string }) => {
     // const bookmarks = useUserStore((state) => state.bookmarks);
     const user = useAuthStore((state) => state.user);
     const [bookmarks, setBookmark] = useState<string[]>([]);
-    console.log("user", user);
     useEffect(() => {
         if (!user?._id) {
             bookmarks?.length > 0 && setBookmark([]);

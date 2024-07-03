@@ -74,16 +74,13 @@ export default function ChangePassModal({ user }: { user: IUser }) {
             return;
         }
         const verify = await verifyCaptcha(captchaToken);
-        console.log("verifyCaptcha", verify);
         if (verify.status !== 200) {
             setError("captcha", { message: "Vui lòng xác nhận bạn không phải là robot" });
             return;
         }
         setLoading(true);
         try {
-            console.log("onSubmit", data);
             const res = await changePassword(user, data.oldPassword, data.newPassword);
-            console.log("Res", res);
             switch (res.status) {
                 case 401:
                     setError("oldPassword", { message: "Mật khẩu cũ không đúng" });

@@ -9,8 +9,6 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
 
     useEffect(() => {
         const value = localStorage.getItem(key);
-        console.log("key",key);
-        console.log("value",value);
         if (value) {
             try {
                 const parsed = JSON.parse(value) as T;

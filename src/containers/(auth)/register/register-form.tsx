@@ -59,7 +59,6 @@ const RegisterForm = () => {
                 message: res.data.message,
             });
         }
-        // console.log("data", value);
         setLoading(false);
     };
     return (

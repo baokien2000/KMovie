@@ -1,3 +1,5 @@
+import { IUser } from "./user";
+
 //  Purpose: Define the interface for the movies list
 export interface ImovieList {
     blurImagesUrls?: string[];
@@ -115,3 +117,23 @@ export interface IHistory{
     time: number;
     episodes: string[];
 }
+
+
+export interface IComment {
+    content: string;
+    movieId: string;
+    userId?: IUser;
+    episode?: string;
+    _id: string;
+    createdAt: Date;
+    updateAt: Date;
+    replies: ICommentReply[]
+
+ }
+export interface ICommentReply{
+        updateAt: Date;
+    createdAt: Date;
+    _id: string;
+        userId?: IUser;
+        content: string;
+ }

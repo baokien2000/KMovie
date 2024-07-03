@@ -54,12 +54,8 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
         } else {
             toast.error("Đã xảy ra lỗi, vui lòng xác thực lại OTP");
         }
-        console.log("resetPassword res", res);
-        console.log("otpRes", otpRes);
-        console.log("data", value);
         setLoading(false);
     };
-    console.log("error", errors);
     return (
         <form
             onSubmit={handleSubmit((value) => handleReset(value))}

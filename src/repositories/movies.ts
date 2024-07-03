@@ -265,8 +265,66 @@ class MoviesRepository {
             console.log("error", error);
             return;
         }
-     }
+    }
+    
 
+    static addMovieComment = async ({ movieId, userId, content }: { movieId: string, userId: string, content: string }) => {
+        const url = baseURL + "/comment/addComment";
+        const payload = {
+            movieId: movieId,
+            userId: userId,
+            content: content
+        }
+        try {
+            const response = await axios({
+                method: "post",
+                url: url,
+                data: payload
+            })
+            return response
+        } catch (error) {
+            console.log("error", error);
+            return;
+        }
+     }
+    static getMovieCommentById = async (movieId: string) => {
+        const url = baseURL + "/comment/getMovieCommentById";
+        const payload = {
+            movieId: movieId
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params: payload
+            })
+            return response.data?.comments ?? []
+        
+        } catch (error) {
+            console.log("error", error);
+            return;
+        }
+    }
+    static replyMovieComment = async ({ movieId, userId, content, replyId }: { movieId: string, userId: string, content: string, replyId: string }) => { 
+        const url = baseURL + "/comment/replyComment";
+        const payload = {
+            movieId: movieId,
+            userId: userId,
+            content: content,
+            replyId: replyId
+        }
+        try {
+            const response = await axios({
+                method: "post",
+                url: url,
+                data: payload
+            })
+            return response
+        } catch (error) {
+            console.log("error", error);
+            return;
+        }
+    }
 }
 
 export default MoviesRepository;

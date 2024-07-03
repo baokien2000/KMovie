@@ -1,5 +1,5 @@
 import Action from "@/containers/(movie)/movie-details/action";
-import CommentList from "@/containers/(movie)/movie-comment";
+import CommentContainer from "@/containers/(movie)/movie-comment";
 import Description from "@/containers/(movie)/movie-details/description";
 import Info from "@/containers/(movie)/movie-details/info";
 import { getKMovie, getMovieBySlug } from "@/services/movies";
@@ -51,7 +51,7 @@ export default async function Page({ params }: PageProps) {
                 />
                 <Description content={movie.movie.content} />
             </div>
-            <CommentList id={movie.movie._id} />
+            <CommentContainer id={movie.movie._id} />
         </main>
     );
 }

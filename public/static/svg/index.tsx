@@ -107,8 +107,8 @@ export const SendIcon = (props: SVGProps) => {
         <svg className={props.className} width="20" height="20" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M6.05304 8.49231L7.38691 12.0077C7.67322 12.7622 8.68441 12.8804 9.10657 12.1926C10.9257 9.22858 12.2512 6.05742 12.2746 3.14649C12.2785 2.65826 11.8871 2.26677 11.3989 2.27067C8.48804 2.29395 5.31683 3.61947 2.35289 5.43864C1.66508 5.86079 1.78326 6.87195 2.53778 7.15829L6.05304 8.49231Z"
-                fill="#000"
-                stroke="#000"
+                fill={props.fill ?? "#000"}
+                stroke={props.fill ?? "#000"}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
