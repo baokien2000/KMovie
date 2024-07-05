@@ -20,7 +20,7 @@ const MovieSlider = (props: {
             // @ts-ignore
             modules={[FreeMode, Scrollbar, A11y, Autoplay]}
             loop={true}
-            speed={500}
+            speed={1000}
             freeMode={true}
             scrollbar={{
                 hide: false,
