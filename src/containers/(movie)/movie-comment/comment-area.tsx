@@ -23,8 +23,6 @@ const CommentArea = ({ movieId, userId, row = 3, replyId, replyTo }: CommentArea
         const res = replyId
             ? await replyMovieComment({ movieId, userId, content: comment, replyId })
             : await addMovieComment({ movieId, userId, content: comment });
-        // if (!res) return toast.error("Đã xảy ra lỗi, vui lòng thử lại sau!");
-        console.log("Res", res);
 
         switch (res?.status) {
             case 400:

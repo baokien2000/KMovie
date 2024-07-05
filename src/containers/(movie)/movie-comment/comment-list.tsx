@@ -34,7 +34,6 @@ const CommentList = ({ movieId }: { movieId: string }) => {
         },
         getPreviousPageParam: (firstPage, allPages, pageParams) => pageParams - 1,
     });
-    console.log("comments", comments);
     return (
         <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1 items-center">

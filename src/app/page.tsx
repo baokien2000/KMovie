@@ -17,7 +17,6 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
         getKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, ""),
         getRecommendedMovies(10),
     ]);
-    console.log("recommended", recommended);
     return (
         <main className="md:p-6 sm:p-3 py-3  ">
             <div className="space-y-3 ">

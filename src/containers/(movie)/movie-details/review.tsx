@@ -26,14 +26,12 @@ const ReviewMovie = ({ slug }: ReviewMovieProps) => {
         queryKey: ["reviewMoive", slug, user?._id],
         queryFn: async () =>
             getUserMovieReview(slug, user?._id!).then((res) => {
-                console.log("getUserMovieReview", res);
                 if (res?.rating) setSelectedStar(res.rating - 1);
                 return res;
             }),
         refetchOnWindowFocus: false,
         enabled: user?._id ? true : false,
     });
-    console.log("review", review);
     if (!user)
         return (
             <Button
@@ -56,7 +54,6 @@ const ReviewMovie = ({ slug }: ReviewMovieProps) => {
                 return;
             }
             const res = await addMovieReview(user._id, slug, selectedStar + 1);
-            console.log(" reviewMovie res", res);
             toast.success("Đánh giá thành công");
             closeModal && closeModal();
         } catch (error) {

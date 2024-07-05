@@ -15,7 +15,6 @@ const MovieSlider = (props: {
     };
 }) => {
     const { movies } = props;
-    console.log("movie", movies);
     return (
         <Swiper
             // @ts-ignore

@@ -41,7 +41,6 @@ const WebFeedback = ({ user }: { user: IUser }) => {
                     duration: 3000,
                 });
             } else {
-                console.log("error", res);
                 toast.error("Đánh giá thất bại, vui lòng thử lại sau");
             }
         } catch (error) {
