@@ -19,12 +19,12 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
     ]);
     return (
         <main className="md:p-6 sm:p-3 py-3  ">
-            {/* <div className="space-y-3 ">
+            <div className="space-y-3 ">
                 <MovieListTitle title="Phim đề xuất" />
                 <Suspense fallback={<MoviesSliderSkeleton />}>
                     <MovieSlider movies={recommended} />
                 </Suspense>
-            </div> */}
+            </div>
 
             <div className="space-y-3 ">
                 <MovieListTitle id={"MovieListTitle"} title="Phim mới cập nhật" />
