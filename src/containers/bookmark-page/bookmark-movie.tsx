@@ -1,6 +1,5 @@
 "use client";
 import Loading from "@/app/(movie-list-container)/theo-doi/loading";
-import MoviePagination from "@/components/movies/pagiantion/movie-pagination";
 import MoviesList from "@/components/movies/list/movies-list";
 import { pageSize } from "@/enum/movies";
 import { useRouter } from "@/lib/router-events";
@@ -9,11 +8,14 @@ import { useUserStore } from "@/store/user/user.store";
 import { createQueryString } from "@/utils/format-string";
 import { scrollToTitleId } from "@/utils/scroll";
 import { useQuery } from "@tanstack/react-query";
+import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
+const MoviePagination = dynamic(() => import("@/components/movies/pagiantion/movie-pagination"), { ssr: false });
 interface BookmarkMoviesProps {
     searchParams?: { [key: string]: string | undefined };
     page: number;
 }
+
 const BookmarkMovies = ({ searchParams, page }: BookmarkMoviesProps) => {
     const [isLoading, setIsloading] = React.useState(true);
     const bookmarks = useUserStore((state) => state.bookmarks);
