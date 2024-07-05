@@ -136,4 +136,13 @@ export interface ICommentReply{
     _id: string;
         userId?: IUser;
         content: string;
- }
+}
+export interface ICommentList { 
+    comments: IComment[];
+    pagination: {
+        totalItems: number,
+        totalItemsPerPage: number,
+        currentPage:number,
+        totalPages: number,
+    },
+}

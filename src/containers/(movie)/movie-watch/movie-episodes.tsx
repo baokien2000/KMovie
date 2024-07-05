@@ -20,7 +20,7 @@ const EpisodesList = ({ slug, episodes, currentEpisode }: EpisodesProps) => {
         enabled: (user?._id?.length ?? 0) > 0,
     });
     return (
-        <div className="w-full p-3 space-y-2 text-default  bg-des rounded">
+        <div className="w-full p-3 space-y-2 text-default  bg-des sm:rounded">
             <h3 className="font-semibold ">Danh sách tập phim</h3>
             <div className=" text-sm overflow-auto  items-start flex flex-wrap ">
                 {episodes.map((ep, index) => {

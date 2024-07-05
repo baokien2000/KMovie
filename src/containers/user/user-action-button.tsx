@@ -7,6 +7,7 @@ import { useUserStore } from "@/store/user/user.store";
 import ChangePassModal from "./change-pass-modal";
 import ReCAPTCHA from "react-google-recaptcha";
 import { isCaptchaValid } from "@/utils/auth";
+import WebFeedback from "../header/web-feedback";
 
 const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setStatus: (value: UserProfileType) => void }) => {
     const [loading, setLoading] = useState(false);
@@ -53,6 +54,7 @@ const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setS
     return (
         <div className="w-full flex-wrap px-3 sm:px-0 text-sm gap-4 flex">
             {user && status === "idle" && <ChangePassModal user={user} />}
+            {user && !user.isReviewed && status === "idle" && <WebFeedback user={user} />}
             {status === "edited" && !loading && (
                 <div className="captcha scale-75 phone:scale-100 " style={{ transformOrigin: "0 0" }}>
                     <ReCAPTCHA

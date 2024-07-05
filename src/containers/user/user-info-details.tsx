@@ -42,7 +42,7 @@ const UserNameEditRow = ({ name, status, setStatus }: { name: string; status: Us
                 <input
                     id="userEditName"
                     onChange={() => setStatus("edited")}
-                    maxLength={30}
+                    maxLength={25}
                     className="bg-white text-dark4 px-2 outline-none"
                     defaultValue={name}
                 />

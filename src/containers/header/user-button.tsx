@@ -1,7 +1,7 @@
 "use client";
-import { Link } from "@/lib/router-events";
+import { Link, useRouter } from "@/lib/router-events";
 import React from "react";
-import { BookmarkIcon, ClockIcon, LoginIcon, LogoutIcon, PencilSquareIcon, UserCircleIcon } from "../../../public/static/svg";
+import { BookmarkIcon, ClockIcon, LoginIcon, LogoutIcon, PencilSquareIcon, UserCircleIcon, UserIcon } from "../../../public/static/svg";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { PencilIcon } from "@heroicons/react/20/solid";
 import { useAuthStore } from "@/store/auth/auth.store";
@@ -9,21 +9,22 @@ import axios from "axios";
 import { usePathname } from "next/navigation";
 import { on } from "events";
 import { cn } from "@/lib/cn";
+import WebFeedback from "./web-feedback";
 
 const UserButtonData = [
     {
-        icon: <PencilSquareIcon className="size-5 " />,
+        icon: <UserIcon className="size-5 " />,
         title: "Tài khoản",
         href: "/tai-khoan",
     },
     {
-        icon: <ClockIcon className="size-5 " />,
+        icon: <ClockIcon fill="currentColor" className="size-5 " />,
         title: "Xem gần đây",
         href: "/xem-gan-day",
         className: "flex sm:hidden",
     },
     {
-        icon: <BookmarkIcon className="size-5 " />,
+        icon: <BookmarkIcon fill="currentColor" className="size-5 " />,
         title: "Phim đã lưu",
         href: "/phim-da-luu",
         className: "flex sm:hidden",
@@ -33,7 +34,9 @@ const UserButtonData = [
 const UserButton = () => {
     const user = useAuthStore((state) => state.user);
     const pathName = usePathname();
+    const router = useRouter();
     const handleLogout = async () => {
+        router.push("/dang-nhap");
         useAuthStore.setState({ user: null });
         const res = await axios({ url: "/api", method: "delete", withCredentials: true });
     };
@@ -46,7 +49,7 @@ const UserButton = () => {
 
             <MenuItems
                 anchor="bottom end"
-                className="w-52 z-10 mt-4 origin-top-right rounded-xl border border-white/5 bg-mainBackground/90 p-1 text-sm/6 text-title transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                className="w-52 leading-[1.2] z-10 mt-4 origin-top-right rounded-xl border border-white/5 bg-mainBackground/90 p-1 text-sm/6 text-title transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
             >
                 {UserButtonData.map((item, index) => (
                     <MenuItem key={item.href}>
@@ -76,6 +79,7 @@ const UserButton = () => {
                         <kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-[focus]:inline">⌘</kbd>
                     </button>
                 </MenuItem>
+                {/* <MenuItem>{({ close }) => <WebFeedback close={close} />}</MenuItem> */}
             </MenuItems>
         </Menu>
     ) : (

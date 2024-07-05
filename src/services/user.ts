@@ -8,3 +8,6 @@ export interface IUpdateUserPayloadProps{
 export async function updateUser (user: IUser, payload: IUpdateUserPayloadProps) {
     return await UserRepository.updateUser(user,payload);
 }
+export async function sendFeedback ( userId: string, rating: number, feedback: string ) {
+    return await UserRepository.sendFeedback(userId,rating,feedback);
+}

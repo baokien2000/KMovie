@@ -28,7 +28,28 @@ class UserRepository {
             return error.response
         }
     }
+    static sendFeedback = async (userId: string, rating: number, feedback: string) => {
+        const url = `${baseURL}/users/sendFeedback`;
+        const controller = new AbortController();
+        try {
+            const response = await axios({
+                url: url,
+                method: 'post',
+                data: {
+                    userId,
+                    rating,
+                    feedback
+                },
+                withCredentials: true,
+                signal: controller.signal,
+            })
 
+            return response
+            
+        } catch (error: any) {
+            return error.response
+        }
+    }
 }
 
 export default UserRepository;

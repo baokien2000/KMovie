@@ -1,10 +1,11 @@
-import { IOphimMovie} from "@/interface/movies";
+import { ICommentList, IOphimMovie} from "@/interface/movies";
 import { cache } from "react";
 import axios from "axios";
 import { baseURL, resourceURL } from ".";
 
 
 
+  
 class MoviesRepository {
 
     static searchKMovie = cache(async (value: string, limit: number) => {
@@ -25,7 +26,20 @@ class MoviesRepository {
             console.log(error)
         }
     })
-
+    static getRecommendedMovies = cache(async (limit:number) => { 
+        const url = baseURL + "/movies/getRecommendedMovies";
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params: {limit}
+            })
+            return response.data
+        } catch (error:any) {
+            console.log("error",error);
+            return ;
+        }
+    })
     static getKMovie = cache(async (
         page: number,
         pageSize: number,
@@ -268,7 +282,7 @@ class MoviesRepository {
     }
     
 
-    static addMovieComment = async ({ movieId, userId, content }: { movieId: string, userId: string, content: string }) => {
+    static addMovieComment = async ({ movieId, userId, content }: { movieId: string, userId: string, content: string }) : Promise<any>=> {
         const url = baseURL + "/comment/addComment";
         const payload = {
             movieId: movieId,
@@ -282,30 +296,28 @@ class MoviesRepository {
                 data: payload
             })
             return response
-        } catch (error) {
+        } catch (error : any) {
             console.log("error", error);
-            return;
+            return error.response;
         }
      }
-    static getMovieCommentById = async (movieId: string) => {
+    static getMovieCommentById = async (movieId: string,page:number,limit:number):Promise<ICommentList | null> => {
         const url = baseURL + "/comment/getMovieCommentById";
-        const payload = {
-            movieId: movieId
-        }
+        const payload = {movieId,page,limit}
         try {
             const response = await axios({
                 method: "get",
                 url: url,
                 params: payload
             })
-            return response.data?.comments ?? []
+            return response.data 
         
         } catch (error) {
             console.log("error", error);
-            return;
+            return null;
         }
     }
-    static replyMovieComment = async ({ movieId, userId, content, replyId }: { movieId: string, userId: string, content: string, replyId: string }) => { 
+    static replyMovieComment = async ({ movieId, userId, content, replyId }: { movieId: string, userId: string, content: string, replyId: string }) : Promise<any>=> { 
         const url = baseURL + "/comment/replyComment";
         const payload = {
             movieId: movieId,
@@ -320,9 +332,43 @@ class MoviesRepository {
                 data: payload
             })
             return response
-        } catch (error) {
-            console.log("error", error);
-            return;
+        } catch (error : any) {
+            return error.response;
+        }
+    }
+    static addMovieReview = async (userId: string, movieSlug: string, star: number) => { 
+        const url = baseURL + "/movies/addMovieReview";
+        const payload = {
+            userId: userId,
+            slug: movieSlug,
+            rating: star
+        }
+        try {
+            const response = await axios({
+                method: "put",
+                url: url,
+                data: payload
+            })
+            return response
+        } catch (error: any) {
+            return error.response
+        }
+    }
+    static getUserMovieReview = async (movieSlug: string, userId: string) => { 
+        const url = baseURL + "/movies/getUserMovieReview";
+        const payload = {
+            userId: userId,
+            slug: movieSlug
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params: payload
+            })
+            return response.data
+        } catch (error: any) {
+            return error.response
         }
     }
 }

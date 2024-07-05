@@ -3,6 +3,7 @@ import { ICategory, IMovie, IMovieDetails } from "@/interface/movies";
 import Image from "next/image";
 import { Link } from "@/lib/router-events";
 import React from "react";
+import { cn } from "@/lib/cn";
 interface InfoProps {
     movie: IMovieDetails;
 }
@@ -11,9 +12,20 @@ const Info = ({ movie }: InfoProps) => {
         <div className="w-full text-sm rounded overflow-hidden">
             <h1 className="p-3 bg-cardBackground text-base text-center text-[#cccccc] font-bold ">{movie.name}</h1>
 
-            <div className="flex h-full flex-col sm:flex-row sm:p-3 bg-[#191919] items-start  ">
-                <div className="w-fit h-full sm:p-1 bg-black sm:rounded">
-                    <div className="relative aspect-[3/4] w-screen  sm:w-[250px] rounded sm:min-w-[250px]    h-auto ">
+            <div className="flex  relative  max-sm:aspect-[3/4] flex-col sm:flex-row sm:p-3 sm:bg-[#191919] items-start ">
+                <Image
+                    src={movie.poster_url}
+                    sizes="(max-width: 640px) 50vw,250px"
+                    quality={75}
+                    priority
+                    rel="preload"
+                    loading="eager"
+                    alt="thumbnail"
+                    fill
+                    className={cn("object-cover bg-[#191919] sm:hidden z-[-1] pointer-events-none sm:rounded", movie.poster_url && "opacity-20")}
+                />
+                <div className="w-fit mx-auto h-fit py-10 sm:p-1 sm:bg-black sm:rounded">
+                    <div className="relative aspect-[3/4] w-[calc(100svw/2)]  sm:w-[250px] rounded sm:min-w-[250px]    h-auto ">
                         <Image
                             src={movie.thumb_url}
                             sizes="(max-width: 640px) 100vw,250px"
@@ -23,7 +35,7 @@ const Info = ({ movie }: InfoProps) => {
                             loading="eager"
                             alt="thumbnail"
                             fill
-                            className="object-cover sm:rounded"
+                            className="object-cover bc-[#191919] sm:rounded"
                         />
                     </div>
                 </div>

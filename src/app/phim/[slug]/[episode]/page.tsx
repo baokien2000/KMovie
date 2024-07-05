@@ -7,6 +7,7 @@ import CommentContainer from "@/containers/(movie)/movie-comment";
 import { Metadata } from "next";
 import MoviePlayer from "@/components/movies/player/movie-player";
 import { ImovieList } from "@/interface/movies";
+import MovieNoti from "@/containers/(movie)/movie-watch/movie-noti";
 
 interface PageProps {
     params: {
@@ -64,6 +65,7 @@ export default async function Page({ params, searchParams }: PageProps) {
     if (!episode) return <div>Không tìm thấy tập phim | 404</div>;
     return (
         <main className="md:p-6 sm:p-3 py-3 space-y-3 ">
+            <MovieNoti />
             <MovieTiltle slug={movie.movie.slug} episode={episode.slug} name={movie.movie.name} />
             <MovieServer currentEpisode={episodeParam} servers={movie.episodes} slug={movie.movie.slug} />
             <MoviePlayer movieSlug={movie.movie.slug} episode={episode} />

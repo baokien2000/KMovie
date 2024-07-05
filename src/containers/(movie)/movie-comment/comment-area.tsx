@@ -23,12 +23,23 @@ const CommentArea = ({ movieId, userId, row = 3, replyId, replyTo }: CommentArea
         const res = replyId
             ? await replyMovieComment({ movieId, userId, content: comment, replyId })
             : await addMovieComment({ movieId, userId, content: comment });
-        if (res?.status === 200) {
-            setComment("");
-            queryClient.invalidateQueries({
-                queryKey: ["comments", movieId],
-            });
-        } else toast.error("Đã xảy ra lỗi, vui lòng thử lại sau!");
+        // if (!res) return toast.error("Đã xảy ra lỗi, vui lòng thử lại sau!");
+        console.log("Res", res);
+
+        switch (res?.status) {
+            case 400:
+                toast.error(res?.data?.message);
+                break;
+            case 200:
+                setComment("");
+                queryClient.invalidateQueries({
+                    queryKey: ["comments", movieId],
+                });
+                break;
+            default:
+                toast.error("Đã xảy ra lỗi, vui lòng thử lại sau!");
+                break;
+        }
         setLoading(false);
     };
     useEffect(() => {
@@ -43,7 +54,7 @@ const CommentArea = ({ movieId, userId, row = 3, replyId, replyTo }: CommentArea
                 onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
                         e.preventDefault();
-                        comment.length > 0 && handleAddComment();
+                        comment.length > 0 && !loading && handleAddComment();
                     }
                 }}
                 className={cn(

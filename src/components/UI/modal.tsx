@@ -1,5 +1,5 @@
 import { cn } from "@/lib/cn";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import { Fragment, ReactNode, cloneElement, createContext, forwardRef, useContext, useEffect, useState } from "react";
 
 type ModalContextType = {
@@ -7,7 +7,7 @@ type ModalContextType = {
     openModal: () => void;
     closeModal: () => void;
 };
- 
+
 const ModalContext = createContext({} as ModalContextType);
 
 function Modal({ children, onRequestClose }: { children: React.ReactNode; onRequestClose?: () => void }) {
@@ -78,25 +78,12 @@ function Content(
 ) {
     const { open, closeModal } = useContext(ModalContext);
 
-    useEffect(() => {
-        document.body.style.width = open ? "100vw" : "auto";
-        // document.body.style.paddingRight = open ? "16px" : "0px";
-        if (open && document.body.style.overflow !== "unset") {
-            document.body.classList.add("add-padding-when-open-popup");
-        } else {
-            document.body.classList.remove("add-padding-when-open-popup");
-        }
-        return () => {
-            document.body.style.overflow = "unset";
-            document.body.classList.remove("add-padding-when-open-popup");
-        };
-    }, [open]);
     if (!open) return null;
 
     return (
         <Transition appear show={open} as={Fragment}>
             <Dialog as="div" className="relative z-[100]" static onClose={() => (disableOutsideClick ? null : closeModal())}>
-                <Transition.Child
+                <TransitionChild
                     as={Fragment}
                     enter="ease-out duration-300"
                     enterFrom="opacity-0"
@@ -106,11 +93,11 @@ function Content(
                     leaveTo="opacity-0"
                 >
                     <div className="fixed inset-0 bg-black/25" />
-                </Transition.Child>
+                </TransitionChild>
 
                 <div className="fixed inset-0 w-screen overflow-y-auto">
                     <div className={cn("flex min-h-full items-center justify-center p-4 text-center", modalClassName)}>
-                        <Transition.Child
+                        <TransitionChild
                             as={Fragment}
                             enter="ease-out duration-300"
                             enterFrom="opacity-0 scale-95"
@@ -119,7 +106,7 @@ function Content(
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <Dialog.Panel
+                            <DialogPanel
                                 ref={ref}
                                 className={cn(
                                     "relative aspect-square h-full w-full max-w-xl transform  bg-white  text-left align-middle shadow-xl transition-all desktop:max-w-3xl",
@@ -128,8 +115,8 @@ function Content(
                             >
                                 <ButtonClose icon={icon} />
                                 {open && <div> {children(closeModal)}</div>}
-                            </Dialog.Panel>
-                        </Transition.Child>
+                            </DialogPanel>
+                        </TransitionChild>
                     </div>
                 </div>
             </Dialog>

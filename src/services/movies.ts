@@ -3,6 +3,10 @@ import MoviesRepository from "@/repositories/movies";
 export async function getKMovie(page: number, pageSize: number,search?: string) {
     return await MoviesRepository.getKMovie(page,pageSize,search);
 }
+export async function getRecommendedMovies(limit:number) { 
+    return await MoviesRepository.getRecommendedMovies(limit);
+
+}
 
 export async function searchKMovie(value: string,limit:number) {
     if(value.length === 0) return null;
@@ -57,9 +61,16 @@ export async function getViewedMovie(userId: string) {
 export async function addMovieComment({ movieId, userId, content }:{movieId:string,userId:string,content:string}) {
     return await MoviesRepository.addMovieComment({ movieId, userId, content });
 }
-export async function getMovieCommentById(movieId: string) {
-    return await MoviesRepository.getMovieCommentById(movieId);
+export async function getMovieCommentById(movieId: string,page:number,limit:number) {
+    return await MoviesRepository.getMovieCommentById(movieId,page,limit);
 }
 export async function replyMovieComment({ movieId, userId, content, replyId }: { movieId: string, userId: string, content: string,replyId:string }) {
     return await MoviesRepository.replyMovieComment({ movieId, userId, content,replyId });
+}
+export async function addMovieReview(userId: string, movieSlug: string, star: number) {
+    return await MoviesRepository.addMovieReview(userId, movieSlug, star);
+
+}
+export async function getUserMovieReview(movieSlug: string, userId: string) {
+    return await MoviesRepository.getUserMovieReview(movieSlug, userId);
 }

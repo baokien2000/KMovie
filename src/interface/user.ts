@@ -5,6 +5,7 @@ export interface IUser{
     name: string;
     gender: IGender;
     avatar: string;
+    isReviewed?:boolean
     _id: string;
     createdAt: string;
     updatedAt: string;

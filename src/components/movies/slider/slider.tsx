@@ -4,12 +4,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "swiper/css/scrollbar";
 import "./style.css";
-import { ImovieList } from "@/interface/movies";
+import { IMovie } from "@/interface/movies";
 import MovieCard from "../card/movie-card";
 import { memo } from "react";
 
-const MovieSlider = (props: { movies: ImovieList }) => {
+const MovieSlider = (props: {
+    movies: {
+        movies: IMovie[];
+        pathImage: string;
+    };
+}) => {
     const { movies } = props;
+    console.log("movie", movies);
     return (
         <Swiper
             // @ts-ignore
@@ -34,7 +40,7 @@ const MovieSlider = (props: { movies: ImovieList }) => {
                 1024: { slidesPerView: 6, spaceBetween: 8 }, // when window width is >: 768px
             }}
         >
-            {movies?.items?.map((item, index) => (
+            {movies?.movies.map((item, index) => (
                 <SwiperSlide key={item._id}>
                     <MovieCard enableBlur quality={50} key={item._id} loading={"lazy"} movie={item} ImagePath={movies.pathImage} />
                 </SwiperSlide>

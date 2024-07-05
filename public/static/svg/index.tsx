@@ -3,6 +3,7 @@ import React from "react";
 interface SVGProps {
     className?: string;
     onClick?: () => void;
+    onMouseEnter?: () => void;
     size?: string;
     fill?: string;
 }
@@ -66,7 +67,7 @@ export const ClockIcon = (props: SVGProps) => {
         <svg className={props.className} width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                stroke="#cac9c9"
+                stroke={props.fill ?? "#cac9c9"}
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -139,12 +140,21 @@ export const PlayIcon = (props: SVGProps) => {
 };
 export const StarIcon = (props: SVGProps) => {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            onClick={props?.onClick}
+            onMouseEnter={props?.onMouseEnter}
+            className={props.className}
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <g clipPath="url(#clip0_1_2289)">
                 <path
                     d="M11.049 2.92664C11.3483 2.00537 12.6517 2.00538 12.951 2.92664L14.4699 7.60055C14.6038 8.01254 14.9877 8.29148 15.4209 8.29149L20.3354 8.29168C21.3041 8.29172 21.7068 9.53127 20.9232 10.1007L16.9474 12.9895C16.5969 13.2441 16.4503 13.6955 16.5841 14.1075L18.1026 18.7815C18.4019 19.7028 17.3475 20.4689 16.5638 19.8995L12.5878 17.011C12.2373 16.7564 11.7627 16.7564 11.4122 17.011L7.43622 19.8995C6.65252 20.4689 5.5981 19.7028 5.8974 18.7815L7.41589 14.1075C7.54974 13.6955 7.40309 13.2441 7.05263 12.9895L3.07683 10.1007C2.29317 9.53127 2.69592 8.29172 3.66461 8.29168L8.57911 8.29149C9.01231 8.29148 9.39623 8.01254 9.53011 7.60055L11.049 2.92664Z"
                     stroke={props.fill ?? "#111827"}
-                    strokeWidth="1"
+                    strokeWidth="1.5"
                 />
             </g>
             <defs>
@@ -182,12 +192,12 @@ export const FilmIcon = (props: SVGProps) => {
     );
 };
 
-export const ReportIcon = () => {
+export const ReportIcon = (props: SVGProps) => {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className={props.className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                stroke="#fff"
+                stroke={props.fill ?? "#fff"}
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -340,3 +350,10 @@ export const PencilSquareIcon = (props: SVGProps) => {
         </svg>
     );
 };
+
+export const UserIcon = (props: SVGProps) => {
+    return <svg className={props.className}  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+  </svg>
+  
+}

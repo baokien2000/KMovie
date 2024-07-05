@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import _ from "lodash";
 
 const HeaderDisplay = () => {
     let scroll = 0;
@@ -17,7 +18,6 @@ const HeaderDisplay = () => {
                     headerAppClass?.remove("auto-scroll");
                     headerAppClass?.remove("opacity-0");
                     headerAppClass?.remove("pointer-events-none");
-
                 }
             } else {
                 headerAppClass?.add("opacity-0");
@@ -28,11 +28,11 @@ const HeaderDisplay = () => {
 
             scroll = window.scrollY;
         };
-
-        window.addEventListener("scroll", handleScroll);
+        const throttledHandleScroll = _.throttle(handleScroll, 100);
+        window.addEventListener("scroll", throttledHandleScroll);
 
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", throttledHandleScroll);
         };
     }, []);
     return null;

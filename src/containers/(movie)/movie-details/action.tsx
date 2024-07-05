@@ -3,6 +3,7 @@ import { Link } from "@/lib/router-events";
 import React from "react";
 import { PlayIcon, StarIcon } from "../../../../public/static/svg";
 import Bookmark from "./bookmark";
+import ReviewMovie from "./review";
 interface ActionProps {
     slug: string;
     isTrailer: boolean;
@@ -20,15 +21,7 @@ const Action = ({ slug, isTrailer, episodes }: ActionProps) => {
             </Link>
             <div className="flex sm:gap-[10px] gap-[5px] text-title ">
                 <Bookmark slug={slug} />
-
-                <Link
-                    href={"#"}
-                    className="py-1  bg-[#191919] px-3   hover:text-mainColor  rounded-md flex items-center justify-center gap-2 w-fit  "
-                >
-                    {" "}
-                    <StarIcon fill="currentColor" />
-                    <span className="hidden sm:inline">Đánh giá</span>
-                </Link>
+                <ReviewMovie slug={slug} />
             </div>
         </div>
     );
