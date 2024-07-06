@@ -14,12 +14,12 @@ class AuthRepository {
             const response = await axios({
                 url: url,
                 method: 'post',
+                withCredentials: true,
                 headers: {
                     'Access-Control-Allow-Origin': '*', 
                     'Content-Type': 'application/json'
                 },
                 data: payload,
-                withCredentials: true,
                 signal: controller.signal,
             })
 
