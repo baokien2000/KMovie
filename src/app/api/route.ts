@@ -3,6 +3,8 @@ import { cookies } from 'next/headers'
 export async function GET() {
   const cookieStore = cookies()
   const token = cookieStore.get('refreshToken')
+  console.log("token", token);
+  console.log("cookieStore",cookieStore.getAll());
   if (token) {
     return  Response.json({ token })
   }

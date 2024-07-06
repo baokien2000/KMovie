@@ -16,13 +16,15 @@ class AuthRepository {
                 method: 'post',
                 withCredentials: true,
                 headers: {
-                    'Access-Control-Allow-Origin': '*', 
                     'Content-Type': 'application/json'
                 },
                 data: payload,
                 signal: controller.signal,
             })
+            // get cookie, but it still undefined 
+            const Ref = await axios({ url: "/api", method: "get", withCredentials: true });
 
+            console.log("Ref",Ref);
             return response
             
         } catch (error:any) {

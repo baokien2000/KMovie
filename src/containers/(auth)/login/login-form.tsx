@@ -22,7 +22,7 @@ const LoginForm = () => {
         const res = await Login(email, password);
         if (res.status === 200) {
             setUser(res.data);
-            // router.push("/");
+            router.push("/");
             toast.success("Đăng nhập thành công", {
                 duration: 1000,
             });
