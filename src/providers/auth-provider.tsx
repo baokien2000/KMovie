@@ -12,11 +12,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
     const tokenCheck = async () => {
-        const RefToken = (await axios({ url: "/api", method: "get", withCredentials: true }))?.data?.token?.value;
+        const Ref = await axios({ url: "/api", method: "get", withCredentials: true });
+        const RefToken = Ref?.data?.token?.value;
         console.log("RefToken", RefToken);
         if ((RefToken && isTokenExpired(RefToken)) || !RefToken) {
             setUser(null);
-            await axios({ url: "/api", method: "delete", withCredentials: true });
+            // await axios({ url: "/api", method: "delete", withCredentials: true });
             toast.error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
         } else {
             if (!user?.accessToken || isTokenExpired(user?.accessToken)) {

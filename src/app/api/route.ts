@@ -1,9 +1,10 @@
 import { cookies } from 'next/headers'
-import { type NextRequest } from 'next/server'
  
 export async function GET() {
-    const cookieStore = cookies()
+  const cookieStore = cookies()
+  console.log("im here",cookieStore.getAll());
   const token = cookieStore.get('refreshToken')
+  console.log("im here",token);
   if (token) {
     return  Response.json({ token })
   }
