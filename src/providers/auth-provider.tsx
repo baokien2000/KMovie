@@ -13,6 +13,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const setUser = useAuthStore((state) => state.setUser);
     const tokenCheck = async () => {
         const RefToken = (await axios({ url: "/api", method: "get", withCredentials: true }))?.data?.token?.value;
+        console.log("RefToken", RefToken);
         if ((RefToken && isTokenExpired(RefToken)) || !RefToken) {
             setUser(null);
             await axios({ url: "/api", method: "delete", withCredentials: true });

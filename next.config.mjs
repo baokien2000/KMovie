@@ -7,15 +7,15 @@ const nextConfig = {
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {
-                protocol: "https",
-                hostname: "**"
+                protocol: 'https',
+                hostname: 'img.ophim.live',
+                pathname: '**',
             },
             {
-                protocol: "https",
-                hostname: "res.cloudinary.com"
-            }
-
-
+                protocol: 'http',
+                hostname: 'res.cloudinary.com',
+                pathname: '**',
+            },
         ]
     },
     eslint: {

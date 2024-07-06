@@ -40,7 +40,7 @@ const MovieSlider = (props: {
             }}
         >
             {movies?.movies.map((item, index) => (
-                <SwiperSlide key={item._id}>
+                <SwiperSlide className="aspect-[3/4]" key={item._id}>
                     <MovieCard enableBlur quality={50} key={item._id} loading={"lazy"} movie={item} ImagePath={movies.pathImage} />
                 </SwiperSlide>
             ))}
