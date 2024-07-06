@@ -35,22 +35,10 @@ const LoginForm = () => {
     return (
         <form onSubmit={handleLogin} className="  text-sm  text-default p-2 phone:p-3 sm:p-6 w-[calc(100svw-24px)] sm:w-[500px]">
             <div className="phone:mb-3 mb-2">
-                <input
-                    defaultValue={"test@gmail.com"}
-                    className=" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 "
-                    name="email"
-                    type="text"
-                    placeholder="Email"
-                />
+                <input className=" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 " name="email" type="text" placeholder="Email" />
             </div>
             <div className="">
-                <input
-                    defaultValue={"Test1234"}
-                    className=" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2"
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                />
+                <input className=" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2" name="password" type="password" placeholder="Password" />
             </div>
             <div className="text-red-500 text-xs min-h-6 h-fit flex gap-1 items-center">
                 {errors && (
