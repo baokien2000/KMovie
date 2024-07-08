@@ -68,6 +68,7 @@ const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setS
             )}
             <button
                 onClick={() => setStatus("idle")}
+                disabled={loading}
                 className={`py-1 h-8 sm:h-9 px-2 font-bold text-default rounded flex items-center justify-center  gap-2 w-fit  bg-cardBackground  ${
                     status === "idle" ? "hidden" : "block ml-auto"
                 }`}

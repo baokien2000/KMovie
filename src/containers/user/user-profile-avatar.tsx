@@ -37,13 +37,13 @@ const UserProfileAvatar = ({
                 {avatar || currentAvatar ? (
                     <Image
                         src={currentAvatar ? `data:image/jpeg;base64,${currentAvatar}` : avatar ?? ""}
-                        sizes="(max-width: 640px) 100vw,250px"
+                        sizes="(max-width: 640px) 100vw,500px"
                         priority
                         rel="preload"
                         loading="eager"
                         alt="thumbnail"
                         fill
-                        className="object-contain rounded"
+                        className="object-cover rounded"
                     />
                 ) : (
                     <UserIcon />

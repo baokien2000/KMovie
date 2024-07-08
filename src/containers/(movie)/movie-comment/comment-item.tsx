@@ -18,7 +18,7 @@ const CommentItem = ({ comment, userId, setReplyTo }: CommentItemProps) => {
     return (
         <div className="flex bg-dark2 rounded p-[6px] sm:p-2 w-full leading-[1.2]">
             <div className="relative sm:size-[60px] size-[52px] border-[2px] rounded border-[#656565] ">
-                <Image sizes="60px" quality={50} fill src={comment.userId?.avatar ?? KLogo.src} alt="avatar" className=" object-contain  rounded" />
+                <Image sizes="200px" fill src={comment.userId?.avatar ?? KLogo.src} alt="avatar" className=" object-cover  rounded-sm" />
             </div>
 
             <div className="flex-1 flex flex-col ml-2 sm:ml-[10px]">

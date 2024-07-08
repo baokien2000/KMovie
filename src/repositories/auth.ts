@@ -132,16 +132,16 @@ class AuthRepository {
             return error.response
         }
     }
-    static VerifyOTP = async (email: string, otp: string) => { 
+    static VerifyOTP = async (email: string, otp: string,isSignIn:boolean) => { 
         
-        const url = `${baseURL}/otp/verifyOTP`;
+        const url = `${baseURL}/otp/${isSignIn ? "verifySignUpOTP" : "verifyOTP"}`;
         const payload = { email, otp }
         const controller = new AbortController();
         try {   
             const response = await axios({
                 url: url,
-                method: 'get',
-                params: payload,
+                method: 'post',
+                data: payload,
                 withCredentials: true,
                 signal: controller.signal,
             })

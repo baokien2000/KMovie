@@ -1,18 +1,23 @@
 "use client";
 import { Login, SignUp } from "@/services/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import { ErrorIcon } from "../../../../public/static/svg";
 import { useRouter } from "@/lib/router-events";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/cn";
+import { IOtpRes } from "../forgot/forgot-container";
+import ConfirmOtpForm from "../forgot/confirm-otp-form";
 
 const RegisterForm = () => {
     const [loading, setLoading] = React.useState(false);
     const router = useRouter();
+    const [otpRes, setOtpRes] = useState<IOtpRes>({
+        email: "",
+        expires: "",
+    });
     const formSchema = z
         .object({
             system: z.string().optional(),
@@ -47,13 +52,18 @@ const RegisterForm = () => {
         resolver: zodResolver(formSchema),
     });
 
-    const handleLogin = async (value: z.infer<typeof formSchema>) => {
+    const handleRegister = async (value: z.infer<typeof formSchema>) => {
         setLoading(true);
         const res = await SignUp(value.email, value.password);
         if (res.status === 200) {
-            reset();
-            router.push("/dang-nhap");
-            toast.success("Đăng nhập thành công");
+            // reset();
+            // router.push("/dang-nhap");
+            console.log("Register res", res);
+            toast.success("Đăng ký thành công, vui lòng xác thực tài khoản");
+            setOtpRes({
+                email: value.email,
+                expires: res?.data.expires,
+            });
         } else {
             setError("email", {
                 message: res.data.message,
@@ -61,10 +71,20 @@ const RegisterForm = () => {
         }
         setLoading(false);
     };
-    return (
+    return otpRes?.expires?.length ? (
+        <ConfirmOtpForm
+            otpRes={otpRes}
+            setOtpRes={setOtpRes}
+            isSignIn={true}
+            callback={() => {
+                router.push("/dang-nhap");
+                toast.success("Xác thực tài khoản thành công");
+            }}
+        />
+    ) : (
         <form
-            onSubmit={handleSubmit((value) => handleLogin(value))}
-            className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] sm:w-[400px]"
+            onSubmit={handleSubmit((value) => handleRegister(value))}
+            className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="sm:mb-3 mb-2">
                 <input

@@ -6,8 +6,9 @@ import React from "react";
 import { cn } from "@/lib/cn";
 interface InfoProps {
     movie: IMovieDetails;
+    blurImage: string | null;
 }
-const Info = ({ movie }: InfoProps) => {
+const Info = ({ movie, blurImage }: InfoProps) => {
     return (
         <div className="w-full text-sm rounded overflow-hidden">
             <h1 className="p-3 bg-cardBackground text-base text-center text-[#cccccc] font-bold ">{movie.name}</h1>
@@ -31,6 +32,8 @@ const Info = ({ movie }: InfoProps) => {
                             sizes="(max-width: 640px) 100vw,250px"
                             quality={75}
                             priority
+                            placeholder={blurImage ? "blur" : "empty"}
+                            blurDataURL={blurImage ?? ""}
                             rel="preload"
                             loading="eager"
                             alt="thumbnail"

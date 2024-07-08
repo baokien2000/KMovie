@@ -1,51 +1,44 @@
 "use client";
 import Loading from "@/app/(movie-list-container)/theo-doi/loading";
-import MoviesList from "@/components/movies/list/movies-list";
+import MovieListContainer from "@/components/movies/list/movie-list-container";
 import { pageSize } from "@/enum/movies";
-import { useRouter } from "@/lib/router-events";
-import { getMovieBySlugArray } from "@/services/movies";
-import { useUserStore } from "@/store/user/user.store";
-import { createQueryString } from "@/utils/format-string";
-import { scrollToTitleId } from "@/utils/scroll";
+import { Link } from "@/lib/router-events";
+import { getBookmarkMovie } from "@/services/movies";
+import { useAuthStore } from "@/store/auth/auth.store";
 import { useQuery } from "@tanstack/react-query";
-import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
-const MoviePagination = dynamic(() => import("@/components/movies/pagiantion/movie-pagination"), { ssr: false });
 interface BookmarkMoviesProps {
     searchParams?: { [key: string]: string | undefined };
-    page: number;
 }
 
-const BookmarkMovies = ({ searchParams, page }: BookmarkMoviesProps) => {
-    const [isLoading, setIsloading] = React.useState(true);
-    const bookmarks = useUserStore((state) => state.bookmarks);
-    const router = useRouter();
-
-    useEffect(() => setIsloading(false), []);
-
-    const { data: movies, isFetching } = useQuery({
-        queryKey: ["bookmark-movie", bookmarks],
-        queryFn: async () => getMovieBySlugArray(page, pageSize, bookmarks),
+const BookmarkMovies = ({ searchParams }: BookmarkMoviesProps) => {
+    const [initialLoading, setInitialLoading] = React.useState(true);
+    const user = useAuthStore((state) => state.user);
+    const { data: bookmarkMovies, isFetching } = useQuery({
+        queryKey: ["bookmark-movie", user?._id, searchParams?.page],
+        queryFn: async () => getBookmarkMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, user?._id ?? ""),
         refetchOnWindowFocus: false,
-        enabled: bookmarks.length > 0,
+        enabled: (user?._id?.length ?? 0) > 0,
     });
-    if (isLoading || isFetching) return <Loading />;
-    if (!bookmarks || bookmarks.length === 0) {
-        return <div className="text-center text-base">Bạn chưa theo dõi bộ phim nào</div>;
-    }
+    useEffect(() => {
+        setInitialLoading(false);
+    }, []);
 
-    const handlePageClick = (data: { selected: number }) => {
-        const queryString = createQueryString(searchParams, "page", (data.selected + 1).toString());
-        scrollToTitleId("BookmarkListTitle");
-        router.push(`theo-doi?${queryString}`, { scroll: false });
-    };
-
-    return (
-        <>
-            <MoviesList quality={50} enableBlur movies={movies} />
-            <MoviePagination onPageClick={handlePageClick} totalPage={Math.ceil(movies?.pagination?.totalPages ?? 0)} />
-        </>
-    );
+    if (isFetching || initialLoading) return <Loading />;
+    if (!user?._id)
+        return (
+            <div className="w-full flex items-center justify-center h-10">
+                <Link
+                    href="/dang-nhap"
+                    className="opacity-90 hover:opacity-100 bg-[#ffce4f] w-fit mx-auto p-2 text-[#000] rounded    text-sm font-semibold"
+                >
+                    Đăng nhập để sử dụng chức năng này
+                </Link>
+            </div>
+        );
+    if (!bookmarkMovies || bookmarkMovies?.movies?.length === 0)
+        return <div className="w-full h-[full flex-1   flex items-center text justify-center text-default">Bạn chưa theo dõi bộ phim nào</div>;
+    return <MovieListContainer titleId="BookmarkListTitle" initialData={bookmarkMovies} searchParams={searchParams} />;
 };
 
 export default BookmarkMovies;

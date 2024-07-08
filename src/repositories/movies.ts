@@ -76,6 +76,20 @@ class MoviesRepository {
             console.log(error)
         }
     })
+    static getMovieBlurImage = cache(async (slug: string): Promise<string | null> => {
+        const url = baseURL + "/movies/getMovieBlurImage";
+        try {
+            const response = await axios({
+                method: 'get',
+                url: url,
+                params: {slug}
+            });
+            return response?.data?.blurImage
+        } catch (error) {
+            return null
+            console.log(error)
+        }
+    })
     
     static getFilterMovie = cache(async (
         page: number,
@@ -263,6 +277,77 @@ class MoviesRepository {
             return;
         }
     }
+    static getBookmarkMovie = async (page: number, pageSize: number,userId:string) => { 
+        const url = baseURL + "/movies/getBookmarkMovies";
+        const payload = {
+            page: page,
+            pageSize: pageSize,
+            userId: userId
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params:payload
+            })
+            return response.data
+        } catch (error) {
+            console.log("error",error);
+            return;
+        }
+    }
+    static checkMovieIsMarked = async (userId: string, slug: string) => { 
+        const url = baseURL + "/movies/checkBookmarkMovie";
+        const payload = {
+            userId: userId,
+            slug: slug
+        }
+        try {
+            const response = await axios({
+                method: "get",
+                url: url,
+                params: payload
+            })
+            return response.data?.isBookmark
+        } catch (error) {
+            console.log("error", error);
+            return false;
+        }
+    }
+    static removeBookmark = async (userId: string, slug: string) => { 
+        const url = baseURL + "/movies/removeBookmarkMovie";
+        const payload = {
+            userId: userId,
+            slug: slug
+        }
+        try {
+            const response = await axios({
+                method: "put",
+                url: url,
+                data: payload
+            })
+            return response.data
+        } catch (error: any) {
+            return error.response;
+        }
+    }
+    static addBookmark = async (userId: string, slug: string) => { 
+        const url = baseURL + "/movies/addBookmarkMovie";
+        const payload = {
+            userId: userId,
+            slug: slug
+        }
+        try {
+            const response = await axios({
+                method: "put",
+                url: url,
+                data: payload
+            })
+            return response.data
+        } catch (error: any) {
+            return error.response;
+        }
+    }
     static getViewedMovie = async (userId: string) => {
         const url = baseURL + "/history/getViewedMovie";
         const payload = {
@@ -346,6 +431,25 @@ class MoviesRepository {
         try {
             const response = await axios({
                 method: "put",
+                url: url,
+                data: payload
+            })
+            return response
+        } catch (error: any) {
+            return error.response
+        }
+    }
+    static addMovieReport = async (userId: string, slug: string, episode: string, reason: string) => { 
+        const url = baseURL + "/movies/addMovieReport";
+        const payload = {
+            userId: userId,
+            slug: slug,
+            episode: episode,
+            reason: reason
+        }
+        try {
+            const response = await axios({
+                method: "post",
                 url: url,
                 data: payload
             })

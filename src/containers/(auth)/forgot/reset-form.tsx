@@ -59,7 +59,7 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
     return (
         <form
             onSubmit={handleSubmit((value) => handleReset(value))}
-            className="  text-sm  text-default sm:p-6 p-3 w-[calc(100svw-24px)] sm:w-[400px]"
+            className="  text-sm  text-default sm:p-6 p-3 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="mb-3">
                 <input

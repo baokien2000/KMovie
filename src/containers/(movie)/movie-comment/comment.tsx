@@ -13,8 +13,10 @@ const Comment = ({ comment }: { comment: IComment }) => {
     const [limit, setLimit] = useState(3);
     const user = useAuthStore((state) => state.user);
     useEffect(() => {
-        setLimit(comment.replies.length);
-    }, [comment.replies.length]);
+        if (replyTo) {
+            setLimit(comment.replies.length);
+        }
+    }, [replyTo]);
     return (
         <div className="flex flex-col gap-1 w-full">
             <CommentItem userId={user?._id} comment={comment} setReplyTo={setReplyTo} />

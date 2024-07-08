@@ -15,6 +15,9 @@ export async function searchKMovie(value: string,limit:number) {
 export async function getMovieBySlug(slug: string) {
     return await MoviesRepository.getMovieBySlug(slug);
 }
+export async function getMovieBlurImage(slug: string) {
+    return await MoviesRepository.getMovieBlurImage(slug);
+}
 export async function getFilterMovie(page: number, pageSize: number, sort?: string, type?: string, year?: string, category?: string,status?:string,country?:string) {
     return await MoviesRepository.getFilterMovie(page, pageSize, sort, type, year, category,status,country);
 }
@@ -52,10 +55,23 @@ export async function getHistoryKMovie(page: number, pageSize: number, userId: s
     if (!userId || userId.length === 0) return null;
     return await MoviesRepository.getHistoryKMovie(page,pageSize,userId);
 }
-
+export async function getBookmarkMovie(page: number, pageSize: number, userId: string) {
+    if (!userId || userId.length === 0) return null;
+    return await MoviesRepository.getBookmarkMovie(page,pageSize,userId);
+}
 export async function getViewedMovie(userId: string) { 
     if (!userId || userId ?.length === 0) return null;
     return await MoviesRepository.getViewedMovie(userId);
+}
+export async function checkMovieIsMarked(userId: string,slug:string) {
+    if (!userId || userId.length === 0) return false;
+    return await MoviesRepository.checkMovieIsMarked(userId,slug);
+}
+export async function removeBookmark(userId: string, slug: string) { 
+    return await MoviesRepository.removeBookmark(userId, slug);
+}
+export async function addBookmark(userId: string, slug: string) {
+    return await MoviesRepository.addBookmark(userId, slug);
 }
 
 export async function addMovieComment({ movieId, userId, content }:{movieId:string,userId:string,content:string}) {
@@ -73,4 +89,8 @@ export async function addMovieReview(userId: string, movieSlug: string, star: nu
 }
 export async function getUserMovieReview(movieSlug: string, userId: string) {
     return await MoviesRepository.getUserMovieReview(movieSlug, userId);
+}
+
+export async function addMovieReport(userId:string,slug:string,episode:string,reason:string) {
+    return await MoviesRepository.addMovieReport(userId,slug,episode,reason);
 }

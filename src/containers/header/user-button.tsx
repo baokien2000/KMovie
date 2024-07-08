@@ -25,8 +25,8 @@ const UserButtonData = [
     },
     {
         icon: <BookmarkIcon fill="currentColor" className="size-5 " />,
-        title: "Phim đã lưu",
-        href: "/phim-da-luu",
+        title: "Phim đã theo dõi",
+        href: "/theo-doi",
         className: "flex sm:hidden",
     },
 ];

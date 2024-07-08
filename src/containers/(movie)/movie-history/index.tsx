@@ -14,7 +14,7 @@ const MovieHistory = ({ searchParams }: MovieHistoryProps) => {
     const [initialLoading, setInitialLoading] = React.useState(true);
     const user = useAuthStore((state) => state.user);
     const { data: historyMovies, isFetching } = useQuery({
-        queryKey: ["viewed-movie", user?._id],
+        queryKey: ["viewed-movie", user?._id, searchParams?.page],
         queryFn: async () => getHistoryKMovie(searchParams?.page ? parseInt(searchParams.page) : 1, pageSize, user?._id ?? ""),
         refetchOnWindowFocus: false,
         enabled: (user?._id?.length ?? 0) > 0,

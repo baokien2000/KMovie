@@ -1,16 +1,15 @@
-import { IForgotForm } from "@/enum/auth";
-import { VerifyOTP } from "@/services/auth";
-import React, { useRef, RefObject, useEffect, ClipboardEvent } from "react";
+import React, { useRef, useEffect } from "react";
 import toast from "react-hot-toast";
 import { IOtpRes } from "./forgot-container";
 import ResentOTPButton from "./resent-otp-button";
-import { set } from "nprogress";
+import { VerifyOTP } from "@/services/auth";
 interface ConfirmOtpFormProps {
-    setForm: (form: IForgotForm) => void;
+    callback?: () => void;
     otpRes: IOtpRes;
     setOtpRes: React.Dispatch<React.SetStateAction<IOtpRes>>;
+    isSignIn?: boolean;
 }
-const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => {
+const ConfirmOtpForm = ({ callback, otpRes, setOtpRes, isSignIn = false }: ConfirmOtpFormProps) => {
     const inputsRef = useRef<Array<HTMLInputElement>>([]);
     const [loading, setLoading] = React.useState(false);
     const [code, setCode] = React.useState<string>("");
@@ -24,11 +23,10 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
         e.preventDefault();
         setLoading(true);
         const otp = inputsRef.current.map((input) => input.value).join("");
-        const res = await VerifyOTP(otpRes.email, otp);
+        const res = await VerifyOTP(otpRes.email, otp, isSignIn);
         if (res.status === 200) {
-            toast.success("Xác thực thành công, vui lòng đặt lại mật khẩu");
-            setOtpRes({ ...otpRes, token: res.data.token });
-            setForm("reset-password");
+            setOtpRes({ ...otpRes, token: res.data?.token });
+            callback && callback();
         } else {
             toast.error("Mã OTP không chính xác");
         }
@@ -54,7 +52,7 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
     }, []);
 
     return (
-        <div className=" mx-auto text-center w-[calc(100svw-24px)] sm:w-full p-3 sm:p-4  ">
+        <div className=" mx-auto text-center w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px] p-3 sm:p-4  ">
             <div className="text-sm text-title  mb-3 ">
                 Nhập 6 số vừa được gửi đến email <p className="font-bold">{otpRes.email}</p>
                 <span className="text-xs"> Vui lòng kiểm tra cả bên trong thư rác</span>
@@ -81,7 +79,7 @@ const ConfirmOtpForm = ({ setForm, otpRes, setOtpRes }: ConfirmOtpFormProps) => 
                                     focusNextInput(index);
                                 }
                             }}
-                            className="size-8 sm:size-12 text-center text-base sm:text-xl font-extrabold text-default bg-dark4   appearance-none rounded p-2 sm:p-4 outline-none border border-transparent focus:border-mainColor "
+                            className="smallPhone:size-8 size-6 phone:size-10 bigPhone:size-12 text-center text-base sm:text-xl font-extrabold text-default bg-dark4   appearance-none rounded p-2 sm:p-4 outline-none border border-transparent focus:border-mainColor "
                             pattern="\d*"
                             maxLength={1}
                             onFocus={(e) => {

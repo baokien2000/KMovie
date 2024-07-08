@@ -2,7 +2,7 @@ import Action from "@/containers/(movie)/movie-details/action";
 import CommentContainer from "@/containers/(movie)/movie-comment";
 import Description from "@/containers/(movie)/movie-details/description";
 import Info from "@/containers/(movie)/movie-details/info";
-import { getKMovie, getMovieBySlug } from "@/services/movies";
+import { getKMovie, getMovieBySlug, getMovieBlurImage } from "@/services/movies";
 import React from "react";
 import EpisodesList from "@/containers/(movie)/movie-details/episodes";
 import { Metadata } from "next";
@@ -37,11 +37,12 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-    const movie = await getMovieBySlug(params.slug);
+    const [movie, blurImage] = await Promise.all([getMovieBySlug(params.slug), getMovieBlurImage(params.slug)]);
+    console.log("render3", blurImage);
     if (!movie) return <div>404</div>;
     return (
         <main className="md:p-6 sm:p-3 py-3 space-y-3">
-            <Info movie={movie.movie} />
+            <Info blurImage={blurImage} movie={movie.movie} />
             <Action slug={params.slug} episodes={movie.episodes[0].server_data[0]} isTrailer={movie.movie.episode_current === "Trailer"} />
             <div className="flex sm:flex-row flex-col gap-3 text-[#ccc] ">
                 <EpisodesList

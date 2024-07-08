@@ -48,7 +48,7 @@ const SendEmailForm = ({ setForm, setOtpRes }: SendEmailFormProps) => {
     return (
         <form
             onSubmit={handleSubmit((value) => handleSendEmail(value))}
-            className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] sm:w-[400px]"
+            className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="">
                 <input
