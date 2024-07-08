@@ -11,8 +11,9 @@ interface InputProps {
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     icon?: ReactNode;
     ariaLabel?: string;
+    id?: string;
 }
-export default function Input({onKeyDown,className, placeholder, onClick, onIconClick, onChange, icon, ariaLabel }: InputProps) {
+export default function Input({ id, onKeyDown, className, placeholder, onClick, onIconClick, onChange, icon, ariaLabel }: InputProps) {
     return (
         <Field
             className={cn(
@@ -30,7 +31,7 @@ export default function Input({onKeyDown,className, placeholder, onClick, onIcon
                 placeholder={placeholder}
                 onClick={onClick}
                 onChange={onChange}
-                id="search"
+                id={id ?? "search"}
                 className={"w-full pl-2   pr-9  py-1 outline-none bg-transparent"}
             />
 

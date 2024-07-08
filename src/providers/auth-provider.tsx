@@ -14,7 +14,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const tokenCheck = async () => {
         const Ref = await axios({ url: "/api", method: "get", withCredentials: true });
         const RefToken = Ref?.data?.token?.value;
-        console.log("RefToken", RefToken);
         if ((RefToken && isTokenExpired(RefToken)) || !RefToken) {
             setUser(null);
             await axios({ url: "/api", method: "delete", withCredentials: true });

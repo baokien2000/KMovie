@@ -7,6 +7,7 @@ import { getHistoryKMovie } from "@/services/movies";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
+import { EmptyIcon } from "../../../../public/static/svg/empty";
 interface MovieHistoryProps {
     searchParams?: { [key: string]: string | undefined };
 }
@@ -36,7 +37,12 @@ const MovieHistory = ({ searchParams }: MovieHistoryProps) => {
             </div>
         );
     if (!historyMovies)
-        return <div className="w-full h-[full flex-1   flex items-center text justify-center text-default">Bạn chưa xem bộ phim nào</div>;
+        return (
+            <div className="w-full h-full flex-1 gap-3 flex-col min-h-[300px]  flex items-center text justify-center text-default">
+                <EmptyIcon className="phone:size-[160px]  sm:size-[204px] size-[120px]" />
+                <p className="text-xs phone:text-sm">Bạn chưa xem bộ phim nào</p>
+            </div>
+        );
     return <MovieListContainer titleId="HistoryListTitle" initialData={historyMovies} searchParams={searchParams} />;
 };
 

@@ -38,7 +38,6 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageProps) {
     const [movie, blurImage] = await Promise.all([getMovieBySlug(params.slug), getMovieBlurImage(params.slug)]);
-    console.log("render3", blurImage);
     if (!movie) return <div>404</div>;
     return (
         <main className="md:p-6 sm:p-3 py-3 space-y-3">

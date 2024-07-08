@@ -58,7 +58,6 @@ const RegisterForm = () => {
         if (res.status === 200) {
             // reset();
             // router.push("/dang-nhap");
-            console.log("Register res", res);
             toast.success("Đăng ký thành công, vui lòng xác thực tài khoản");
             setOtpRes({
                 email: value.email,

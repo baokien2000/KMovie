@@ -47,7 +47,6 @@ const Bookmark = ({ slug }: { slug: string }) => {
             });
             setLoading(false);
             setRequestLimit((prev) => prev + 1);
-            console.log("requestLimit", requestLimit);
         }
     };
     return (

@@ -45,7 +45,6 @@ const MovieReport = ({ slug, episode, name }: MovieReportProps) => {
         }
         // Send report to server
         const res = await addMovieReport(user._id, slug, episode, errorDescription);
-        console.log("sendMovieReport Res", res);
         setLoading(false);
         toast.success("Đã gửi báo cáo thành công, cảm ơn bạn đã đóng góp! Tôi sẽ cố gắn xử lý sớm nhất có thể!");
         closeModal();

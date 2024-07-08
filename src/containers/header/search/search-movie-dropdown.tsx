@@ -1,5 +1,5 @@
 "use client";
-import { Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import SearchItem from "./search-item";
 import { useDebounce } from "@uidotdev/usehooks";
@@ -29,12 +29,15 @@ export default function SearchMovieDropdown() {
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
-            document.body.style.paddingRight = width > 1024 ? "20px" : "0px";
+            // Kiểm tra xem trang có thanh scroll không
+            const hasScrollbar = window.innerHeight < document.body.scrollHeight;
+            // Chỉ thêm padding nếu có thanh scroll
+            document.documentElement.style.paddingRight = hasScrollbar && width > 1024 ? "20px" : "0px";
         } else {
             document.body.style.overflow = "unset";
-            document.body.style.paddingRight = "0px";
+            document.documentElement.style.paddingRight = "0px";
         }
-    }, [isOpen]);
+    }, [isOpen, width]);
     return (
         <div className="sm:relative  w-full h-fit ">
             {isOpen && <div className="fixed left-0 top-0 h-[100svh] w-[100svw] bg-black/50 "></div>}
