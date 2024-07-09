@@ -2,12 +2,11 @@
 import { refreshToken } from "@/services/auth";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { isTokenExpired } from "@/utils/auth";
-import { isTokenOneDayToExpired } from "@/utils/auth";
 import axios from "axios";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const AuthProvider = ({ children }: { children: ReactNode }) => {
+const AuthProvider = () => {
     const user = useAuthStore((state) => state.user);
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
@@ -30,7 +29,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         tokenCheck();
     }, []);
 
-    return children;
+    return null;
 };
 
 export default AuthProvider;

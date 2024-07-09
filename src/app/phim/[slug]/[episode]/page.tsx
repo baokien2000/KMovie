@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import MoviePlayer from "@/components/movies/player/movie-player";
 import { ImovieList } from "@/interface/movies";
 import MovieNoti from "@/containers/(movie)/movie-watch/movie-noti";
+import MovieViewUpdated from "@/containers/(movie)/movie-watch/movie-view-updated";
 
 interface PageProps {
     params: {
@@ -44,8 +45,8 @@ export default async function Page({ params, searchParams }: PageProps) {
     let episodeParam = params.episode?.replace("tap-", "");
     const movie = await getMovieBySlug(params.slug);
 
-    const isTrailer = episodeParam === "trailer";
     if (!movie) return <div>Không tìm thấy phim | 404</div>;
+    const isTrailer = episodeParam === "trailer";
     let episode = null;
     if (isTrailer) {
         episode = {
@@ -68,7 +69,10 @@ export default async function Page({ params, searchParams }: PageProps) {
             <MovieNoti />
             <MovieTiltle slug={movie.movie.slug} episode={episode.slug} name={movie.movie.name} />
             <MovieServer currentEpisode={episodeParam} servers={movie.episodes} slug={movie.movie.slug} />
-            <MoviePlayer movieSlug={movie.movie.slug} episode={episode} />
+            <Suspense fallback={<div className="relative w-full bg-black h-auto aspect-video text-des">Loading video</div>}>
+                <MoviePlayer movieSlug={movie.movie.slug} episode={episode} />
+            </Suspense>
+            {/* <MovieViewUpdated movieSlug={movie.movie.slug} episodeId={episode.slug} /> */}
             <EpisodesList currentEpisode={episodeParam} slug={movie.movie.slug} episodes={movie.episodes[0].server_data} />
             <CommentContainer id={movie.movie._id} />
         </main>
