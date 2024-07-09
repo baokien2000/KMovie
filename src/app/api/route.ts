@@ -12,27 +12,27 @@ export async function GET(request: NextRequest ) {
 
   const url = `${baseURL}/users/verifyToken`;
 
-  const res = await axios({
-    method: 'GET',
-    url: url,
-    withCredentials: true,
-    params: {
-      cookie1: cookieStore,
-      cookie2: cookie2,
-    },
-    headers: {
-      Authorization: `${request.headers.get('Authorization')}`
-    }
-  })
 
-  if (res) {
-    return  Response.json({ res })
-  }
-    return new Response(null, {
-      status: 200,
-      
+  try {
+    const res = await axios({
+      method: 'GET',
+      url: url,
+      withCredentials: true,
+      params: {
+        cookie1: cookieStore?.value,
+        cookie2: cookie2?.value,
+      },
+      headers: {
+        Authorization: `${request.headers.get('Authorization')}`
+      }
     })
 
+    return Response.json({ data: res.data }, { status: 200 }) 
+    
+} catch (error:any) {
+    return Response.json({ data: error?.response.data,status: error?.response.status })  
+}
+ 
 }
 
 export async function DELETE() {

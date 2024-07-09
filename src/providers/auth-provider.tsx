@@ -55,18 +55,19 @@ const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; to
     console.log("tokenlegacy", tokenlegacy);
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
+
         const nextRes = await axios({
             method: "GET",
             url: `/api`,
             params: {
-                accessToken: accessToken,  
+                accessToken: accessToken,
             },
             withCredentials: true,
             headers: {
                 Authorization: `Bearer ${accessToken}`,
-            }
-        }) 
-        console.log("nextRes",nextRes);
+            },
+        });
+        console.log("nextRes", nextRes);
         switch (res?.status || nextRes?.status) {
             case 200:
                 if (res?.data?.accessToken) setToken(res?.data?.accessToken);
