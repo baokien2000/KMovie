@@ -13,8 +13,8 @@ export async function resetPassword(email: string, password: string, token: stri
 export async function changePassword(user: IUser,  oldPassword: string, newPassword: string) { 
     return await AuthRepository.changePassword(user,oldPassword,newPassword);
 }
-export async function refreshToken() {
-    return await AuthRepository.RefreshToken();
+export async function getAccessToken() {
+    return await AuthRepository.getAccessToken();
 }
 
 export async function SendOTP (email: string) {

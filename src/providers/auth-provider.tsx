@@ -1,27 +1,23 @@
 "use client";
-import { refreshToken } from "@/services/auth";
+import { getAccessToken } from "@/services/auth";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { isTokenExpired } from "@/utils/auth";
 import axios from "axios";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const AuthProvider = () => {
+const AuthProvider = ({ refreshToken }: { refreshToken: string | undefined }) => {
     const user = useAuthStore((state) => state.user);
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
     const tokenCheck = async () => {
-        console.log("im in tokenCheck");
-        const Ref = await axios({ url: "/api", method: "get", withCredentials: true });
-        const RefToken = Ref?.data?.token?.value;
-        toast.success(RefToken || "no token");
-        if ((RefToken && isTokenExpired(RefToken)) || !RefToken) {
+        if ((refreshToken && isTokenExpired(refreshToken)) || !refreshToken) {
             setUser(null);
             await axios({ url: "/api", method: "delete", withCredentials: true });
             toast.error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
         } else {
             if (!user?.accessToken || isTokenExpired(user?.accessToken)) {
-                const newToken = await refreshToken();
+                const newToken = await getAccessToken();
                 setToken(newToken?.accessToken);
             }
         }

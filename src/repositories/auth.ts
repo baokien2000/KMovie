@@ -93,7 +93,7 @@ class AuthRepository {
             return error.response
         }
     }
-    static RefreshToken = async () => {
+    static getAccessToken = async () => {
         const url = `${baseURL}/users/refreshToken`;
         const controller = new AbortController();
 
