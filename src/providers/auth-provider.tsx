@@ -39,6 +39,7 @@
 // export default AuthProvider;
 
 "use client";
+import { baseURL } from "@/repositories";
 import { getAccessToken, verifyToken } from "@/services/auth";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { isTokenExpired } from "@/utils/auth";
@@ -54,7 +55,19 @@ const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; to
     console.log("tokenlegacy", tokenlegacy);
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
-        switch (res?.status) {
+        const nextRes = await axios({
+            method: "GET",
+            url: `/api`,
+            params: {
+                accessToken: accessToken,  
+            },
+            withCredentials: true,
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        }) 
+        console.log("nextRes",nextRes);
+        switch (res?.status || nextRes?.status) {
             case 200:
                 if (res?.data?.accessToken) setToken(res?.data?.accessToken);
                 break;
