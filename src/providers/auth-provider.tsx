@@ -11,8 +11,10 @@ const AuthProvider = () => {
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
     const tokenCheck = async () => {
+        console.log("im in tokenCheck");
         const Ref = await axios({ url: "/api", method: "get", withCredentials: true });
         const RefToken = Ref?.data?.token?.value;
+        toast.success(RefToken || "no token");
         if ((RefToken && isTokenExpired(RefToken)) || !RefToken) {
             setUser(null);
             await axios({ url: "/api", method: "delete", withCredentials: true });
@@ -27,7 +29,7 @@ const AuthProvider = () => {
     useEffect(() => {
         if (!user?._id) return;
         tokenCheck();
-    }, []);
+    }, [user?._id]);
 
     return null;
 };
