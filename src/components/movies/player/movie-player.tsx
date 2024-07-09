@@ -24,11 +24,18 @@ const MoviePlayer = ({ episode, movieSlug }: MoviePlayerProps) => {
             <iframe
                 title="Movies"
                 allowFullScreen
+                onError={(e) => {
+                    console.log(e);
+                    alert(e);
+                }}
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                 className=" aspect-video w-full h-auto"
-                src={episode.link_embed}
+                src={episode.link_embed.replace("https:", "")}
             />
         </div>
     );
+    
+    
 };
 
 export default MoviePlayer;
