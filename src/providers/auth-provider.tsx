@@ -48,14 +48,14 @@ import axios from "axios";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const AuthProvider = ({ refreshToken }: { refreshToken: string | undefined }) => {
+const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; tokenlegacy?: string }) => {
     const user = useAuthStore((state) => state.user);
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
-
+    console.log("refreshToken", refreshToken);
+    console.log("tokenlegacy", tokenlegacy);
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
-        console.log("res", res);
         switch (res?.status) {
             case 200:
                 if (res?.data?.accessToken) setToken(res?.data?.accessToken);

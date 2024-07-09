@@ -9,13 +9,14 @@ import { cookies } from "next/headers";
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
     const token = cookies().get("refreshToken");
+    const tokenlegacy = cookies().get("refreshToken-legacy");
     return (
         <>
             <ReactQueryProvider>
                 <Header />
                 <div className=" max-w-screen-laptop flex-1 mx-auto w-full h-full  ">{children}</div>
             </ReactQueryProvider>
-            <AuthProvider refreshToken={token?.value} />
+            <AuthProvider refreshToken={token?.value} tokenlegacy={tokenlegacy?.value} />
             <Toaster toastOptions={{ duration: 5000 }} containerClassName="text-xs sm:text-sm " />
             <Footer />
             <HandleOnComplete />
