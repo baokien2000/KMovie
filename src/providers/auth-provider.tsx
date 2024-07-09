@@ -39,7 +39,6 @@
 // export default AuthProvider;
 
 "use client";
-import { baseURL } from "@/repositories";
 import { getAccessToken, verifyToken } from "@/services/auth";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { isTokenExpired } from "@/utils/auth";
@@ -51,24 +50,10 @@ const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; to
     const user = useAuthStore((state) => state.user);
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
-    console.log("refreshToken", refreshToken);
-    console.log("tokenlegacy", tokenlegacy);
+
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
-
-        const nextRes = await axios({
-            method: "GET",
-            url: `/api`,
-            params: {
-                accessToken: accessToken,
-            },
-            withCredentials: true,
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        });
-        console.log("nextRes", nextRes);
-        switch (res?.status || nextRes?.status) {
+        switch (res?.status) {
             case 200:
                 if (res?.data?.accessToken) setToken(res?.data?.accessToken);
                 break;
