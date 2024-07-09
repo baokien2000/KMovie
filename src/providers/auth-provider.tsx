@@ -54,6 +54,8 @@ const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; to
     const setUser = useAuthStore((state) => state.setUser);
     console.log("refreshToken", refreshToken);
     console.log("tokenlegacy", tokenlegacy);
+    alert("refreshToken=" + refreshToken);
+    alert("refreshTokenLegacy=" + refreshTokenLegacy);
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
         switch (res?.status) {
