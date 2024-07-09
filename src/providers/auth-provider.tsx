@@ -46,7 +46,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; tokenlegacy?: string }) => {
+const AuthProvider = () => {
     const user = useAuthStore((state) => state.user);
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
