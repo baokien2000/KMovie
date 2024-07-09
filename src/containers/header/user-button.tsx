@@ -38,7 +38,6 @@ const UserButton = () => {
     const handleLogout = async () => {
         router.push("/dang-nhap");
         useAuthStore.setState({ user: null });
-        const res = await axios({ url: "/api", method: "delete", withCredentials: true });
     };
 
     return user ? (

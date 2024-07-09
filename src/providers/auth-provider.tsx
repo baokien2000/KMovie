@@ -15,13 +15,11 @@
 //     const tokenCheck = async () => {
 //         console.log("refreshToken inside", token);
 //         if (!refreshToken) {
-//             const res = await axios({ url: "/api", method: "get", withCredentials: true });
 //             token = res?.data?.token?.value || token;
 //             console.log("new token", token);
 //         }
 //         if ((token && isTokenExpired(token)) || !token) {
 //             setUser(null);
-//             await axios({ url: "/api", method: "delete", withCredentials: true });
 //             toast.error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
 //         } else {
 //             if (!user?.accessToken || isTokenExpired(user?.accessToken)) {
@@ -54,8 +52,6 @@ const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; to
     const setUser = useAuthStore((state) => state.setUser);
     console.log("refreshToken", refreshToken);
     console.log("tokenlegacy", tokenlegacy);
-    alert("refreshToken=" + refreshToken);
-    alert("refreshTokenLegacy=" + tokenlegacy);
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
         switch (res?.status) {

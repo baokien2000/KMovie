@@ -22,7 +22,6 @@ class AuthRepository {
                 signal: controller.signal,
             })
             // get cookie, but it still undefined 
-            const Ref = await axios({ url: "/api", method: "get", withCredentials: true });
 
             return response
             
