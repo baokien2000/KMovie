@@ -55,7 +55,7 @@ const AuthProvider = ({ refreshToken, tokenlegacy }: { refreshToken?: string; to
     console.log("refreshToken", refreshToken);
     console.log("tokenlegacy", tokenlegacy);
     alert("refreshToken=" + refreshToken);
-    alert("refreshTokenLegacy=" + refreshTokenLegacy);
+    alert("refreshTokenLegacy=" + tokenlegacy);
     const tokenCheck = async (accessToken: string) => {
         const res = await verifyToken(accessToken);
         switch (res?.status) {
