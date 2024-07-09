@@ -21,6 +21,9 @@ export async function SendOTP (email: string) {
     return await AuthRepository.SendOTP(email);
 }
 
+export async function verifyToken (accessToken:string) {
+    return await AuthRepository.verifyToken(accessToken);
+}
 export async function VerifyOTP (email: string, otp: string,isSignIn: boolean) {
     return await AuthRepository.VerifyOTP(email,otp,isSignIn);
 }
