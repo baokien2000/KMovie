@@ -10,7 +10,9 @@ const AuthProvider = ({ refreshToken }: { refreshToken: string | undefined }) =>
     const user = useAuthStore((state) => state.user);
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
+    console.log("refreshToken outside", refreshToken);
     const tokenCheck = async () => {
+        console.log("refreshToken inside", refreshToken);
         if ((refreshToken && isTokenExpired(refreshToken)) || !refreshToken) {
             setUser(null);
             await axios({ url: "/api", method: "delete", withCredentials: true });
