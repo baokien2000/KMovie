@@ -72,8 +72,11 @@ const MovieReport = ({ slug, episode, name }: MovieReportProps) => {
                                     rows={5}
                                     maxLength={1000}
                                     name="error-description"
-                                    placeholder="Vui lòng mô tả lỗi bạn gặp phải!"
-                                    className="w-full resize-none p-2 text-sm    bg-black rounded focus:outline-none "
+                                    placeholder={
+                                        "Vui lòng mô tả lỗi bạn gặp phải! Càng chi tiết càng tốt nhé.           " +
+                                        " Ví dụ: Iphone 12, Safari, lỗi không thể xem được, màn hình đen, không có tiếng, không có phụ đề..."
+                                    }
+                                    className="w-full resize-none p-2 text-sm  bg-black rounded focus:outline-none "
                                 />
                                 <div className="captcha scale-75 phone:scale-100 " style={{ transformOrigin: "0 0" }}>
                                     <ReCAPTCHA
