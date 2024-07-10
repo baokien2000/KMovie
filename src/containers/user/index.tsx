@@ -21,11 +21,13 @@ const UserContainer = () => {
         refetchOnWindowFocus: false,
         enabled: (user?._id?.length ?? 0) > 0,
     });
+    console.log("loading", loading);
     useEffect(() => {
-        if (user?._id) setLoading(false);
-        else {
+        if (!user?._id && !loading) {
             router.push("/dang-nhap");
             toast.error("Vui lòng đăng nhập để xem thông tin cá nhân");
+        } else {
+            setLoading(false);
         }
     }, [user?._id]);
     if (loading) return <UserContainerSkeleton />;
