@@ -93,24 +93,6 @@ class AuthRepository {
         }
     }
 
-    static getAccessToken = async () => {
-        const url = `${baseURL}/users/refreshToken`;
-        const controller = new AbortController();
-
-        try {
-            const response = await axios({
-                url: url,
-                method: 'post',
-                withCredentials: true,
-                signal: controller.signal,
-            })
-
-            return response.data
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
     static SendOTP = async (email: string) => { 
         const payload = {email }
         const url = `${baseURL}/otp/sendOTP`;
@@ -171,7 +153,7 @@ class AuthRepository {
         }
     }
 
-    static verifyToken = async (accessToken:string) => { 
+    static verifyToken = async (accessToken:string,email:string) => { 
         const url = `${baseURL}/users/verifyToken`;
         const controller = new AbortController();
         try {
@@ -179,6 +161,7 @@ class AuthRepository {
                 url: url,
                 method: 'get',
                 withCredentials: true,
+                params: { email },
                 headers: {
                     "Authorization": `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'

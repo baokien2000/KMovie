@@ -13,16 +13,14 @@ export async function resetPassword(email: string, password: string, token: stri
 export async function changePassword(user: IUser,  oldPassword: string, newPassword: string) { 
     return await AuthRepository.changePassword(user,oldPassword,newPassword);
 }
-export async function getAccessToken() {
-    return await AuthRepository.getAccessToken();
-}
+
 
 export async function SendOTP (email: string) {
     return await AuthRepository.SendOTP(email);
 }
 
-export async function verifyToken (accessToken:string) {
-    return await AuthRepository.verifyToken(accessToken);
+export async function verifyToken (accessToken:string,email:string) {
+    return await AuthRepository.verifyToken(accessToken,email);
 }
 export async function VerifyOTP (email: string, otp: string,isSignIn: boolean) {
     return await AuthRepository.VerifyOTP(email,otp,isSignIn);

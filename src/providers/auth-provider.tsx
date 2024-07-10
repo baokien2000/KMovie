@@ -39,10 +39,8 @@
 // export default AuthProvider;
 
 "use client";
-import { getAccessToken, verifyToken } from "@/services/auth";
+import { verifyToken } from "@/services/auth";
 import { useAuthStore } from "@/store/auth/auth.store";
-import { isTokenExpired } from "@/utils/auth";
-import axios from "axios";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
@@ -51,8 +49,8 @@ const AuthProvider = () => {
     const setToken = useAuthStore((state) => state.updateUserToken);
     const setUser = useAuthStore((state) => state.setUser);
 
-    const tokenCheck = async (accessToken: string) => {
-        const res = await verifyToken(accessToken);
+    const tokenCheck = async (accessToken: string, email: string) => {
+        const res = await verifyToken(accessToken, email);
         switch (res?.status) {
             case 200:
                 if (res?.data?.accessToken) setToken(res?.data?.accessToken);
@@ -75,7 +73,7 @@ const AuthProvider = () => {
     };
     useEffect(() => {
         if (!user?._id) return;
-        tokenCheck(user?.accessToken);
+        tokenCheck(user?.accessToken, user?.email);
     }, [user?._id]);
 
     return null;
