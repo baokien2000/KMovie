@@ -4,15 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "swiper/css/scrollbar";
 import "./style.css";
-import { IMovie } from "@/interface/movies";
+import { IMovie, IMovieSlide } from "@/interface/movies";
 import MovieCard from "../card/movie-card";
 import { memo } from "react";
 
 const MovieSlider = (props: {
-    movies: {
-        movies: IMovie[];
-        pathImage: string;
-    };
+    movies: IMovieSlide;
 }) => {
     const { movies } = props;
     return (

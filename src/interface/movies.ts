@@ -37,6 +37,10 @@ export interface IMovie {
 
 
 //  Purpose: Define the interface for the movies details
+export interface IMovieSlide { 
+        movies: IMovie[];
+        pathImage: string;
+}
 export interface IOphimMovie {
     status: boolean;
     msg: string;

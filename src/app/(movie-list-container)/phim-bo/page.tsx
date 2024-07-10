@@ -5,6 +5,7 @@ import { pageSize, years } from "@/enum/movies";
 import MovieListContainer from "@/components/movies/list/movie-list-container";
 import { Metadata } from "next";
 import Loading from "../theo-doi/loading";
+export const revalidate = 3600;
 export async function generateMetadata(): Promise<Metadata> {
     return {
         title: `Phim bộ`,

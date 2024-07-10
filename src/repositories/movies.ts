@@ -32,7 +32,7 @@ class MoviesRepository {
             const response = await axios({
                 method: "get",
                 url: url,
-                params: {limit}
+                params: { limit },
             })
             return response.data
         } catch (error:any) {
