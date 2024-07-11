@@ -27,8 +27,12 @@ const CommentItem = ({ comment, userId, setReplyTo }: CommentItemProps) => {
                 </div>
                 <div className="text-[#afaaaa] py-[3px] sm:py-[6px] text-[13px]  break-words">{comment.content}</div>
                 <div className=" text-xs flex gap-3">
-                    <span className="text-[#7d7d7d] first-letter:uppercase">{dayjs(comment.createdAt).locale("vi").fromNow()}</span>
-                    {userId && userId !== comment?.userId?._id && <button onClick={handleReply}>Trả lời</button>}
+                    <span className="text-[#979797] first-letter:uppercase">{dayjs(comment.createdAt).locale("vi").fromNow()}</span>
+                    {userId && userId !== comment?.userId?._id && (
+                        <button aria-label="reply-button" className="text-[#979797] hover:text-[#ccc]" onClick={handleReply}>
+                            Trả lời
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

@@ -160,7 +160,7 @@ class AuthRepository {
             const response = await axios({
                 url: url,
                 method: 'get',
-                withCredentials: true,
+                // withCredentials: true,
                 params: { email },
                 headers: {
                     "Authorization": `Bearer ${accessToken}`,

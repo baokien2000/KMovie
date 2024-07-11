@@ -66,6 +66,7 @@ const CommentArea = ({ movieId, userId, row = 3, replyId, replyTo }: CommentArea
                 disabled={loading || comment.length === 0}
                 className={cn("absolute bottom-2 right-2", comment.length === 0 && "opacity-40")}
                 onClick={handleAddComment}
+                aria-label="comment-button"
             >
                 {loading ? <LoadingIcon fill="currentColor" /> : <SendIcon fill="currentColor" />}
             </Button>

@@ -10,7 +10,7 @@ interface EpisodesProps {
 const EpisodesList = ({ slug, episodes, trailerUrl }: EpisodesProps) => {
     return (
         <div className={cn("sm:w-[300px] w-full p-3 space-y-2 bg-cardBackground sm:rounded")}>
-            <h3 className="font-semibold ">Danh sách tập phim</h3>
+            <h2 className="font-semibold ">Danh sách tập phim</h2>
             <div className="customScrollBar pr-2 text-sm overflow-auto items-start flex flex-wrap  max-h-[300px]">
                 {trailerUrl ? (
                     <Link

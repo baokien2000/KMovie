@@ -8,7 +8,7 @@ export default function Loading() {
                 sizes="400px"
                 loading="eager"
                 priority={true}
-                height={70}
+                height={36}
                 width={120}
                 className="object-contain w-[120px] max-w-[120px]  h-9 "
                 alt="Logo"

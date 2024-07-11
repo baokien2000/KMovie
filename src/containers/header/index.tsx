@@ -20,7 +20,7 @@ const Header = () => {
                     <Image
                         sizes="400px"
                         loading="lazy"
-                        height={70}
+                        height={36}
                         width={120}
                         className="tablet:block object-contain w-[120px] max-w-[120px]  h-9 hidden"
                         alt="Logo"

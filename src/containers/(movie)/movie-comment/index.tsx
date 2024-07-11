@@ -9,7 +9,7 @@ const CommentContainer = (props: Prop) => {
     return (
         <div className="flex flex-col p-3 gap-3  bg-cardBackground sm:rounded text-default">
             <div className="flex justify-between w-full">
-                <h3 className="font-semibold  mt-[5px]">Bình luận</h3>
+                <h2 className="font-semibold  mt-[5px]">Bình luận</h2>
                 {/* <RefreshIcon className="cursor-pointer" fill={"#ccc"} /> */}
             </div>
             <CommentBox movieId={id} />

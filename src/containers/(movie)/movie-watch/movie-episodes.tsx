@@ -21,7 +21,7 @@ const EpisodesList = ({ slug, episodes, currentEpisode }: EpisodesProps) => {
     });
     return (
         <div className="w-full p-3 space-y-2 text-default  bg-des sm:rounded">
-            <h3 className="font-semibold ">Danh sách tập phim</h3>
+            <h2 className="font-semibold ">Danh sách tập phim</h2>
             <div className=" text-sm overflow-auto  items-start flex flex-wrap ">
                 {episodes.map((ep, index) => {
                     return (
