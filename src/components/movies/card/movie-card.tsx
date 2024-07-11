@@ -11,9 +11,10 @@ interface MovieCardProp {
     loading?: "eager" | "lazy";
     quality?: number;
     enableBlur?: boolean;
+    priority?: boolean;
 }
 const MovieCard = (props: MovieCardProp) => {
-    const { movie, className, ImagePath, loading = "lazy", quality = 75, enableBlur } = props;
+    const { movie, className, ImagePath, loading = "lazy", quality = 75, enableBlur, priority = false } = props;
     return (
         <Link
             href={"/phim/" + movie.slug}
@@ -24,6 +25,7 @@ const MovieCard = (props: MovieCardProp) => {
                 <Image
                     src={ImagePath + movie.thumb_url}
                     fill
+                    priority={priority}
                     loading={loading}
                     placeholder={enableBlur && movie.blurImage ? "blur" : "empty"}
                     blurDataURL={movie.blurImage}

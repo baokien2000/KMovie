@@ -36,7 +36,7 @@ const MovieSlider = (props: { movies: IMovieSlide }) => {
         >
             {movies?.movies.map((item, index) => (
                 <SwiperSlide className="aspect-[3/4]" key={item._id}>
-                    <MovieCard enableBlur quality={50} key={item._id} movie={item} ImagePath={movies.pathImage} />
+                    <MovieCard priority={index < 5 ? true : false} enableBlur quality={50} key={item._id} movie={item} ImagePath={movies.pathImage} />
                 </SwiperSlide>
             ))}
         </Swiper>
