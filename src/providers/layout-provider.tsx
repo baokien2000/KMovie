@@ -5,7 +5,6 @@ import ReactQueryProvider from "./react-query-provider";
 import Header from "@/containers/header";
 import { HandleOnComplete } from "@/lib/router-events";
 import Footer from "@/containers/footer";
-import { cookies } from "next/headers";
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
     return (

@@ -16,19 +16,20 @@ const SearchItem = ({ value, onClick }: SearchItemProps) => {
         >
             <div className="relative size-12 sm:size-14 min-w-[48px]">
                 <Image
-                    sizes="(max-width: 640px) 48px, 56px"
+                    sizes="(max-width: 640px) 100px, 200px"
                     blurDataURL={value.blurImage}
                     placeholder={value.blurImage ? "blur" : "empty"}
                     src={imagePath + value.thumb_url}
                     alt={value.slug}
+                    loading="eager"
                     fill
                     className="object-cover rounded"
                 />
             </div>
-            <div className="text-sm flex flex-col gap-2 text-white">
-                <p className="leading-3 line-clamp-1">{value.name}</p>
-                <p className="text-title text-xs sm:leading-3 leading-[10px]">{value.origin_name}</p>
-                <p className="text-title text-xs sm:leading-3 leading-[10px]">{value.episode_current}</p>
+            <div className="text-sm flex flex-col sm:leading-[1.2] leading-[1] sm:gap-1 gap-0.5 text-white">
+                <p className="line-clamp-1">{value.name}</p>
+                <p className="text-title text-xs ">{value.origin_name}</p>
+                <p className="text-title text-xs ">{value.episode_current}</p>
             </div>
         </Link>
     );

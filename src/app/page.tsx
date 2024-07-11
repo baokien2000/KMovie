@@ -19,7 +19,6 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
             <div className="space-y-3 ">
                 <MovieListTitle id={"MovieListTitle"} title="Phim mới cập nhật" />
                 <Suspense fallback={<MovieListSkeleton />}>
-                    {/* <MovieListContainer titleId="MovieListTitle" initialData={initialData} searchParams={searchParams} /> */}
                     <HomeContainer searchParams={searchParams} />
                 </Suspense>
             </div>

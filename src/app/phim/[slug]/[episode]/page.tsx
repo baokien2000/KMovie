@@ -7,6 +7,7 @@ import CommentContainer from "@/containers/(movie)/movie-comment";
 import { Metadata } from "next";
 import MoviePlayer from "@/components/movies/player/movie-player";
 import MovieNoti from "@/containers/(movie)/movie-watch/movie-noti";
+import MovieViewUpdated from "@/containers/(movie)/movie-watch/movie-view-updated";
 
 interface PageProps {
     params: {
@@ -70,7 +71,7 @@ export default async function Page({ params, searchParams }: PageProps) {
             <Suspense fallback={<div className="relative w-full bg-black h-auto aspect-video text-des">Loading video</div>}>
                 <MoviePlayer movieSlug={movie.movie.slug} episode={episode} />
             </Suspense>
-            {/* <MovieViewUpdated movieSlug={movie.movie.slug} episodeId={episode.slug} /> */}
+            <MovieViewUpdated movieSlug={movie.movie.slug} episodeId={episode.slug} />
             <EpisodesList currentEpisode={episodeParam} slug={movie.movie.slug} episodes={movie.episodes[0].server_data} />
             <CommentContainer id={movie.movie._id} />
         </main>

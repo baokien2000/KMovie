@@ -30,7 +30,7 @@ const MovieCard = (props: MovieCardProp) => {
                     quality={quality}
                     alt={"thumbnail " + movie.name}
                     className="transform object-cover  brightness-90 transition group-hover:brightness-110"
-                    sizes="(max-width: 640px) 200px, (max-width: 1280px) 200px,250px"
+                    sizes="(max-width: 640px) 150px, (max-width: 1280px) 200px,250px"
                 />
             </div>
             <p className="truncate  whitespace-nowrap w-full px-1 leading-5 mt-1 h-5  text-xs laptopSmall:text-sm text-center text-[#cc8d4c] font-bold">

@@ -8,6 +8,7 @@ interface MovieListProp {
 }
 const MoviesList = ({ movies, enableBlur = false, quality }: MovieListProp) => {
     if (!movies?.items) return null;
+    const isMobile = window.innerWidth < 768;
     return (
         <div
             className={
@@ -17,7 +18,7 @@ const MoviesList = ({ movies, enableBlur = false, quality }: MovieListProp) => {
             {movies.items.map((movie, index) => {
                 return (
                     <MovieCard
-                        loading={index < 12 ? "eager" : "lazy"}
+                        loading={index < (isMobile ? 4 : 12) ? "eager" : "lazy"}
                         quality={quality}
                         enableBlur={enableBlur}
                         key={movie._id}

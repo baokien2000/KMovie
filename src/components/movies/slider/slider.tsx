@@ -2,16 +2,15 @@
 import { Scrollbar, A11y, Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import "swiper/css/scrollbar";
 import "./style.css";
-import {  IMovieSlide } from "@/interface/movies";
+import { IMovieSlide } from "@/interface/movies";
 import MovieCard from "../card/movie-card";
 import { memo } from "react";
 
-const MovieSlider = (props: {
-    movies: IMovieSlide;
-}) => {
+const MovieSlider = (props: { movies: IMovieSlide }) => {
     const { movies } = props;
+    const isMobile = window.innerWidth < 768;
+
     return (
         <Swiper
             // @ts-ignore
@@ -42,7 +41,7 @@ const MovieSlider = (props: {
                         enableBlur
                         quality={50}
                         key={item._id}
-                        loading={index < 6 ? "eager" : "lazy"}
+                        loading={index < (isMobile ? 2 : 6) ? "eager" : "lazy"}
                         movie={item}
                         ImagePath={movies.pathImage}
                     />
