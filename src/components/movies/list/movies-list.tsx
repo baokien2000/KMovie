@@ -16,16 +16,7 @@ const MoviesList = ({ movies, enableBlur = false, quality }: MovieListProp) => {
             }
         >
             {movies.items.map((movie, index) => {
-                return (
-                    <MovieCard
-                        loading={index <  4  ? "eager" : "lazy"}
-                        quality={quality}
-                        enableBlur={enableBlur}
-                        key={movie._id}
-                        movie={movie}
-                        ImagePath={movies.pathImage}
-                    />
-                );
+                return <MovieCard quality={quality} enableBlur={enableBlur} key={movie._id} movie={movie} ImagePath={movies.pathImage} />;
             })}
         </div>
     );
