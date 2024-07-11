@@ -9,6 +9,7 @@ import { FormField } from "./change-pass-field";
 import { changePassword, verifyCaptcha } from "@/services/auth";
 import toast from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const schema = z
     .object({
@@ -165,7 +166,7 @@ export default function ChangePassModal({ user }: { user: IUser }) {
                                         Hủy
                                     </button>
                                     {loading ? (
-                                        <div className="loadingText rounded cursor-wait text-center bg-mainColor/90  w-fit p-2 text-des  font-bold tracking-wider" />
+                                        <ProcessLoading className=" rounded cursor-wait text-center bg-mainColor/90  w-fit p-2 text-des  font-bold tracking-wider" /> 
                                     ) : (
                                         <button
                                             type="submit"

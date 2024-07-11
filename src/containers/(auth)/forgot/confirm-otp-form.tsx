@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { IOtpRes } from "./forgot-container";
 import ResentOTPButton from "./resent-otp-button";
 import { VerifyOTP } from "@/services/auth";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 interface ConfirmOtpFormProps {
     callback?: () => void;
     otpRes: IOtpRes;
@@ -90,7 +91,7 @@ const ConfirmOtpForm = ({ callback, otpRes, setOtpRes, isSignIn = false }: Confi
                 </div>
                 <div className="sm:max-w-[260px] max-w-[160px] mx-auto mt-4">
                     {loading ? (
-                        <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
+                        <ProcessLoading className="cursor-wait text-center bg-mainColor/90  w-full p-2 text-sm text-des uppercase font-bold tracking-wider" />
                     ) : (
                         <button
                             type="submit"

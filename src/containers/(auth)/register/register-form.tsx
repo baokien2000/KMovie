@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import { cn } from "@/lib/cn";
 import { IOtpRes } from "../forgot/forgot-container";
 import ConfirmOtpForm from "../forgot/confirm-otp-form";
+import Input from "@/components/UI/headless/input";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const RegisterForm = () => {
     const [loading, setLoading] = React.useState(false);
@@ -86,7 +88,7 @@ const RegisterForm = () => {
             className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="sm:mb-3 mb-2">
-                <input
+                <Input
                     {...register("email")}
                     className={cn(" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 ", {
                         "border border-red-500": errors.email,
@@ -98,7 +100,7 @@ const RegisterForm = () => {
                 />
             </div>
             <div className="mb-3">
-                <input
+                <Input
                     {...register("password")}
                     className={cn(" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2", {
                         "border border-red-500": errors.password,
@@ -110,7 +112,7 @@ const RegisterForm = () => {
                 />
             </div>
             <div className="">
-                <input
+                <Input
                     {...register("confirmPassword")}
                     className={cn(" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2", {
                         "border border-red-500": errors.confirmPassword,
@@ -132,8 +134,9 @@ const RegisterForm = () => {
                 )}
             </div>
 
-            {loading ? (
-                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
+                {loading ? (
+                                                                                                <ProcessLoading className="cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
+
             ) : (
                 <button
                     type="submit"

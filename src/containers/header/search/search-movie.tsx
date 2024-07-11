@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { SearchIcon } from "../../../../public/static/svg";
-import Input from "@/components/UI/input";
+import Input from "@/components/UI/headless/icon-input";
 import { useRouter } from "@/lib/router-events";
 
 export default function SearchMovie() {

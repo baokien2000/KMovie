@@ -14,6 +14,7 @@ import { sendFeedback } from "@/services/user";
 import toast from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
 import { verifyCaptcha } from "@/services/auth";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const statusList = [status_icon_1, status_icon_2, status_icon_3, status_icon_4, status_icon_5];
 const WebFeedback = ({ user }: { user: IUser }) => {
@@ -121,8 +122,9 @@ const WebFeedback = ({ user }: { user: IUser }) => {
                                     type="submit"
                                     className={`py-1 disabled:bg-mainColor/50  h-8 sm:h-9 px-2 font-bold text-[#111827] rounded flex items-center justify-center gap-2 w-fit bg-[#ffce4f]/90 hover:bg-[#ffce4f] ${"block "}`}
                                 >
-                                    {loading ? <div className="loadingText" /> : "Đánh giá"}
+                                    {loading ? <ProcessLoading /> : "Đánh giá"}
                                 </button>
+
                             </div>
                         </form>
                     );

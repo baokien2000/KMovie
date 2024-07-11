@@ -1,15 +1,11 @@
 "use client";
 import { Link, useRouter } from "@/lib/router-events";
 import React from "react";
-import { BookmarkIcon, ClockIcon, LoginIcon, LogoutIcon, PencilSquareIcon, UserCircleIcon, UserIcon } from "../../../public/static/svg";
+import { BookmarkIcon, ClockIcon, LoginIcon, LogoutIcon, UserCircleIcon, UserIcon } from "../../../public/static/svg";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { PencilIcon } from "@heroicons/react/20/solid";
 import { useAuthStore } from "@/store/auth/auth.store";
-import axios from "axios";
 import { usePathname } from "next/navigation";
-import { on } from "events";
 import { cn } from "@/lib/cn";
-import WebFeedback from "./web-feedback";
 
 const UserButtonData = [
     {
@@ -78,7 +74,6 @@ const UserButton = () => {
                         <kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-[focus]:inline">⌘</kbd>
                     </button>
                 </MenuItem>
-                {/* <MenuItem>{({ close }) => <WebFeedback close={close} />}</MenuItem> */}
             </MenuItems>
         </Menu>
     ) : (

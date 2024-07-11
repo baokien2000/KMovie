@@ -1,0 +1,22 @@
+  /* Loading button text */
+  @keyframes loadingDots {
+    0%, 100% {
+      content: "Đang xử lý";
+    }
+    25% {
+      content: "Đang xử lý.";
+    }
+    50% {
+      content: "Đang xử lý..";
+    }
+    75% {
+      content: "Đang xử lý...";
+    }
+  }
+  
+  .loadingText::after {
+    display: inline-block;
+    content: "Đang xử lý";
+    animation: loadingDots 2s infinite;
+  }
+

@@ -1,35 +1,38 @@
-.pagination{
+.pagination {
     display: flex;
     justify-content: center;
-
 }
-.pagination .page-item .page-link{
+
+.pagination .page-item .page-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 6px;
-    color:#cac9c9;
+    color: #E6E6E6; /* Changed to white for better contrast */
     min-width: 32px;
+    background-color: #585858; /* Ensure background color is specified for contrast */
 }
-@media (max-width: 768px){
-    .pagination .page-item .page-link{
-  
+
+@media (max-width: 768px) {
+    .pagination .page-item .page-link {
         padding: 4px;
-        min-width:32px;
+        min-width: 32px;
         font-size: 12px;
     }
 }
-.pagination .page-item .page-link:hover{
-    color:#ffce4f
+
+.pagination .page-item .page-link:hover {
+    color: #000000; /* Dark color for contrast */
+    background-color: #ffce4f; /* Bright color for hover state */
 }
 
-.pagination .page-item.active .page-link{
+.pagination .page-item.active .page-link {
     background-color: #ffce4f;
-    color: #000;
+    color: #000000; /* Ensure readable contrast on active page */
 }
 
-.pagination .page-item.disabled .page-link{
+.pagination .page-item.disabled .page-link {
     cursor: not-allowed;
-    color:#cac9c9;
-
+    background-color: #585858;;
+    color: #A8A8A8; /* Light grey, consider if this is disabled state */
 }

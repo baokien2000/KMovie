@@ -4,7 +4,6 @@ import { LoadingIcon, SendIcon } from "../../../../public/static/svg";
 import { cn } from "@/lib/cn";
 import { addMovieComment, replyMovieComment } from "@/services/movies";
 import toast from "react-hot-toast";
-import { set } from "nprogress";
 import { useQueryClient } from "@tanstack/react-query";
 interface CommentAreaProps {
     movieId: string;

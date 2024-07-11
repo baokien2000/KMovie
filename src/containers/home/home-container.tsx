@@ -1,6 +1,5 @@
 import React from "react";
-
-import { getKMovie, getRecommendedMovies } from "@/services/movies";
+import { getKMovie } from "@/services/movies";
 import MovieListContainer from "@/components/movies/list/movie-list-container";
 import { pageSize } from "@/enum/movies";
 

@@ -1,7 +1,6 @@
 import { cn } from "@/lib/cn";
 import { SendOTP } from "@/services/auth";
 import { formatTime } from "@/utils/format-string";
-import { set } from "nprogress";
 import React, { useEffect } from "react";
 import { IOtpRes } from "./forgot-container";
 import toast from "react-hot-toast";

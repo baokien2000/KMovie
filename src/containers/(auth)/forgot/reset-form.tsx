@@ -10,6 +10,8 @@ import { useRouter } from "@/lib/router-events";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/cn";
 import { IOtpRes } from "./forgot-container";
+import Input from "@/components/UI/headless/input";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
     const [loading, setLoading] = React.useState(false);
@@ -62,7 +64,7 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
             className="  text-sm  text-default sm:p-6 p-3 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="mb-3">
-                <input
+                <Input
                     {...register("password")}
                     className={cn(" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2", {
                         "border border-red-500": errors.password,
@@ -74,7 +76,7 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
                 />
             </div>
             <div className="">
-                <input
+                <Input
                     {...register("confirmPassword")}
                     className={cn(" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2", {
                         "border border-red-500": errors.confirmPassword,
@@ -94,7 +96,7 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
                 )}
             </div>
             {loading ? (
-                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
+                <ProcessLoading className="cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
             ) : (
                 <button
                     type="submit"

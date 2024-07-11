@@ -3,11 +3,9 @@ import { cn } from "@/lib/cn";
 import React from "react";
 import { HamburgerIcon, LoadingIcon } from "../../../../public/static/svg";
 import { Popover, PopoverButton, PopoverPanel, TabGroup, Transition } from "@headlessui/react";
-// import FilterContent from "./filter-content";
 import FilterTabHeader from "./filter-tab-header";
 import dynamic from "next/dynamic";
-import { useDeviceSize } from "@/hook/useDeviceSize";
-import { useOutsideClick } from "@/hook/useOutsideClick";
+import "./filter-btn.css";
 
 const FilterContent = dynamic(() => import("./filter-content"), {
     ssr: false,

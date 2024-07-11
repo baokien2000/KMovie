@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-import _ from "lodash";
+import { useEffect } from "react";
+import throttle from "lodash.throttle";
 
 const HeaderDisplay = () => {
     let scroll = 0;
@@ -28,7 +28,7 @@ const HeaderDisplay = () => {
 
             scroll = window.scrollY;
         };
-        const throttledHandleScroll = _.throttle(handleScroll, 100);
+        const throttledHandleScroll = throttle(handleScroll, 200);
         window.addEventListener("scroll", throttledHandleScroll);
 
         return () => {

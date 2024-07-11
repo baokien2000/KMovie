@@ -10,79 +10,7 @@
   background: #ffce4f !important;
   }
 
-/* Change Autocomplete styles in Chrome*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: 1px solid #111111;
-  -webkit-text-fill-color: #a7a7a7;
-  -webkit-box-shadow: 0 0 0px 1000px #111111 inset;
-  box-shadow: 0 0 0px 1000px #111111 inset;
-  transition: background-color 5000s ease-in-out 0s;
-  color: #a7a7a7;
-  caret-color: #a7a7a7;
-  }
 
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-
-
-/* HAMBURGER MENU */
-.bars {
-  width: 36px;
-  cursor: pointer;
-}
-.bars .line {
-  fill: none;
-  stroke: #cac9c9;
-  stroke-width: 5;
-  stroke-linecap: round;
-  transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
-}
-.bars.active .line {
-  stroke: #2d2d2d;
-}
-.bars .line.top {
-  stroke-dasharray: 40 172;
-}
-.bars .line.middle {
-  stroke-dasharray: 40 111;
-}
-.bars .line.bottom {
-  stroke-dasharray: 40 172;
-}
-.bars.active .top {
-  stroke-dashoffset: -132px;
-}
-.bars.active .middle {
-  stroke-dashoffset: -71px;
-}
-.bars.active .bottom {
-  stroke-dashoffset: -132px;
-}
-
-/* HIDE NUMBER INPUT ARROW */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
 
 
 /* Custom Scroll bar */
@@ -113,44 +41,16 @@ body::-webkit-scrollbar-thumb:hover {
 /* Movie Detail scroll bar */
     /* custom Scroll bar */
 
-    .customScrollBar::-webkit-scrollbar-track {
-      /* background-color: #aaaaaa; */
-  }
-
   .customScrollBar::-webkit-scrollbar {
       width: 4px !important;
-      /* background-color: #aaaaaa; */
   }
 
   .customScrollBar::-webkit-scrollbar-thumb {
       background-color: #888;
-      /* background-color: #373a43; */
       border-radius: 0px;
   }
   .customScrollBar::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
-
-  /* Loading button text */
-  @keyframes loadingDots {
-    0%, 100% {
-      content: "Đang xử lý";
-    }
-    25% {
-      content: "Đang xử lý.";
-    }
-    50% {
-      content: "Đang xử lý..";
-    }
-    75% {
-      content: "Đang xử lý...";
-    }
-  }
-  
-  .loadingText::after {
-    display: inline-block;
-    content: "Đang xử lý";
-    animation: loadingDots 2s infinite;
   }
 
 

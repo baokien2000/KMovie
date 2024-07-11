@@ -1,5 +1,5 @@
 "use client";
-import { Dialog, DialogPanel, Transition } from "@headlessui/react";
+import {Transition } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import SearchItem from "./search-item";
 import { useDebounce } from "@uidotdev/usehooks";
@@ -7,11 +7,10 @@ import { searchKMovie } from "@/services/movies";
 import { useQuery } from "@tanstack/react-query";
 import { LoadingIcon, SearchIcon, XIcon } from "../../../../public/static/svg";
 import { Link } from "@/lib/router-events";
-import Input from "@/components/UI/input";
+import Input from "@/components/UI/headless/icon-input";
 import { useOutsideClick } from "@/hook/useOutsideClick";
 import { IMovie } from "@/interface/movies";
 import { useDeviceSize } from "@/hook/useDeviceSize";
-
 export default function SearchMovieDropdown() {
     const [query, setQuery] = useState("");
     const debouncedQuery = useDebounce(query, 500);

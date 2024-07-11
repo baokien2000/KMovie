@@ -1,3 +1,4 @@
+import Input from "@/components/UI/headless/input";
 import { MUserGender, UserProfileType } from "@/enum/user";
 import { IUser } from "@/interface/user";
 import { cn } from "@/lib/cn";
@@ -39,7 +40,7 @@ const UserNameEditRow = ({ name, status, setStatus }: { name: string; status: Us
             {status === "idle" ? (
                 name
             ) : (
-                <input
+                <Input
                     id="userEditName"
                     onChange={() => setStatus("edited")}
                     maxLength={25}

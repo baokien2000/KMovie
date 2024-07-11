@@ -9,6 +9,8 @@ import { cn } from "@/lib/cn";
 import { IOtpRes } from "../forgot/forgot-container";
 import ConfirmOtpForm from "../forgot/confirm-otp-form";
 import ReCAPTCHA from "react-google-recaptcha";
+import Input from "@/components/UI/headless/input";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const LoginForm = () => {
     const [requestTime, setRequestTime] = useState<number>(0);
@@ -92,10 +94,10 @@ const LoginForm = () => {
     ) : (
         <form onSubmit={handleLogin} className="  text-sm  text-default p-2 phone:p-3 sm:p-6 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]">
             <div className="phone:mb-3 mb-2">
-                <input className=" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 " name="email" type="text" placeholder="Email" />
+                <Input className=" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 " name="email" type="text" placeholder="Email" />
             </div>
             <div className="">
-                <input className=" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2" name="password" type="password" placeholder="Password" />
+                <Input className=" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2" name="password" type="password" placeholder="Password" />
             </div>
             {requestTime > 3 && (
                 <div className="captcha scale-75 phone:scale-100 " style={{ transformOrigin: "0 0" }}>
@@ -116,8 +118,9 @@ const LoginForm = () => {
                     </>
                 )}
             </div>
-            {loading ? (
-                <div className="loadingText cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
+                {loading ? (
+                                                                            <ProcessLoading className="cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
+
             ) : (
                 <button
                     type="submit"

@@ -12,6 +12,7 @@ import { addMovieReview, getUserMovieReview } from "@/services/movies";
 import { useQuery } from "@tanstack/react-query";
 import ReCAPTCHA from "react-google-recaptcha";
 import { verifyCaptcha } from "@/services/auth";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 interface ReviewMovieProps {
     slug: string;
 }
@@ -129,7 +130,7 @@ const ReviewMovie = ({ slug }: ReviewMovieProps) => {
                                     onClick={() => handleReview(closeModal)}
                                     className={`py-1 disabled:bg-mainColor/50  h-8 sm:h-9 px-2 font-bold text-[#111827] rounded flex items-center justify-center gap-2 w-fit bg-[#ffce4f]/90 hover:bg-[#ffce4f] ${"block "}`}
                                 >
-                                    {loading ? <div className="loadingText" /> : "Đánh giá"}
+                                    {loading ? <ProcessLoading /> : "Đánh giá"}
                                 </button>
                             </div>
                         </div>

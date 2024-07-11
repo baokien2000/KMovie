@@ -1,8 +1,8 @@
-import { Input } from "@headlessui/react";
 import React from "react";
 import { SearchIcon } from "../../../../public/static/svg";
 import toast from "react-hot-toast";
 import { useRouter } from "@/lib/router-events";
+import Input from "@/components/UI/headless/input";
 interface MoviePaginationInputProp {
     totalPage: number;
 }
@@ -29,11 +29,11 @@ const MoviePaginationInput = ({ totalPage }: MoviePaginationInputProp) => {
                 value={page}
                 onChange={(e) => setPage(e.target.value)}
                 onKeyDown={(e) => ["e", ".", ",", "-", "+"].includes(e.key) && e.preventDefault()}
-                className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-title   "
+                className="!outline-none flex-1 bg-transparent ml-3 w-auto max-w-[40px] text-[#E6E6E6]   "
                 placeholder="Nhập"
             />
             <SearchIcon
-                className="w-4 h-4 text-title hover:text-mainColor ml-1 mr-2 sm:mx-3 cursor-pointer"
+                className="w-4 h-4 text-[#E6E6E6] hover:text-mainColor ml-1 mr-2 sm:mx-3 cursor-pointer"
                 onClick={handleRedirect}
                 fill="currentColor"
             />

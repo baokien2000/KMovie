@@ -8,6 +8,7 @@ import ChangePassModal from "./change-pass-modal";
 import ReCAPTCHA from "react-google-recaptcha";
 import { isCaptchaValid } from "@/utils/auth";
 import WebFeedback from "../header/web-feedback";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setStatus: (value: UserProfileType) => void }) => {
     const [loading, setLoading] = useState(false);
@@ -82,7 +83,7 @@ const UserActionButton = ({ status, setStatus }: { status: UserProfileType; setS
                 }`}
                 onClick={handleUpdate}
             >
-                {loading ? <div className="loadingText" /> : "Cập nhật"}
+                {loading ? <ProcessLoading /> : "Cập nhật"}
             </button>
             <button
                 onClick={() => setStatus("editing")}

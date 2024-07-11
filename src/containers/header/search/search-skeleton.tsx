@@ -1,5 +1,5 @@
 import { SearchIcon } from "../../../../public/static/svg";
-import Input from "@/components/UI/input";
+import Input from "@/components/UI/headless/icon-input";
 
 export default function SearchMovieSkeleton() {
     return (

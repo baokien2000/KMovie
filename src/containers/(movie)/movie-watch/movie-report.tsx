@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { Textarea } from "@headlessui/react";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { addMovieReport } from "@/services/movies";
+import ProcessLoading from "@/components/UI/loading/process-loading";
 interface MovieReportProps {
     name: string;
     slug: string;
@@ -98,7 +99,7 @@ const MovieReport = ({ slug, episode, name }: MovieReportProps) => {
                                         Hủy
                                     </button>
                                     {loading ? (
-                                        <div className="loadingText rounded cursor-wait text-center bg-mainColor/90  w-fit p-2 text-des  font-bold tracking-wider" />
+                                        <ProcessLoading className=" rounded cursor-wait text-center bg-mainColor/90  w-fit p-2 text-des  font-bold tracking-wider" />
                                     ) : (
                                         <button
                                             type="submit"
