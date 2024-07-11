@@ -2,7 +2,6 @@ import { IUser } from "./user";
 
 //  Purpose: Define the interface for the movies list
 export interface ImovieList {
-    blurImagesUrls?: string[];
     status: boolean;
     items: IMovie[];
     pathImage: string,

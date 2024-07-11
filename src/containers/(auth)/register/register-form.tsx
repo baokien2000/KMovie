@@ -1,5 +1,5 @@
 "use client";
-import { Login, SignUp } from "@/services/auth";
+import { SignUp } from "@/services/auth";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 import { cn } from "@/lib/cn";
 import { IOtpRes } from "../forgot/forgot-container";
 import ConfirmOtpForm from "../forgot/confirm-otp-form";
-import Input from "@/components/UI/headless/input";
 import ProcessLoading from "@/components/UI/loading/process-loading";
 
 const RegisterForm = () => {
@@ -53,7 +52,7 @@ const RegisterForm = () => {
     } = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
     });
-
+    console.log("errors", errors);
     const handleRegister = async (value: z.infer<typeof formSchema>) => {
         setLoading(true);
         const res = await SignUp(value.email, value.password);
@@ -88,19 +87,19 @@ const RegisterForm = () => {
             className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="sm:mb-3 mb-2">
-                <Input
+                <input
                     {...register("email")}
                     className={cn(" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 ", {
                         "border border-red-500": errors.email,
                     })}
                     name="email"
                     maxLength={40}
-                    type="text"
+                    type="email"
                     placeholder="Email"
                 />
             </div>
             <div className="mb-3">
-                <Input
+                <input
                     {...register("password")}
                     className={cn(" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2", {
                         "border border-red-500": errors.password,
@@ -112,7 +111,7 @@ const RegisterForm = () => {
                 />
             </div>
             <div className="">
-                <Input
+                <input
                     {...register("confirmPassword")}
                     className={cn(" bg-dark4 max-h-[36px]  outline-none w-full  px-3 py-2", {
                         "border border-red-500": errors.confirmPassword,
@@ -134,9 +133,8 @@ const RegisterForm = () => {
                 )}
             </div>
 
-                {loading ? (
-                                                                                                <ProcessLoading className="cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
-
+            {loading ? (
+                <ProcessLoading className="cursor-wait text-center bg-mainColor/90  w-full p-2 text-xs sm:text-sm text-des uppercase font-bold tracking-wider" />
             ) : (
                 <button
                     type="submit"

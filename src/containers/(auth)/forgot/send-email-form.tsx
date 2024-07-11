@@ -9,7 +9,6 @@ import { cn } from "@/lib/cn";
 import { IForgotForm } from "@/enum/auth";
 import { SendOTP } from "@/services/auth";
 import { IOtpRes } from "./forgot-container";
-import Input from "@/components/UI/headless/input";
 import ProcessLoading from "@/components/UI/loading/process-loading";
 interface SendEmailFormProps {
     setForm: (form: IForgotForm) => void;
@@ -53,7 +52,7 @@ const SendEmailForm = ({ setForm, setOtpRes }: SendEmailFormProps) => {
             className="  text-sm  text-default p-3 sm:p-6 w-[calc(100svw-24px)] max-w-[500px] sm:w-[500px]"
         >
             <div className="">
-                <Input
+                <input
                     {...register("email")}
                     className={cn(" bg-dark4  max-h-[36px] outline-none w-full px-3 py-2 ", {
                         "border border-red-500": errors.email,

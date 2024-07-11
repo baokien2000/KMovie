@@ -2,7 +2,6 @@ import { Field, Input as HeadLessInput, Label } from "@headlessui/react";
 import { SearchIcon } from "../../../../public/static/svg";
 import { ChangeEventHandler, ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import "./input.css";
 
 interface InputProps {
     className?: string;

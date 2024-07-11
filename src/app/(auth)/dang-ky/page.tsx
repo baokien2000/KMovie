@@ -23,7 +23,7 @@ export default async function Page() {
                 <div className="border-t border-[#656565] text-default p-3 sm:px-6 sm:py-4 flex gap-1 text-xs">
                     <span>Đã có tài khoản?</span>
                     <Link href="/dang-nhap" className="text-mainColor/90  hover:text-mainColor no-underline">
-                        Đăng ký
+                        Đăng nhập
                     </Link>
                 </div>
             </div>

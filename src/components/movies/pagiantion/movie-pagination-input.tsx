@@ -2,7 +2,6 @@ import React from "react";
 import { SearchIcon } from "../../../../public/static/svg";
 import toast from "react-hot-toast";
 import { useRouter } from "@/lib/router-events";
-import Input from "@/components/UI/headless/input";
 interface MoviePaginationInputProp {
     totalPage: number;
 }
@@ -22,7 +21,7 @@ const MoviePaginationInput = ({ totalPage }: MoviePaginationInputProp) => {
     };
     return (
         <div className=" hidden sm:flex items-center">
-            <Input
+            <input
                 type="number"
                 max={9999}
                 aria-label="pagination-search"
