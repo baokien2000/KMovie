@@ -9,7 +9,6 @@ import { memo } from "react";
 
 const MovieSlider = (props: { movies: IMovieSlide }) => {
     const { movies } = props;
-    const isMobile = window.innerWidth < 768;
 
     return (
         <Swiper
@@ -41,7 +40,7 @@ const MovieSlider = (props: { movies: IMovieSlide }) => {
                         enableBlur
                         quality={50}
                         key={item._id}
-                        loading={index < (isMobile ? 2 : 6) ? "eager" : "lazy"}
+                        loading={index < 2 ? "eager" : "lazy"}
                         movie={item}
                         ImagePath={movies.pathImage}
                     />
