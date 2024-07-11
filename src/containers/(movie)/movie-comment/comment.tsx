@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import KLogo from "../../../../public/static/images/logo/Icon_light.png";
-import Image from "next/image";
 import { IComment } from "@/interface/movies";
-
-import CommentBox from "./comment-box";
 import CommentArea from "./comment-area";
 import { useAuthStore } from "@/store/auth/auth.store";
 import CommentItem from "./comment-item";
@@ -14,7 +10,7 @@ const Comment = ({ comment }: { comment: IComment }) => {
     const user = useAuthStore((state) => state.user);
     useEffect(() => {
         if (replyTo) {
-            setLimit(comment.replies.length);
+            setLimit(comment.replies.length + 1);
         }
     }, [replyTo]);
     return (

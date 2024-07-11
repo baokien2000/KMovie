@@ -41,7 +41,7 @@ const CommentArea = ({ movieId, userId, row = 3, replyId, replyTo }: CommentArea
     };
     useEffect(() => {
         if (replyTo) {
-            setComment(replyTo);
+            setComment(replyTo + " ");
         }
     }, [replyTo]);
     return (
