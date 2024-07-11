@@ -1,11 +1,10 @@
 "use client";
-import { Login, SignUp, resetPassword } from "@/services/auth";
+import {resetPassword } from "@/services/auth";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
-import { ErrorIcon, LoadingIcon } from "../../../../public/static/svg";
+import { ErrorIcon } from "../../../../public/static/svg";
 import { useRouter } from "@/lib/router-events";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/cn";
@@ -36,8 +35,6 @@ const ResetForm = ({ otpRes }: { otpRes: IOtpRes }) => {
         register,
         handleSubmit,
         formState: { errors },
-        setError,
-        reset,
     } = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
     });

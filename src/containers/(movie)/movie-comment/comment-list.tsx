@@ -1,17 +1,11 @@
 "use client";
 import React from "react";
 import Comment from "./comment";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery  } from "@tanstack/react-query";
 import { getMovieCommentById } from "@/services/movies";
 import { IComment } from "@/interface/movies";
 import { LoadingIcon } from "../../../../public/static/svg";
 const CommentList = ({ movieId }: { movieId: string }) => {
-    // const { data: comments, isFetching } = useQuery({
-    //     queryKey: ["comments", movieId, page],
-    //     queryFn: async () => getMovieCommentById(movieId, page, 5),
-    //     initialData: [],
-    //     refetchOnWindowFocus: false,
-    // });
     const {
         fetchNextPage,
         fetchPreviousPage,

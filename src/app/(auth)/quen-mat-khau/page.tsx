@@ -1,7 +1,4 @@
-import ForgotForm from "@/containers/(auth)/forgot/send-email-form";
 import ForgotFormSkeleton from "@/containers/(auth)/forgot/forgot-form-skeleton";
-import LoginForm from "@/containers/(auth)/login/login-form";
-import LoginFormSkeleton from "@/containers/(auth)/login/login-form-skeleton";
 import { Metadata } from "next";
 import Link from "next/link";
 import React, { Suspense } from "react";

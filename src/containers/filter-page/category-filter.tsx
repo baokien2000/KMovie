@@ -1,4 +1,4 @@
-import { Categories, CategoriesSlug, categoriesMap } from "@/enum/movies";
+import { CategoriesSlug, categoriesMap } from "@/enum/movies";
 import { cn } from "@/lib/cn";
 import { useFilterStore } from "@/store/movies/filter.store";
 import React from "react";

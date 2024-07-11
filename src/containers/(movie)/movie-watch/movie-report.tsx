@@ -53,7 +53,7 @@ const MovieReport = ({ slug, episode, name }: MovieReportProps) => {
     return user?._id ? (
         <Modal>
             <Modal.Open>
-                <button className="p-1 rounded opacity-90 hover:opacity-100 bg-[#b73a3a]">
+                <button aria-label="report-button" className="p-1 rounded opacity-90 hover:opacity-100 bg-[#b73a3a]">
                     <ReportIcon />
                 </button>
             </Modal.Open>

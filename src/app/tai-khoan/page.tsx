@@ -3,11 +3,6 @@ import { Metadata } from "next";
 import UserContainer from "@/containers/user";
 import UserContainerSkeleton from "@/containers/user/user-container-skeleton";
 
-interface PageProps {
-    params: {
-        slug: string;
-    };
-}
 export async function generateMetadata(): Promise<Metadata> {
     return { title: "Thông tin cá nhân" };
 }

@@ -1,4 +1,4 @@
-import { getEpisodeHistory, getKMovie, getMovieBySlug } from "@/services/movies";
+import { getMovieBySlug } from "@/services/movies";
 import React, { Suspense } from "react";
 import MovieTiltle from "@/containers/(movie)/movie-watch/movie-tiltle";
 import MovieServer from "@/containers/(movie)/movie-watch/movie-server";
@@ -6,9 +6,7 @@ import EpisodesList from "@/containers/(movie)/movie-watch/movie-episodes";
 import CommentContainer from "@/containers/(movie)/movie-comment";
 import { Metadata } from "next";
 import MoviePlayer from "@/components/movies/player/movie-player";
-import { ImovieList } from "@/interface/movies";
 import MovieNoti from "@/containers/(movie)/movie-watch/movie-noti";
-import MovieViewUpdated from "@/containers/(movie)/movie-watch/movie-view-updated";
 
 interface PageProps {
     params: {

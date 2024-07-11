@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "swiper/css/scrollbar";
 import "./style.css";
-import { IMovie, IMovieSlide } from "@/interface/movies";
+import {  IMovieSlide } from "@/interface/movies";
 import MovieCard from "../card/movie-card";
 import { memo } from "react";
 
