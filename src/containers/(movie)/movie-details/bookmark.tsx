@@ -56,6 +56,7 @@ const Bookmark = ({ slug }: { slug: string }) => {
             className={cn("py-1  bg-[#191919] px-3 hover:text-mainColor  rounded-md flex items-center justify-center gap-2 w-fit  ", {
                 "text-mainColor ": isMarked,
             })}
+            aria-label="bookmark-button"
         >
             {loading ? (
                 <LoadingIcon />

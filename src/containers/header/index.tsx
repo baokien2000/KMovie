@@ -18,8 +18,8 @@ const Header = () => {
             <nav className=" App-header mx-auto items-center justify-between sm:gap-5 gap-2 max-w-screen-laptop md:px-6 px-3 flex  h-[60px] sm:h-[70px] w-full ">
                 <Link href={"/"} className=" w-fit cursor-pointer h-fit min-h-[36px] ">
                     <Image
-                        sizes="400px"
-                        loading="lazy"
+                        sizes="240px"
+                        priority
                         height={36}
                         width={120}
                         className="tablet:block object-contain w-[120px] max-w-[120px]  h-9 hidden"
@@ -28,7 +28,7 @@ const Header = () => {
                     />
                     <Image
                         sizes="100px"
-                        loading="lazy"
+                        priority
                         height={36}
                         width={36}
                         alt="Logo"

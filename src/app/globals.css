@@ -16,8 +16,9 @@
 /* Custom Scroll bar */
 
 /* width */
+
 body::-webkit-scrollbar {
-  width: 20px;
+  width: 15px;
 }
 /* Track */
 body::-webkit-scrollbar-track {
@@ -26,14 +27,14 @@ body::-webkit-scrollbar-track {
 /* Handle */
 body::-webkit-scrollbar-thumb {
   background: #555;
-  border: 6px solid rgba(0, 0, 0, 0);
+  border: 5px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 /* Handle on hover */
 body::-webkit-scrollbar-thumb:hover {
   background: #444;
-  border: 6px solid rgba(0, 0, 0, 0);
+  border: 5px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
 

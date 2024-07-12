@@ -6,9 +6,10 @@ const HeaderDisplay = () => {
     let scroll = 0;
     useEffect(() => {
         const handleScroll = () => {
-            const headerAppClass = document?.getElementById("header-app")?.classList;
-            const hasAutoScroll = headerAppClass?.contains("auto-scroll");
-
+            let headerAppClass = document?.getElementById("header-app")?.classList;
+            let hasAutoScroll = headerAppClass?.contains("auto-scroll");
+            let isFilterOpen = headerAppClass?.contains("filter-open");
+            if (window.scrollY - scroll === 1 && isFilterOpen) isFilterOpen = false;
             if (scroll >= window.scrollY || window.scrollY < 72) {
                 if (!hasAutoScroll) {
                     headerAppClass?.remove("opacity-0");
@@ -19,11 +20,20 @@ const HeaderDisplay = () => {
                     headerAppClass?.remove("opacity-0");
                     headerAppClass?.remove("pointer-events-none");
                 }
+                headerAppClass?.remove("filter-open");
             } else {
-                headerAppClass?.add("opacity-0");
-
-                headerAppClass?.add("pointer-events-none");
-                headerAppClass?.remove("auto-scroll");
+                console.log("window.scrollY - scroll", window.scrollY - scroll);
+                console.log("isFilterOpen", isFilterOpen);
+                if (isFilterOpen) {
+                    // const desiredScrollPosition = window.scrollY - (20 - (window.scrollY - scroll));
+                    window.scrollTo({ top: scroll, behavior: "instant" });
+                    headerAppClass?.remove("filter-open");
+                } else {
+                    headerAppClass?.add("opacity-0");
+                    headerAppClass?.add("pointer-events-none");
+                    headerAppClass?.remove("auto-scroll");
+                    headerAppClass?.remove("filter-open");
+                }
             }
 
             scroll = window.scrollY;

@@ -37,6 +37,7 @@ const ReviewMovie = ({ slug }: ReviewMovieProps) => {
         return (
             <Button
                 onClick={() => toast.error("Vui lòng đăng nhập để thực hiện chức năng này")}
+                aria-label="review-button"
                 className={"py-1  bg-[#191919] px-3   hover:text-mainColor  rounded-md flex items-center justify-center gap-2 w-fit  "}
             >
                 <StarOutlineIcon fill="currentColor" />

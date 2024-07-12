@@ -17,7 +17,12 @@ const FilterContent = dynamic(() => import("./filter-content"), {
 });
 
 const FilterButton = () => {
-
+    const onOpenFilter = (isOpen: boolean) => {
+        if (isOpen) {
+            const headerAppClass = document?.getElementById("header-app")?.classList;
+            headerAppClass?.add("filter-open");
+        }
+    };
     return (
         <Popover>
             {({ open, close }) => (
@@ -25,6 +30,7 @@ const FilterButton = () => {
                     {open && <div className="fixed left-0 top-0 h-[100svh] w-[100svw] bg-black/50 "></div>}
 
                     <PopoverButton
+                        onClick={() => onOpenFilter(!open)}
                         className={cn(
                             open ? "border-mainColor bg-mainColor" : "border-des bg-black",
                             "h-[36px] w-[42px] outline-none rounded flex items-center  py-[5px]  border-[1px] cursor-pointer  hover:opacity-80"

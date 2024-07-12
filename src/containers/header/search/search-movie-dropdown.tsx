@@ -27,11 +27,14 @@ export default function SearchMovieDropdown() {
     });
     useEffect(() => {
         if (isOpen) {
+            const headerAppClass = document?.getElementById("header-app")?.classList;
+            headerAppClass?.add("filter-open");
+
             document.body.style.overflow = "hidden";
             // Kiểm tra xem trang có thanh scroll không
             const hasScrollbar = window.innerHeight < document.body.scrollHeight;
             // Chỉ thêm padding nếu có thanh scroll
-            document.documentElement.style.paddingRight = hasScrollbar && width > 1024 ? "20px" : "0px";
+            document.documentElement.style.paddingRight = hasScrollbar && width > 1024 ? "15px" : "0px";
         } else {
             document.body.style.overflow = "unset";
             document.documentElement.style.paddingRight = "0px";

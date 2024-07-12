@@ -26,7 +26,7 @@ const MovieCard = (props: MovieCardProp) => {
                     src={ImagePath + movie.thumb_url}
                     fill
                     priority={priority}
-                    loading={loading}
+                    loading={priority ? undefined : loading}
                     placeholder={enableBlur && movie.blurImage ? "blur" : "empty"}
                     blurDataURL={movie.blurImage}
                     quality={quality}
