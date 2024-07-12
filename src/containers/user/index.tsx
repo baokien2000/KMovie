@@ -21,7 +21,6 @@ const UserContainer = () => {
         refetchOnWindowFocus: false,
         enabled: (user?._id?.length ?? 0) > 0,
     });
-    console.log("loading", loading);
     useEffect(() => {
         if (!user?._id && !loading) {
             router.push("/dang-nhap");

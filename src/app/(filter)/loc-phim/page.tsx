@@ -29,7 +29,7 @@ export default async function Page({ searchParams }: { searchParams?: { [key: st
             <MovieListTitle id="FilterListTitle" title={"Trang lọc phim"} />
             <MovieFilter />
             <Suspense fallback={<MovieListSkeleton />}>
-                {!filterMovies && filterMovies?.items?.length === 0 ? (
+                {!filterMovies || filterMovies?.items?.length === 0 ? (
                     <FilterNotFound />
                 ) : (
                     <MovieListContainer titleId="FilterListTitle" initialData={filterMovies} searchParams={searchParams} />

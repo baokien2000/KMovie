@@ -22,8 +22,6 @@ const HeaderDisplay = () => {
                 }
                 headerAppClass?.remove("filter-open");
             } else {
-                console.log("window.scrollY - scroll", window.scrollY - scroll);
-                console.log("isFilterOpen", isFilterOpen);
                 if (isFilterOpen) {
                     // const desiredScrollPosition = window.scrollY - (20 - (window.scrollY - scroll));
                     window.scrollTo({ top: scroll, behavior: "instant" });
