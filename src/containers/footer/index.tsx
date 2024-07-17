@@ -50,7 +50,9 @@ const Footer = () => {
                 </div>
                 <div className="w-full gap-3 flex laptopSmall:justify-evenly justify-start">
                     <LinkList links={NewMovieLinks} title="Phim mới" />
+
                     <LinkList links={CountyMovieLinks} title="Phim hay" className="hidden sm:flex" />
+
                     <LinkList links={InfoLinks} title="Thông tin" />
                 </div>
             </div>
