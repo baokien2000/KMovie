@@ -73,5 +73,4 @@ const CommentArea = ({ movieId, userId, row = 3, replyId, replyTo }: CommentArea
         </Field>
     );
 };
-
 export default CommentArea;
