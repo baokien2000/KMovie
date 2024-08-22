@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { IServerData } from "@/interface/movies";
 interface MoviePlayerProps {

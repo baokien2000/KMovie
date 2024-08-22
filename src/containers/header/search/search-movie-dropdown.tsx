@@ -11,11 +11,13 @@ import Input from "@/components/UI/headless/icon-input";
 import { useOutsideClick } from "@/hook/useOutsideClick";
 import { IMovie } from "@/interface/movies";
 import { useDeviceSize } from "@/hook/useDeviceSize";
+import { useRouter } from "next/navigation";
 export default function SearchMovieDropdown() {
     const [query, setQuery] = useState("");
     const debouncedQuery = useDebounce(query, 500);
     const [isOpen, setIsOpen] = useState(false);
     const [width, height] = useDeviceSize();
+    const router = useRouter();
     const refOutsideClick = useOutsideClick(() => {
         setIsOpen(false);
     }, true);
@@ -40,11 +42,16 @@ export default function SearchMovieDropdown() {
             document.documentElement.style.paddingRight = "0px";
         }
     }, [isOpen, width]);
+    const handleRedirect = () => {
+        router.push(query ? `/tim-kiem?key=${query}` : "/tim-kiem");
+        setIsOpen(false);
+    };
     return (
         <div className="sm:relative  w-full h-fit ">
             {isOpen && <div className="fixed left-0 top-0 h-[100svh] w-[100svw] bg-black/50 "></div>}
             <div ref={refOutsideClick}>
                 <Input
+                    onKeyDown={(e) => e.key === "Enter" && handleRedirect()}
                     onChange={(e) => setQuery(e.target.value)}
                     onClick={() => setIsOpen(true)}
                     ariaLabel="Search"
