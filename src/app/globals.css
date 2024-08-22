@@ -47,8 +47,9 @@ body::-webkit-scrollbar-thumb:hover {
   }
 
   .customScrollBar::-webkit-scrollbar-thumb {
-      background-color: #888;
+      background-color: rgba(0, 0, 0, 0.8);
       border-radius: 0px;
+
   }
   .customScrollBar::-webkit-scrollbar-thumb:hover {
     background: #555;

@@ -68,7 +68,11 @@ export default function SearchMovieDropdown() {
                 >
                     <div className=" absolute max-sm:transition max-sm:-translate-x-1/2 sm:left-0 left-1/2 w-[calc(100svw-24px)] sm:w-full h-fit mt-3 sm:top-[100%] cursor-default rounded border  border-white/5 bg-mainBackground/95 sm:p-1 ">
                         <div className="w-full flex sm:px-3 px-2 py-2 justify-between items-center">
-                            <Link href={query ? `/tim-kiem?key=${query}` : "/tim-kiem"} className="text-title text-sm hover:text-mainColor">
+                            <Link
+                                onClick={() => setIsOpen(false)}
+                                href={query ? `/tim-kiem?key=${query}` : "/tim-kiem"}
+                                className="text-title text-sm hover:text-mainColor"
+                            >
                                 Đến trang tìm kiếm
                             </Link>
                             <XIcon className="cursor-pointer" onClick={() => setIsOpen(false)} />
